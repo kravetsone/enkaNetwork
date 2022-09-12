@@ -1,0 +1,30 @@
+{
+  "name": "enkanetwork",
+  "version": "1.0.0",
+  "description": "NodeJS/TypeScript api wrapper data from https://enka.network/",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kravetsone/enkaNetwork.git"
+  },
+  "keywords": [
+    "enkanetwork",
+    "genshinapi",
+    "genshinimpact",
+    "gensinimpactapi",
+    "nodejs",
+    "typescript"
+  ],
+  "author": "Kravetsone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kravetsone/enkaNetwork/issues"
+  },
+  "homepage": "https://github.com/kravetsone/enkaNetwork#readme"
+}
