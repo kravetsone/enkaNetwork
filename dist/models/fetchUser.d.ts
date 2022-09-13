@@ -1,9 +1,11 @@
+import { IPlayerInfo } from "../types/index";
 import { playerInfo } from "./playerInfo";
+import { character } from "./character";
 export declare class fetchUser {
     playerInfo: playerInfo;
-    avatarInfoList: string[];
+    characters: character[];
     constructor(language: string, data: {
         avatarInfoList: string[];
-        playerInfo: playerInfo;
+        playerInfo: IPlayerInfo;
     });
 }

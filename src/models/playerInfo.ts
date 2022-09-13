@@ -1,5 +1,7 @@
 import { IPlayerInfo, IProfilePicture, IShowAvatarInfoList } from "../types/index";
 import { nameCard } from "./nameCard";
+import { profilePicture } from "./profilePicture";
+import { characterPreview } from "./characterPreview";
 export class playerInfo {
     nickname: string
     signature: string;
@@ -10,9 +12,10 @@ export class playerInfo {
     finishAchievementNum: number;
     towerFloorIndex: number;
     towerLevelIndex: number;
-    showAvatarInfoList: IShowAvatarInfoList[];
-    showNameCardIdList: number[];
-    profilePicture: IProfilePicture;
+    charactersPreview: characterPreview[];
+    nameCardsPreview: nameCard[];
+    showNameCardIdList!: number[];
+    profilePicture: profilePicture;
     constructor(language: string, data: IPlayerInfo) {
         this.nickname = data.nickname;
         this.signature = data.signature;
@@ -22,9 +25,13 @@ export class playerInfo {
         this.finishAchievementNum = data.finishAchievementNum;
         this.towerFloorIndex = data.towerFloorIndex;
         this.towerLevelIndex = data.towerLevelIndex;
-        this.showAvatarInfoList = data.showAvatarInfoList;
-        this.showNameCardIdList = data.showNameCardIdList;
-        this.profilePicture = data.profilePicture;
+        this.charactersPreview = data.showAvatarInfoList.map((character: { avatarId: number, level: number }) => {
+            return new characterPreview(language, character);
+        });
+        this.nameCardsPreview = data.showNameCardIdList.map((nameCardId) => {
+            return new nameCard(language, nameCardId);
+        });
+        this.profilePicture = new profilePicture(language, data.profilePicture);
     }
 
 }

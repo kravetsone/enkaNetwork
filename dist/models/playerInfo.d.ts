@@ -1,5 +1,7 @@
-import { IPlayerInfo, IProfilePicture, IShowAvatarInfoList } from "../types/index";
+import { IPlayerInfo } from "../types/index";
 import { nameCard } from "./nameCard";
+import { profilePicture } from "./profilePicture";
+import { characterPreview } from "./characterPreview";
 export declare class playerInfo {
     nickname: string;
     signature: string;
@@ -10,8 +12,9 @@ export declare class playerInfo {
     finishAchievementNum: number;
     towerFloorIndex: number;
     towerLevelIndex: number;
-    showAvatarInfoList: IShowAvatarInfoList[];
+    charactersPreview: characterPreview[];
+    nameCardsPreview: nameCard[];
     showNameCardIdList: number[];
-    profilePicture: IProfilePicture;
+    profilePicture: profilePicture;
     constructor(language: string, data: IPlayerInfo);
 }

@@ -36,3 +36,22 @@ export interface INameCardAsset {
     rankLevel: number
     materialType: string
 }
+export interface ICharacterAssets {
+    [key: string]: ICharacterAsset
+}
+export interface ICharacterAsset {
+    nameTextMapHash: number;
+    iconName: string;
+    sideIconName: string;
+    qualityType: string;
+    costElemType: string;
+    skills: number[];
+    talents: number[];
+}
+export interface ICharacterConstellationAssets {
+    [key: string]: ICharacterConstellationAsset
+}
+export interface ICharacterConstellationAsset {
+    nameTextMapHash: number;
+    icon: string;
+}
