@@ -17,19 +17,38 @@ export declare class character {
     skillSetId: number;
     skillData: number[];
     weapon: any;
+    reluquary: characterReluquary;
     constructor(lang: string, character: any);
 }
-export declare class characterWeapon {
+export declare class characterReluquary {
     id: number;
     level: number;
-    elevations: number;
-    improvement: any;
     raity: number;
     mainStats: {
         appendPropId: string;
         statValue: number;
     };
     subStats: {
+        appendPropId: string;
+        statValue: number;
+    }[];
+    icon: string;
+    name: string;
+    type: string;
+    setName: string;
+    constructor(lang: string, equipment: any);
+}
+export declare class characterWeapon {
+    id: number;
+    level: number;
+    elevations: number;
+    improvement: number;
+    raity: number;
+    mainStat: {
+        appendPropId: string;
+        statValue: number;
+    };
+    subStat: {
         appendPropId: string;
         statValue: number;
     };

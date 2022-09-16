@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.characterStats = exports.characterSkills = exports.characterConstellation = exports.characterWeapon = exports.character = void 0;
+exports.characterStats = exports.characterSkills = exports.characterConstellation = exports.characterWeapon = exports.characterReluquary = exports.character = void 0;
 const getAssetUrl_1 = require("../helpers/getAssetUrl");
 const getNormalElement_1 = require("../helpers/getNormalElement");
 // @ts-ignore: Json Import
@@ -20,6 +20,10 @@ const conselations_json_2 = __importDefault(require("../../assets/localizations/
 const skills_json_2 = __importDefault(require("../../assets/localizations/skills.json"));
 // @ts-ignore: Json Import
 const weapons_json_1 = __importDefault(require("../../assets/localizations/weapons.json"));
+// @ts-ignore: Json Import
+const artifacts_json_1 = __importDefault(require("../../assets/localizations/artifacts.json"));
+// @ts-ignore: Json Import
+const artifactSets_json_1 = __importDefault(require("../../assets/localizations/artifactSets.json"));
 const charactersAssets = characters_json_1.default;
 const charactersLocalizations = characters_json_2.default;
 const charactersConstellationAssets = conselations_json_1.default;
@@ -27,6 +31,8 @@ const charactersConstellationLocalizations = conselations_json_2.default;
 const charactersSkillsAssets = skills_json_1.default;
 const charactersSkillsLocalizations = skills_json_2.default;
 const charactersWeaponLocalizations = weapons_json_1.default;
+const charactersReluquaryLocalizations = artifacts_json_1.default;
+const charactersReluquarySetsLocalizations = artifactSets_json_1.default;
 class character {
     constructor(lang, character) {
         var _a, _b, _c;
@@ -38,6 +44,7 @@ class character {
         this.element = (0, getNormalElement_1.getNormalElement)(characterAsset.costElemType);
         this.icons = { avatar: (0, getAssetUrl_1.getAssetUrl)(characterAsset.iconName), side: (0, getAssetUrl_1.getAssetUrl)(characterAsset.sideIconName) };
         this.weapon = new characterWeapon(lang, character.equipList.filter((x) => x.weapon)[0]);
+        this.reluquary = character.equipList.filter((x) => x.reliquary).map((reliquary) => new characterReluquary(lang, reliquary));
         this.stats = new characterStats(character.fightPropMap);
         this.constellation = characterAsset.talents.map((talent) => { return new characterConstellation(lang, talent, (character === null || character === void 0 ? void 0 : character.talentIdList) || []); });
         this.skills = characterAsset.skills.map((skill) => { return new characterSkills(lang, skill, (character === null || character === void 0 ? void 0 : character.skillLevelMap[skill]) || 0); });
@@ -50,6 +57,27 @@ class character {
     }
 }
 exports.character = character;
+const reluquaryTypes = {
+    "EQUIP_BRACER": "Flower",
+    "EQUIP_NECKLACE": "Feather",
+    "EQUIP_SHOES": "Sands",
+    "EQUIP_RING": "Goblet",
+    "EQUIP_DRESS": "Circlet"
+};
+class characterReluquary {
+    constructor(lang, equipment) {
+        this.id = equipment.itemId;
+        this.name = charactersReluquaryLocalizations[equipment.flat.nameTextMapHash][lang];
+        this.setName = charactersReluquarySetsLocalizations[equipment.flat.setNameTextMapHash][lang];
+        this.icon = (0, getAssetUrl_1.getAssetUrl)(equipment.flat.icon);
+        this.type = reluquaryTypes[equipment.flat.equipType];
+        this.level = --equipment.reliquary.level;
+        this.raity = equipment.flat.rankLevel;
+        this.mainStats = equipment.flat.reliquaryMainstat;
+        this.subStats = equipment.flat.reliquarySubstats;
+    }
+}
+exports.characterReluquary = characterReluquary;
 class characterWeapon {
     constructor(lang, equipment) {
         this.id = equipment.itemId;
@@ -59,8 +87,8 @@ class characterWeapon {
         this.elevations = equipment.weapon.promoteLevel;
         this.improvement = equipment.weapon.affixMap[Object.keys(equipment.weapon.affixMap)[0]] + 1;
         this.raity = equipment.flat.rankLevel;
-        this.mainStats = equipment.flat.weaponStats[0];
-        this.subStats = equipment.flat.weaponStats[0];
+        this.mainStat = equipment.flat.weaponStats[0];
+        this.subStat = equipment.flat.weaponStats[1];
     }
 }
 exports.characterWeapon = characterWeapon;
