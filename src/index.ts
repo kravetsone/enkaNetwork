@@ -1,9 +1,10 @@
 import { Axios } from "axios";
 import { fetchUser } from "./models/fetchUser";
+import { TLanguage } from "./types";
 export class enkaNetwork {
-    language: string;
+    language: TLanguage;
     request: Axios;
-    constructor(data: { language: string }) {
+    constructor(data: { language?: TLanguage }) {
         this.language = data.language || "EN";
         this.request = new Axios({
             baseURL: "https://enka.network",

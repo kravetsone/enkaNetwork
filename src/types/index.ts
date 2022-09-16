@@ -55,3 +55,11 @@ export interface ICharacterConstellationAsset {
     nameTextMapHash: number;
     icon: string;
 }
+export interface ICharacterSkillsAssets {
+    [key: string]: ICharacterSkillsAsset
+}
+export interface ICharacterSkillsAsset {
+    nameTextMapHash: number;
+    skillIcon: string;
+}
+export type TLanguage = "CHS" | "CHT" | "DE" | "EN" | "ES" | "FR" | "ID" | "JP" | "KR" | "PT" | "RU" | "TH" | "VI"
