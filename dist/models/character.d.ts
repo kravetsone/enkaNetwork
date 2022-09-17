@@ -11,19 +11,19 @@ export declare class character {
     element: string;
     elevations: number;
     xp: number;
-    constellation: characterConstellation[];
     stats: characterStats;
-    skills: characterSkills[];
+    constellation: characterConstellation[];
+    skills: characterSkill[];
     skillSetId: number;
     skillData: number[];
-    weapon: any;
-    reluquary: characterReluquary;
+    weapon: characterWeapon;
+    reluquary: characterReluquary[];
     constructor(lang: string, character: any);
 }
 export declare class characterReluquary {
     id: number;
     level: number;
-    raity: number;
+    rarity: number;
     mainStats: {
         appendPropId: string;
         statValue: number;
@@ -43,12 +43,12 @@ export declare class characterWeapon {
     level: number;
     elevations: number;
     improvement: number;
-    raity: number;
+    rarity: number;
     mainStat: {
         appendPropId: string;
         statValue: number;
     };
-    subStat: {
+    subStat?: {
         appendPropId: string;
         statValue: number;
     };
@@ -63,7 +63,7 @@ export declare class characterConstellation {
     unlocked: boolean;
     constructor(lang: string, talent: number, talents: number[]);
 }
-export declare class characterSkills {
+export declare class characterSkill {
     id: number;
     icon: string;
     name: string;

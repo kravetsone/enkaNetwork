@@ -55,10 +55,10 @@ export interface ICharacterConstellationAsset {
     nameTextMapHash: number;
     icon: string;
 }
-export interface ICharacterSkillsAssets {
-    [key: string]: ICharacterSkillsAsset
+export interface ICharacterSkillAssets {
+    [key: string]: ICharacterSkillAsset
 }
-export interface ICharacterSkillsAsset {
+export interface ICharacterSkillAsset {
     nameTextMapHash: number;
     skillIcon: string;
 }

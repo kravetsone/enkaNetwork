@@ -11,9 +11,9 @@ class playerInfo {
         this.level = data.level;
         this.worldLevel = data.worldLevel;
         this.nameCard = new nameCard_1.nameCard(language, data.nameCardId);
-        this.finishAchievementNum = data.finishAchievementNum;
-        this.towerFloorIndex = data.towerFloorIndex;
-        this.towerLevelIndex = data.towerLevelIndex;
+        this.achievements = data.finishAchievementNum;
+        this.abyssFloor = data.towerFloorIndex;
+        this.abyssLevel = data.towerLevelIndex;
         this.charactersPreview = data.showAvatarInfoList.map((character) => {
             return new characterPreview_1.characterPreview(language, character);
         });

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.characterStats = exports.characterSkills = exports.characterConstellation = exports.characterWeapon = exports.characterReluquary = exports.character = void 0;
+exports.characterStats = exports.characterSkill = exports.characterConstellation = exports.characterWeapon = exports.characterReluquary = exports.character = void 0;
 const getAssetUrl_1 = require("../helpers/getAssetUrl");
 const getNormalElement_1 = require("../helpers/getNormalElement");
 // @ts-ignore: Json Import
@@ -47,7 +47,7 @@ class character {
         this.reluquary = character.equipList.filter((x) => x.reliquary).map((reliquary) => new characterReluquary(lang, reliquary));
         this.stats = new characterStats(character.fightPropMap);
         this.constellation = characterAsset.talents.map((talent) => { return new characterConstellation(lang, talent, (character === null || character === void 0 ? void 0 : character.talentIdList) || []); });
-        this.skills = characterAsset.skills.map((skill) => { return new characterSkills(lang, skill, (character === null || character === void 0 ? void 0 : character.skillLevelMap[skill]) || 0); });
+        this.skills = characterAsset.skills.map((skill) => { return new characterSkill(lang, skill, (character === null || character === void 0 ? void 0 : character.skillLevelMap[skill]) || 0); });
         this.skillSetId = character.skillDepotId;
         this.skillData = character.inherentProudSkillList;
         this.level = Number(((_a = character.propMap["4001"]) === null || _a === void 0 ? void 0 : _a.ival) || 0);
@@ -72,7 +72,7 @@ class characterReluquary {
         this.icon = (0, getAssetUrl_1.getAssetUrl)(equipment.flat.icon);
         this.type = reluquaryTypes[equipment.flat.equipType];
         this.level = --equipment.reliquary.level;
-        this.raity = equipment.flat.rankLevel;
+        this.rarity = equipment.flat.rankLevel;
         this.mainStats = equipment.flat.reliquaryMainstat;
         this.subStats = equipment.flat.reliquarySubstats;
     }
@@ -84,11 +84,11 @@ class characterWeapon {
         this.name = charactersWeaponLocalizations[equipment.flat.nameTextMapHash][lang];
         this.icon = (0, getAssetUrl_1.getAssetUrl)(equipment.flat.icon);
         this.level = equipment.weapon.level;
-        this.elevations = equipment.weapon.promoteLevel;
-        this.improvement = equipment.weapon.affixMap[Object.keys(equipment.weapon.affixMap)[0]] + 1;
-        this.raity = equipment.flat.rankLevel;
+        this.elevations = equipment.weapon.promoteLevel || 0;
+        this.improvement = equipment.weapon.affixMap ? equipment.weapon.affixMap[Object.keys(equipment.weapon.affixMap)[0]] + 1 : 1;
+        this.rarity = equipment.flat.rankLevel;
         this.mainStat = equipment.flat.weaponStats[0];
-        this.subStat = equipment.flat.weaponStats[1];
+        this.subStat = equipment.flat.weaponStats[1] || false;
     }
 }
 exports.characterWeapon = characterWeapon;
@@ -103,7 +103,7 @@ class characterConstellation {
     }
 }
 exports.characterConstellation = characterConstellation;
-class characterSkills {
+class characterSkill {
     constructor(lang, skill, level) {
         const charactersSkillsAsset = charactersSkillsAssets[skill];
         const charactersSkillsLocalization = charactersSkillsLocalizations[charactersSkillsAsset.nameTextMapHash];
@@ -113,7 +113,7 @@ class characterSkills {
         this.level = level;
     }
 }
-exports.characterSkills = characterSkills;
+exports.characterSkill = characterSkill;
 class characterStats {
     constructor(stats) {
         this.BASE_HP = stats["1"] || 0;

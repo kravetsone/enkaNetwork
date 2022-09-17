@@ -7,14 +7,12 @@ export class playerInfo {
     signature: string;
     level: number;
     worldLevel: number;
-    nameCardId!: number;
     nameCard: nameCard;
-    finishAchievementNum: number;
-    towerFloorIndex: number;
-    towerLevelIndex: number;
+    achievements: number;
+    abyssFloor: number;
+    abyssLevel: number;
     charactersPreview: characterPreview[];
     nameCardsPreview: nameCard[];
-    showNameCardIdList!: number[];
     profilePicture: profilePicture;
     constructor(language: string, data: IPlayerInfo) {
         this.nickname = data.nickname;
@@ -22,9 +20,9 @@ export class playerInfo {
         this.level = data.level;
         this.worldLevel = data.worldLevel;
         this.nameCard = new nameCard(language, data.nameCardId);
-        this.finishAchievementNum = data.finishAchievementNum;
-        this.towerFloorIndex = data.towerFloorIndex;
-        this.towerLevelIndex = data.towerLevelIndex;
+        this.achievements = data.finishAchievementNum;
+        this.abyssFloor = data.towerFloorIndex;
+        this.abyssLevel = data.towerLevelIndex;
         this.charactersPreview = data.showAvatarInfoList.map((character: { avatarId: number, level: number }) => {
             return new characterPreview(language, character);
         });

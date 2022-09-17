@@ -7,14 +7,12 @@ export declare class playerInfo {
     signature: string;
     level: number;
     worldLevel: number;
-    nameCardId: number;
     nameCard: nameCard;
-    finishAchievementNum: number;
-    towerFloorIndex: number;
-    towerLevelIndex: number;
+    achievements: number;
+    abyssFloor: number;
+    abyssLevel: number;
     charactersPreview: characterPreview[];
     nameCardsPreview: nameCard[];
-    showNameCardIdList: number[];
     profilePicture: profilePicture;
     constructor(language: string, data: IPlayerInfo);
 }
