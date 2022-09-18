@@ -1,6 +1,6 @@
 # enkaNetwork
 
-> NODE JS/TypeScript module that allows you to work with the site [enka.network](https://enka.network/) adding localization and convenience.
+> Node JS/TypeScript module that allows you to work with the site [enka.network](https://enka.network/) adding localization and convenience.
 
 <div align='center'>
   <img src="assets/logo.png" alt="enkaNetwork" /> 
@@ -13,11 +13,11 @@
 </div>
 <br>
 <div align='center'>
-  <img src="https://img.shields.io/npm/dt/enkaNetwork.svg" alt="Downloads" href="https://npmjs.com/package/enkaNetwork" /> 
-  <img src="https://img.shields.io/npm/dm/enkaNetwork.svg" alt="Downloads/month" href="https://npmjs.com/package/enkaNetwork" /> 
+  <img src="https://img.shields.io/npm/dt/enkanetwork.svg" alt="Downloads" href="https://npmjs.com/package/enkanetwork" /> 
+  <img src="https://img.shields.io/npm/dm/enkanetwork.svg" alt="Downloads/month" href="https://npmjs.com/package/enkanetwork" /> 
   <img src="https://img.shields.io/github/last-commit/kravetsone/enkaNetwork.svg" alt="last commit" href="https://github.com/kravetsone/enkaNetwork" /> 
   <img src="https://img.shields.io/github/stars/kravetsone/enkaNetwork.svg" alt="GitHub" href="https://github.com/kravetsone/enkaNetwork" /> 
-  <img src="https://img.shields.io/npm/v/enkaNetwork.svg" alt="npm" href="https://npmjs.com/package/enkaNetwork" /> 
+  <img src="https://img.shields.io/npm/v/enkanetwork.svg" alt="npm" href="https://npmjs.com/package/enkanetwork" /> 
 </div>
 
 ## 📦 Download
