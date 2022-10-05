@@ -10,7 +10,7 @@ class EnkaNetwork {
             baseURL: "https://enka.network",
             headers: {
                 Accept: "application/json",
-                "User-Agent": "enkaNetwork-api@1.1.0"
+                "User-Agent": "enkaNetwork@1.1.0"
             },
         });
     }

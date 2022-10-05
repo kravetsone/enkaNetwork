@@ -1,40 +1,40 @@
-# enkaNetwork-api
+# enkaNetwork
 
 > Node JS/TypeScript module that allows you to work with the site [enka.network](https://enka.network/) adding localization and convenience.
 
 <div align='center'>
-  <img src="assets/logo.png" alt="enkaNetwork-api" /> 
+  <img src="assets/logo.png" alt="enkaNetwork" /> 
 </div>
 
 <div align='center'>
-  <a href='https://github.com/kravetsone/enkaNetwork-api/tree/main/examples'><b>examples</b></a>
+  <a href='https://github.com/kravetsone/enkaNetwork/tree/main/examples'><b>examples</b></a>
   <span>&nbsp;•&nbsp;</span>
   <a href='#-response-structure'><b>structure</b></a>
 </div>
 <br>
 <div align='center'>
-  <img src="https://img.shields.io/npm/dt/enkanetwork-api.svg" alt="Downloads" href="https://npmjs.com/package/enkanetwork-api" /> 
-  <img src="https://img.shields.io/npm/dm/enkanetwork-api.svg" alt="Downloads/month" href="https://npmjs.com/package/enkanetwork-api" /> 
-  <img src="https://img.shields.io/github/last-commit/kravetsone/enkaNetwork-api.svg" alt="last commit" href="https://github.com/kravetsone/enkaNetwork-api" /> 
-  <img src="https://img.shields.io/github/stars/kravetsone/enkaNetwork-api.svg" alt="GitHub" href="https://github.com/kravetsone/enkaNetwork-api" /> 
-  <img src="https://img.shields.io/npm/v/enkanetwork-api.svg" alt="npm" href="https://npmjs.com/package/enkanetwork-api" /> 
+  <img src="https://img.shields.io/npm/dt/enkanetwork.svg" alt="Downloads" href="https://npmjs.com/package/enkanetwork" /> 
+  <img src="https://img.shields.io/npm/dm/enkanetwork.svg" alt="Downloads/month" href="https://npmjs.com/package/enkanetwork" /> 
+  <img src="https://img.shields.io/github/last-commit/kravetsone/enkaNetwork.svg" alt="last commit" href="https://github.com/kravetsone/enkaNetwork" /> 
+  <img src="https://img.shields.io/github/stars/kravetsone/enkaNetwork.svg" alt="GitHub" href="https://github.com/kravetsone/enkaNetwork" /> 
+  <img src="https://img.shields.io/npm/v/enkanetwork.svg" alt="npm" href="https://npmjs.com/package/enkanetwork" /> 
 </div>
 
 ## 📦 Download
 
 -   **используя `npm`**
     ```shell
-    npm i enkanetwork-api
+    npm i enkanetwork
     ```
 -   **используя `Yarn`**
     ```shell
-    yarn add enkanetwork-api
+    yarn add enkanetwork
     ```
 
 # 🛠️ Usage
 
 ```js
-const { EnkaNetwork } = require("enkanetwork-api"); //import { EnkaNetwork } from "enkanetwork-api";
+const { EnkaNetwork } = require("enkanetwork"); //import { EnkaNetwork } from "enkanetwork";
 const enka = new EnkaNetwork({ language: "EN" });
 ```
 
@@ -245,4 +245,4 @@ const user = await enka.fetchUser("kaito", "RU");
 | Goblet  | EQUIP_RING     |
 | Circlet | EQUIP_DRESS    |
 
-For assets thanks [enkanetwork-api.py-data](https://github.com/mrwan200/enkanetwork-api.py-data/)
+For assets thanks [enkanetwork.py-data](https://github.com/mrwan200/enkanetwork.py-data/)
