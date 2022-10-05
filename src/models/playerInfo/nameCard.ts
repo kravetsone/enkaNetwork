@@ -1,12 +1,15 @@
-import { ILocalizations, INameCardAssets } from "../types/index";
-import { getAssetUrl } from "../helpers/getAssetUrl";
+import { ILocalizations, INameCardAssets } from "../../types/index";
+import { getAssetUrl } from "../../helpers/getAssetUrl";
+
 // @ts-ignore: Json Import
-import NameCardsAssets from "../../assets/data/namecards.json";
+import NameCardsAssets from "../../../assets/data/namecards.json";
 // @ts-ignore: Json Import
-import NameCardsLocalizations from "../../assets/localizations/namecards.json";
+import NameCardsLocalizations from "../../../assets/localizations/namecards.json";
+
 const namecardsAssets: INameCardAssets = NameCardsAssets;
 const namecardsLocalizations: ILocalizations = NameCardsLocalizations;
-export class nameCard {
+
+export class NameCard {
     id: number;
     name: string;
     icon: string;

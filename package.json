@@ -1,13 +1,14 @@
 {
-  "name": "enkanetwork",
-  "version": "1.0.1",
+  "name": "enkanetwork-api",
+  "version": "1.1.0",
   "description": "NodeJS/TypeScript api wrapper data from https://enka.network/",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "tsc && node test.mjs"
   },
   "repository": {
     "type": "git",

@@ -1,18 +1,16 @@
 import { IPlayerInfo } from "../types/index";
-import { nameCard } from "./nameCard";
-import { profilePicture } from "./profilePicture";
-import { characterPreview } from "./characterPreview";
-export declare class playerInfo {
+import { NameCard, ProfilePicture, CharacterPreview } from "./index";
+export declare class PlayerInfo {
     nickname: string;
     signature: string;
     level: number;
     worldLevel: number;
-    nameCard: nameCard;
+    nameCard: NameCard;
     achievements: number;
     abyssFloor: number;
     abyssLevel: number;
-    charactersPreview: characterPreview[];
-    nameCardsPreview: nameCard[];
-    profilePicture: profilePicture;
+    charactersPreview: CharacterPreview[];
+    nameCardsPreview: NameCard[];
+    profilePicture: ProfilePicture;
     constructor(language: string, data: IPlayerInfo);
 }

@@ -1,4 +1,4 @@
-export declare class profilePicture {
+export declare class ProfilePicture {
     id: number;
     name: string;
     icon: string;

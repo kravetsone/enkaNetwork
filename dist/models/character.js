@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.characterStats = exports.characterSkill = exports.characterConstellation = exports.characterWeapon = exports.characterReluquary = exports.character = void 0;
+exports.CharacterStats = exports.CharacterSkill = exports.CharacterConstellation = exports.CharacterWeapon = exports.CharacterReluquary = exports.Character = void 0;
 const getAssetUrl_1 = require("../helpers/getAssetUrl");
 const getNormalElement_1 = require("../helpers/getNormalElement");
 // @ts-ignore: Json Import
@@ -33,7 +33,7 @@ const charactersSkillsLocalizations = skills_json_2.default;
 const charactersWeaponLocalizations = weapons_json_1.default;
 const charactersReluquaryLocalizations = artifacts_json_1.default;
 const charactersReluquarySetsLocalizations = artifactSets_json_1.default;
-class character {
+class Character {
     constructor(lang, character) {
         var _a, _b, _c;
         const characterAsset = charactersAssets[character.avatarId];
@@ -43,11 +43,11 @@ class character {
         this.rarity = characterAsset.qualityType == "QUALITY_ORANGE" ? 5 : 4;
         this.element = (0, getNormalElement_1.getNormalElement)(characterAsset.costElemType);
         this.icons = { avatar: (0, getAssetUrl_1.getAssetUrl)(characterAsset.iconName), side: (0, getAssetUrl_1.getAssetUrl)(characterAsset.sideIconName) };
-        this.weapon = new characterWeapon(lang, character.equipList.filter((x) => x.weapon)[0]);
-        this.reluquary = character.equipList.filter((x) => x.reliquary).map((reliquary) => new characterReluquary(lang, reliquary));
-        this.stats = new characterStats(character.fightPropMap);
-        this.constellation = characterAsset.talents.map((talent) => { return new characterConstellation(lang, talent, (character === null || character === void 0 ? void 0 : character.talentIdList) || []); });
-        this.skills = characterAsset.skills.map((skill) => { return new characterSkill(lang, skill, (character === null || character === void 0 ? void 0 : character.skillLevelMap[skill]) || 0); });
+        this.weapon = new CharacterWeapon(lang, character.equipList.filter((x) => x.weapon)[0]);
+        this.reluquary = character.equipList.filter((x) => x.reliquary).map((reliquary) => new CharacterReluquary(lang, reliquary));
+        this.stats = new CharacterStats(character.fightPropMap);
+        this.constellation = characterAsset.talents.map((talent) => { return new CharacterConstellation(lang, talent, (character === null || character === void 0 ? void 0 : character.talentIdList) || []); });
+        this.skills = characterAsset.skills.map((skill) => { return new CharacterSkill(lang, skill, (character === null || character === void 0 ? void 0 : character.skillLevelMap[skill]) || 0); });
         this.skillSetId = character.skillDepotId;
         this.skillData = character.inherentProudSkillList;
         this.level = Number(((_a = character.propMap["4001"]) === null || _a === void 0 ? void 0 : _a.ival) || 0);
@@ -56,7 +56,7 @@ class character {
         this.friendshipLevel = character.fetterInfo.expLevel;
     }
 }
-exports.character = character;
+exports.Character = Character;
 const reluquaryTypes = {
     "EQUIP_BRACER": "Flower",
     "EQUIP_NECKLACE": "Feather",
@@ -64,7 +64,7 @@ const reluquaryTypes = {
     "EQUIP_RING": "Goblet",
     "EQUIP_DRESS": "Circlet"
 };
-class characterReluquary {
+class CharacterReluquary {
     constructor(lang, equipment) {
         this.id = equipment.itemId;
         this.name = charactersReluquaryLocalizations[equipment.flat.nameTextMapHash][lang];
@@ -77,8 +77,8 @@ class characterReluquary {
         this.subStats = equipment.flat.reliquarySubstats;
     }
 }
-exports.characterReluquary = characterReluquary;
-class characterWeapon {
+exports.CharacterReluquary = CharacterReluquary;
+class CharacterWeapon {
     constructor(lang, equipment) {
         this.id = equipment.itemId;
         this.name = charactersWeaponLocalizations[equipment.flat.nameTextMapHash][lang];
@@ -91,8 +91,8 @@ class characterWeapon {
         this.subStat = equipment.flat.weaponStats[1] || false;
     }
 }
-exports.characterWeapon = characterWeapon;
-class characterConstellation {
+exports.CharacterWeapon = CharacterWeapon;
+class CharacterConstellation {
     constructor(lang, talent, talents) {
         const characteConstellationAsset = charactersConstellationAssets[talent];
         const characterConstellationLocalization = charactersConstellationLocalizations[characteConstellationAsset.nameTextMapHash];
@@ -102,8 +102,8 @@ class characterConstellation {
         this.unlocked = talents.includes(talent);
     }
 }
-exports.characterConstellation = characterConstellation;
-class characterSkill {
+exports.CharacterConstellation = CharacterConstellation;
+class CharacterSkill {
     constructor(lang, skill, level) {
         const charactersSkillsAsset = charactersSkillsAssets[skill];
         const charactersSkillsLocalization = charactersSkillsLocalizations[charactersSkillsAsset.nameTextMapHash];
@@ -113,8 +113,8 @@ class characterSkill {
         this.level = level;
     }
 }
-exports.characterSkill = characterSkill;
-class characterStats {
+exports.CharacterSkill = CharacterSkill;
+class CharacterStats {
     constructor(stats) {
         this.BASE_HP = stats["1"] || 0;
         this.FIGHT_PROP_HP = stats["2"] || 0;
@@ -213,4 +213,4 @@ class characterStats {
         this.FIGHT_PROP_NONEXTRA_PHYSICAL_ADD_HURT = stats["3024"] || 0;
     }
 }
-exports.characterStats = characterStats;
+exports.CharacterStats = CharacterStats;

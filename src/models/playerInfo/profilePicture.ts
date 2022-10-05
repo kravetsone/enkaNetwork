@@ -1,12 +1,13 @@
-import { ICharacterAssets, ILocalizations } from "../types/index";
-import { getAssetUrl } from "../helpers/getAssetUrl";
+import { ICharacterAssets, ILocalizations } from "../../types/index";
+import { getAssetUrl } from "../../helpers/getAssetUrl";
 // @ts-ignore: Json Import
-import CharactersAssets from "../../assets/data/characters.json";
+import CharactersAssets from "../../../assets/data/characters.json";
 // @ts-ignore: Json Import
-import CharactersLocalizations from "../../assets/localizations/characters.json";
+import CharactersLocalizations from "../../../assets/localizations/characters.json";
 const charactersAssets: ICharacterAssets = CharactersAssets;
 const charactersLocalizations: ILocalizations = CharactersLocalizations;
-export class profilePicture {
+
+export class ProfilePicture {
     id: number;
     name: string;
     icon: string;

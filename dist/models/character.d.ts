@@ -1,4 +1,4 @@
-export declare class character {
+export declare class Character {
     id: number;
     name: string;
     icons: {
@@ -11,16 +11,16 @@ export declare class character {
     element: string;
     elevations: number;
     xp: number;
-    stats: characterStats;
-    constellation: characterConstellation[];
-    skills: characterSkill[];
+    stats: CharacterStats;
+    constellation: CharacterConstellation[];
+    skills: CharacterSkill[];
     skillSetId: number;
     skillData: number[];
-    weapon: characterWeapon;
-    reluquary: characterReluquary[];
+    weapon: CharacterWeapon;
+    reluquary: CharacterReluquary[];
     constructor(lang: string, character: any);
 }
-export declare class characterReluquary {
+export declare class CharacterReluquary {
     id: number;
     level: number;
     rarity: number;
@@ -38,7 +38,7 @@ export declare class characterReluquary {
     setName: string;
     constructor(lang: string, equipment: any);
 }
-export declare class characterWeapon {
+export declare class CharacterWeapon {
     id: number;
     level: number;
     elevations: number;
@@ -56,21 +56,21 @@ export declare class characterWeapon {
     name: string;
     constructor(lang: string, equipment: any);
 }
-export declare class characterConstellation {
+export declare class CharacterConstellation {
     id: number;
     icon: string;
     name: string;
     unlocked: boolean;
     constructor(lang: string, talent: number, talents: number[]);
 }
-export declare class characterSkill {
+export declare class CharacterSkill {
     id: number;
     icon: string;
     name: string;
     level: number;
     constructor(lang: string, skill: number, level: number);
 }
-export declare class characterStats {
+export declare class CharacterStats {
     BASE_HP: number;
     FIGHT_PROP_HP: number;
     FIGHT_PROP_HP_PERCENT: number;

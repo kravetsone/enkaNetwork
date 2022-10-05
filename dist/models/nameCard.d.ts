@@ -1,4 +1,4 @@
-export declare class nameCard {
+export declare class NameCard {
     id: number;
     name: string;
     icon: string;

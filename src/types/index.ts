@@ -1,4 +1,4 @@
-import { nameCard } from "../models/nameCard";
+import { NameCard } from "../models/index";
 
 export interface IPlayerInfo {
     nickname: string;
@@ -6,7 +6,7 @@ export interface IPlayerInfo {
     signature: string;
     worldLevel: number;
     nameCardId: number;
-    nameCard: nameCard;
+    nameCard: NameCard;
     finishAchievementNum: number;
     towerFloorIndex: number;
     towerLevelIndex: number;

@@ -1,13 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fetchUser = void 0;
-const playerInfo_1 = require("./playerInfo");
-const character_1 = require("./character");
-class fetchUser {
+exports.FetchUser = void 0;
+const index_1 = require("./index");
+class FetchUser {
     constructor(language, data) {
-        this.player = new playerInfo_1.playerInfo(language, data.playerInfo);
-        this.characters = data.avatarInfoList.map(avatar => { return new character_1.character(language, avatar); });
+        this.player = new index_1.PlayerInfo(language, data.playerInfo);
+        this.characters = data.avatarInfoList.map(avatar => { return new index_1.Character(language, avatar); });
         this.ttl = data.ttl;
     }
 }
-exports.fetchUser = fetchUser;
+exports.FetchUser = FetchUser;

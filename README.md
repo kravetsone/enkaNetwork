@@ -1,62 +1,112 @@
-# enkaNetwork
+# enkaNetwork-api
 
 > Node JS/TypeScript module that allows you to work with the site [enka.network](https://enka.network/) adding localization and convenience.
 
 <div align='center'>
-  <img src="assets/logo.png" alt="enkaNetwork" /> 
+  <img src="assets/logo.png" alt="enkaNetwork-api" /> 
 </div>
 
 <div align='center'>
-  <a href='https://github.com/kravetsone/enkaNetwork/tree/main/examples'><b>examples</b></a>
+  <a href='https://github.com/kravetsone/enkaNetwork-api/tree/main/examples'><b>examples</b></a>
   <span>&nbsp;•&nbsp;</span>
   <a href='#-response-structure'><b>structure</b></a>
 </div>
 <br>
 <div align='center'>
-  <img src="https://img.shields.io/npm/dt/enkanetwork.svg" alt="Downloads" href="https://npmjs.com/package/enkanetwork" /> 
-  <img src="https://img.shields.io/npm/dm/enkanetwork.svg" alt="Downloads/month" href="https://npmjs.com/package/enkanetwork" /> 
-  <img src="https://img.shields.io/github/last-commit/kravetsone/enkaNetwork.svg" alt="last commit" href="https://github.com/kravetsone/enkaNetwork" /> 
-  <img src="https://img.shields.io/github/stars/kravetsone/enkaNetwork.svg" alt="GitHub" href="https://github.com/kravetsone/enkaNetwork" /> 
-  <img src="https://img.shields.io/npm/v/enkanetwork.svg" alt="npm" href="https://npmjs.com/package/enkanetwork" /> 
+  <img src="https://img.shields.io/npm/dt/enkanetwork-api.svg" alt="Downloads" href="https://npmjs.com/package/enkanetwork-api" /> 
+  <img src="https://img.shields.io/npm/dm/enkanetwork-api.svg" alt="Downloads/month" href="https://npmjs.com/package/enkanetwork-api" /> 
+  <img src="https://img.shields.io/github/last-commit/kravetsone/enkaNetwork-api.svg" alt="last commit" href="https://github.com/kravetsone/enkaNetwork-api" /> 
+  <img src="https://img.shields.io/github/stars/kravetsone/enkaNetwork-api.svg" alt="GitHub" href="https://github.com/kravetsone/enkaNetwork-api" /> 
+  <img src="https://img.shields.io/npm/v/enkanetwork-api.svg" alt="npm" href="https://npmjs.com/package/enkanetwork-api" /> 
 </div>
 
 ## 📦 Download
 
 -   **используя `npm`**
     ```shell
-    npm i enkanetwork
+    npm i enkanetwork-api
     ```
 -   **используя `Yarn`**
     ```shell
-    yarn add enkanetwork
+    yarn add enkanetwork-api
     ```
+
 # 🛠️ Usage
 
 ```js
-const { enkaNetwork } = require("enkanetwork"); //import { enkaNetwork } from "enkanetwork";
-const enka = new enkaNetwork({language: "EN"});
+const { EnkaNetwork } = require("enkanetwork-api"); //import { EnkaNetwork } from "enkanetwork-api";
+const enka = new EnkaNetwork({ language: "EN" });
 ```
 
-| Key       | In API | Type   | Description                                                                                                    | Required?    |
-| --------- | ------ | ------ | -------------------------------------------------------------------------------------------------------------- | ------------ |
-| language  |    -   | number | The language to be used in the localization of names (characters, artifacts, etc.). Default is «EN»            | -            |
+| Key      | In API | Type   | Description                                                                                         | Required? |
+| -------- | ------ | ------ | --------------------------------------------------------------------------------------------------- | --------- |
+| language | -      | number | The language to be used in the localization of names (characters, artifacts, etc.). Default is «EN» | -         |
+
+## Fetch user by uid from the game (response is [FetchUserUID](#fetchuseruid))
 
 ```js
-const user = await enka.fetchUser(700832641);
+const user = await enka.fetchUser(700832641, "RU");
 ```
 
-| Key       | In API | Type   | Description              | Required?    |
-| --------- | ------ | ------ | ------------------------ | ------------ |
-| UID       |    -   | number | `UID` from the game      | +            |
+| Key      | In API | Type   | Description                                                                                                                      | Required? |
+| -------- | ------ | ------ | -------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| UID      | -      | number | `UID` from the game                                                                                                              | +         |
+| language | -      | number | The language to be used in the localization of names (characters, artifacts, etc.). Default is [EnkaNetwork.language](#🛠️-usage) | -         |
+
+## Or fetch user by enka profile tag (response is [FetchUserProfilee](#fetchuserprofile))
+
+```js
+const user = await enka.fetchUser("kaito", "RU");
+```
+
+| Key         | In API | Type   | Description                                                                                                                      | Required? |
+| ----------- | ------ | ------ | -------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| Profile tag | -      | number | Enka patreon `profile tag` from the [site EnkaNetwork](https://enka.network/)                                                    | +         |
+| language    | -      | number | The language to be used in the localization of names (characters, artifacts, etc.). Default is [EnkaNetwork.language](#🛠️-usage) | -         |
+
 # ⚙ Response structure
 
-## FetchUser
+## FetchUserUID
 
 | Key        | In API         | Type   | Description                    |
-| ---------  | ----------     | ------ | ------------------------------ |
+| ---------- | -------------- | ------ | ------------------------------ |
 | player     | playerInfo     | object | See [Player](#player)          |
 | characters | avatarInfoList | array  | See [Characters](#characters)  |
 | ttl        | ttl            | number | Cache lifetime in milliseconds |
+
+## FetchUserProfile
+
+| Key         | In API  | Type    | Description                  |
+| ----------- | ------- | ------- | ---------------------------- |
+| profile     | profile | boolean | User fetched by profile tag? |
+| accounts    | hoyos   | array   | See [Accounts](#accounts)    |
+| enkaProfile | user    | object  | See [EnkaProfile](#accounts) |
+
+## FetchAccounts[]
+
+| Key      | In API | Type  | Description                                   |
+| -------- | ------ | ----- | --------------------------------------------- |
+| -------- | -----  | array | See [Accounts](#accounts). Response is array. |
+
+## Accounts
+
+| Key           | In API        | Type    | Description           |
+| ------------- | ------------- | ------- | --------------------- |
+| is_uid_public | is_uid_public | boolean | User uid is public?   |
+| player        | player_info   | object  | See [Player](#player) |
+
+## EnkaProfile
+
+| Key         | In API               | Type     | Description                 |
+| ----------- | -------------------- | -------- | --------------------------- |
+| id          | id                   | string   | Enka profile id             |
+| username    | profile.username     | string   | Enka profile username       |
+| bio         | profile.bio          | string   | Enka profile description    |
+| level       | profile.level        | number   | Enka profile level          |
+| drawName    | profile.draw_name    | booolean | Enka profile draw name?     |
+| drawUid     | profile.draw_uid     | booolean | Enka profile draw uid?      |
+| signupState | profile.signup_state | integer  | Enka profile sign up state  |
+| imageUrl    | profile.image_url    | string   | Url of enka profile picture |
 
 ## Player
 
@@ -76,122 +126,123 @@ const user = await enka.fetchUser(700832641);
 
 ### NameCard
 
-| Key        | In API         | Type   | Description                    |
-| ---------  | ----------     | ------ | ------------------------------ |
-| id         | nameCardId     | number | Namecard id                    |
-| name       | -              | string | Localized namecard name        |
-| icon       | -              | string | URL to get the icon            |
-| banner     | -              | string | URL to get the icon banner     |
-| navbar     | -              | string | URL to get the icon navbar     |
+| Key    | In API     | Type   | Description                |
+| ------ | ---------- | ------ | -------------------------- |
+| id     | nameCardId | number | Namecard id                |
+| name   | -          | string | Localized namecard name    |
+| icon   | -          | string | URL to get the icon        |
+| banner | -          | string | URL to get the icon banner |
+| navbar | -          | string | URL to get the icon navbar |
 
 ### CharacterPreview
 
-| Key        | In API         | Type   | Description                    |
-| ---------  | ----------     | ------ | ------------------------------ |
-| id         | avatarId       | number | Character id                   |
-| name       | -              | string | Localized character name       |
-| icon       | -              | string | URL to get the character icon  |
-| level      | level          | number | Character level                |
+| Key   | In API   | Type   | Description                   |
+| ----- | -------- | ------ | ----------------------------- |
+| id    | avatarId | number | Character id                  |
+| name  | -        | string | Localized character name      |
+| icon  | -        | string | URL to get the character icon |
+| level | level    | number | Character level               |
 
 ### ProfilePicture
 
-| Key        | In API         | Type   | Description                    |
-| ---------  | ----------     | ------ | ------------------------------ |
-| id         | avatarId       | number | Character id                   |
-| name       | -              | string | Localized character name       |
-| icon       | -              | string | URL to get the character icon  |
+| Key  | In API   | Type   | Description                   |
+| ---- | -------- | ------ | ----------------------------- |
+| id   | avatarId | number | Character id                  |
+| name | -        | string | Localized character name      |
+| icon | -        | string | URL to get the character icon |
 
 ## Characters
 
-| Key               | In API                 | Type   | Description                                           |
-| ----------------- | ---------------------- | ------ | ----------------------------------------------------- |
-| id                | avatarId               | number | Character id                                          |
-| name              | -                      | string | Localized character name                              |
-| icons             | -                      | object | See [Icons](#icons)                                   |
-| rarity            | -                      | number | Character rarity (5 or 4)                             |
-| element           | -                      | string | See [ElementType](#elementtype)                       |
-| level             | propMap["4001"]        | number | Character level                                       |
-| elevations        | propMap["1002"]        | number | Character elevations                                  |
-| xp                | propMap["1001"]        | number | Character expiriance                                  |
-| constellation     | talents                | array  | See [CharacterConstellation](#characterconstellation) |
-| skills            | skills                 | array  | See [CharacterSkill](#characterskill)                 |
-| skillSetId        | skillDepotId           | number | Character Skill Set ID                                |
-| skillData         | inherentProudSkillList | array  | List of Unlocked Skill Ids                            |
-| stats             | fightPropMap           | array  | Character stats                                       |
-| weapon            | equipList              | number | See [CharacterWeapon](#characterweapon)               |
-| reluquary         | equipList              | number | See [ProfilePicture](#profilepicture)                 |
+| Key           | In API                 | Type   | Description                                           |
+| ------------- | ---------------------- | ------ | ----------------------------------------------------- |
+| id            | avatarId               | number | Character id                                          |
+| name          | -                      | string | Localized character name                              |
+| icons         | -                      | object | See [Icons](#icons)                                   |
+| rarity        | -                      | number | Character rarity (5 or 4)                             |
+| element       | -                      | string | See [ElementType](#elementtype)                       |
+| level         | propMap["4001"]        | number | Character level                                       |
+| elevations    | propMap["1002"]        | number | Character elevations                                  |
+| xp            | propMap["1001"]        | number | Character expiriance                                  |
+| constellation | talents                | array  | See [CharacterConstellation](#characterconstellation) |
+| skills        | skills                 | array  | See [CharacterSkill](#characterskill)                 |
+| skillSetId    | skillDepotId           | number | Character Skill Set ID                                |
+| skillData     | inherentProudSkillList | array  | List of Unlocked Skill Ids                            |
+| stats         | fightPropMap           | array  | Character stats                                       |
+| weapon        | equipList              | number | See [CharacterWeapon](#characterweapon)               |
+| reluquary     | equipList              | number | See [ProfilePicture](#profilepicture)                 |
 
 ### Icons
 
-| Key        | In API         | Type   | Description                    |
-| ---------  | ----------     | ------ | ------------------------------ |
-| avatar     | -              | string | Character avatar icon          |
-| side       | -              | string | Character side avatar icon     |
+| Key    | In API | Type   | Description                |
+| ------ | ------ | ------ | -------------------------- |
+| avatar | -      | string | Character avatar icon      |
+| side   | -      | string | Character side avatar icon |
 
 ### ElementType
-| Key            | In API         |
-| -------------- | -------------- |
-| Cryo           | Ice            |
-| Hydro          | Water          |
-| Anemo          | Wind           |
-| Pyro           | Fire           |
-| Geo            | Rock           |
-| Electro        | Electric       |
+
+| Key     | In API   |
+| ------- | -------- |
+| Cryo    | Ice      |
+| Hydro   | Water    |
+| Anemo   | Wind     |
+| Pyro    | Fire     |
+| Geo     | Rock     |
+| Electro | Electric |
 
 ### CharacterConstellation
 
-| Key        | In API         | Type    | Description                                  |
-| ---------  | -------------- | ------- | -------------------------------------------- |
-| id         | talent         | number  | Character constellation id                   |
-| name       | -              | string  | Character constellation name                 |
-| icon       | -              | string  | URL to get the character constellation icon  |
-| unlocked   | -              | boolean | Character constellation unlocked?            |
+| Key      | In API | Type    | Description                                 |
+| -------- | ------ | ------- | ------------------------------------------- |
+| id       | talent | number  | Character constellation id                  |
+| name     | -      | string  | Character constellation name                |
+| icon     | -      | string  | URL to get the character constellation icon |
+| unlocked | -      | boolean | Character constellation unlocked?           |
 
 ### CharacterSkill
 
-| Key        | In API         | Type    | Description                                  |
-| ---------  | -------------- | ------- | -------------------------------------------- |
-| id         | skill          | number  | Character skill id                           |
-| name       | -              | string  | Character skill name                         |
-| icon       | -              | string  | URL to get the character skill icon          |
-| level      | level          | number  | Character skill level                        |
+| Key   | In API | Type   | Description                         |
+| ----- | ------ | ------ | ----------------------------------- |
+| id    | skill  | number | Character skill id                  |
+| name  | -      | string | Character skill name                |
+| icon  | -      | string | URL to get the character skill icon |
+| level | level  | number | Character skill level               |
 
 ### CharacterWeapon
 
-| Key         | In API              | Type    | Description                                  |
-| ----------- | ------------------- | ------- | -------------------------------------------- |
-| id          | itemId              | number  | Character weapon id                          |
-| name        | -                   | string  | Character weapon name                        |
-| icon        | -                   | string  | URL to get the character weapon icon         |
-| level       | level               | number  | Character weapon level                       |
-| elevations  | weapon.promoteLevel | number  | Character weapon elevations                  |
-| improvement | weapon.affixMap     | number  | Character weapon improvement                 |
-| rarity      | flat.rankLevel      | number  | Character weapon rarity                       |
-| mainStat    | flat.weaponStats[0] | object  | Character weapon main stat                   |
-| subStat     | flat.weaponStats[1] | object  | Character weapon sub stat                    |
+| Key         | In API              | Type   | Description                          |
+| ----------- | ------------------- | ------ | ------------------------------------ |
+| id          | itemId              | number | Character weapon id                  |
+| name        | -                   | string | Character weapon name                |
+| icon        | -                   | string | URL to get the character weapon icon |
+| level       | level               | number | Character weapon level               |
+| elevations  | weapon.promoteLevel | number | Character weapon elevations          |
+| improvement | weapon.affixMap     | number | Character weapon improvement         |
+| rarity      | flat.rankLevel      | number | Character weapon rarity              |
+| mainStat    | flat.weaponStats[0] | object | Character weapon main stat           |
+| subStat     | flat.weaponStats[1] | object | Character weapon sub stat            |
 
 ### CharacterReluquary
 
-| Key         | In API                 | Type    | Description                                  |
-| ----------- | ---------------------- | ------- | -------------------------------------------- |
-| id          | itemId                 | number  | Character reluquary id                       |
-| name        | -                      | string  | Character reluquary name                     |
-| setName     | -                      | string  | Character reluquary set name                 |
-| icon        | -                      | string  | URL to get the character reluquary icon      |
-| type        | -                      | string  | See [ReliquaryType](#characterreluquary)     |
-| level       | reliquary.level        | number  | Character reluquary level                    |
-| rarity      | flat.rankLevel         | number  | Character reluquary rarity                   |
-| mainStat    | flat.reliquaryMainstat | object  | Character reluquary main stat                |
-| subStat     | flat.reliquarySubstats | object  | Character reluquary sub stat                 |
+| Key      | In API                 | Type   | Description                              |
+| -------- | ---------------------- | ------ | ---------------------------------------- |
+| id       | itemId                 | number | Character reluquary id                   |
+| name     | -                      | string | Character reluquary name                 |
+| setName  | -                      | string | Character reluquary set name             |
+| icon     | -                      | string | URL to get the character reluquary icon  |
+| type     | -                      | string | See [ReliquaryType](#characterreluquary) |
+| level    | reliquary.level        | number | Character reluquary level                |
+| rarity   | flat.rankLevel         | number | Character reluquary rarity               |
+| mainStat | flat.reliquaryMainstat | object | Character reluquary main stat            |
+| subStat  | flat.reliquarySubstats | object | Character reluquary sub stat             |
 
 ### ReliquaryType
 
-| Key            | In API         |
-| -------------- | -------------- |
-| Flower         | EQUIP_BRACER   |
-| Feather        | EQUIP_NECKLACE |
-| Sands          | EQUIP_SHOES    |
-| Goblet         | EQUIP_RING     |
-| Circlet        | EQUIP_DRESS    |
+| Key     | In API         |
+| ------- | -------------- |
+| Flower  | EQUIP_BRACER   |
+| Feather | EQUIP_NECKLACE |
+| Sands   | EQUIP_SHOES    |
+| Goblet  | EQUIP_RING     |
+| Circlet | EQUIP_DRESS    |
 
-For assets thanks [enkanetwork.py-data](https://github.com/mrwan200/enkanetwork.py-data/)
+For assets thanks [enkanetwork-api.py-data](https://github.com/mrwan200/enkanetwork-api.py-data/)
