@@ -1,8 +1,4 @@
-import {
-    IPlayerInfo,
-    IProfilePicture,
-    IShowAvatarInfoList,
-} from "../../types/index";
+import { IPlayerInfo } from "../../types/index";
 import { NameCard, ProfilePicture, CharacterPreview } from "../index";
 
 export class PlayerInfo {

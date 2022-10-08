@@ -1,4 +1,3 @@
-import { ICharacterAssets, ILocalizations } from "../../types/index";
 import { getAssetUrl } from "../../helpers/getAssetUrl";
 import {
     charactersAssets,

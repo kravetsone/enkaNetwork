@@ -1,4 +1,3 @@
-import { ILocalizations, INameCardAssets } from "../../types/index";
 import { getAssetUrl } from "../../helpers/getAssetUrl";
 import {
     namecardsAssets,

@@ -7,5 +7,8 @@ export * from "./playerInfo/playerInfo";
 export * from "./playerInfo/profilePicture";
 
 export * from "./characters/character";
+export * from "./characters/characterReluquary";
+export * from "./characters/characterWeapon";
+export * from "./characters/characterConstellation";
 
 export * from "./profile/enkaProfile";
