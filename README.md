@@ -1,6 +1,6 @@
 # enkaNetwork
 
-> Node JS/TypeScript module that allows you to work with the site [enka.network](https://enka.network/) adding localization and convenience.
+> Node JS/TypeScript module that allows you to work with the site API [enka.network](https://enka.network/) adding localization and convenience (even caching).
 
 <div align='center'>
   <img src="assets/logo.png" alt="enkaNetwork" /> 
