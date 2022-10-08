@@ -5,18 +5,18 @@ import NodeCache from "node-cache";
 
 export class EnkaNetwork {
     language: TLanguage;
-    #request: Axios;
-    #cache?: NodeCache;
+    private readonly request: Axios;
+    private readonly cache?: NodeCache;
     constructor(data: { language?: TLanguage; caching: boolean }) {
         this.language = data.language || "EN";
-        this.#request = new Axios({
+        this.request = new Axios({
             baseURL: "https://enka.network",
             headers: {
                 Accept: "application/json",
                 "User-Agent": "enkaNetwork@1.1.1",
             },
         });
-        this.#cache =
+        this.cache =
             data.caching !== false
                 ? new NodeCache({ checkperiod: 40 })
                 : undefined;
@@ -30,17 +30,16 @@ export class EnkaNetwork {
         uid: number,
         language: TLanguage = "EN"
     ): Promise<FetchUserUID> {
-        let cache: FetchUserUID | undefined = this.#cache?.get(
+        let cache: FetchUserUID | undefined = this.cache?.get(
             `uid-${uid}-${language || this.language}`
         );
         if (cache) return cache;
-        return this.#request
+        return this.request
             .get(`/u/${uid}/__data.json`)
             .then((response) => JSON.parse(response.data))
             .then((data) => {
-                console.log("аыоароыа не кеш блять");
                 const res = new FetchUserUID(language || this.language, data);
-                this.#cache?.set(
+                this.cache?.set(
                     `uid-${uid}-${language || this.language}`,
                     res,
                     res.ttl
@@ -52,7 +51,7 @@ export class EnkaNetwork {
         profileTag: string,
         language?: TLanguage
     ): Promise<FetchUserProfile> {
-        return this.#request
+        return this.request
             .get(`/u/${profileTag}/__data.json`)
             .then((response) => JSON.parse(response.data))
             .then(
@@ -63,7 +62,7 @@ export class EnkaNetwork {
         tag: string,
         language?: TLanguage
     ): Promise<[{ is_uid_public: boolean; player: PlayerInfo }]> {
-        return this.#request
+        return this.request
             .get(`/api/profile/${tag}/hoyos/`)
             .then((response) => JSON.parse(response.data))
             .then((data) =>

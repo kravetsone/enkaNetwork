@@ -5,7 +5,8 @@ const elements: { [key: string]: string } = {
     Fire: "Piro",
     Rock: "Geo",
     Electric: "Electro",
-};
+} as const;
+
 export function getNormalElement(element: string): string {
     return elements[element];
 }
