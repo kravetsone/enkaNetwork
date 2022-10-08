@@ -1,13 +1,9 @@
 import { ILocalizations, INameCardAssets } from "../../types/index";
 import { getAssetUrl } from "../../helpers/getAssetUrl";
-
-// @ts-ignore: Json Import
-import NameCardsAssets from "../../../assets/data/namecards.json";
-// @ts-ignore: Json Import
-import NameCardsLocalizations from "../../../assets/localizations/namecards.json";
-
-const namecardsAssets: INameCardAssets = NameCardsAssets;
-const namecardsLocalizations: ILocalizations = NameCardsLocalizations;
+import {
+    namecardsAssets,
+    namecardsLocalizations,
+} from "../../helpers/getJsonAssets";
 
 export class NameCard {
     id: number;
@@ -17,12 +13,12 @@ export class NameCard {
     navbar: string;
     constructor(lang: string, nameCardId: number) {
         const nameCardAsset = namecardsAssets[nameCardId];
-        const nameCardLocalization = namecardsLocalizations[nameCardAsset.nameTextMapHash];
+        const nameCardLocalization =
+            namecardsLocalizations[nameCardAsset.nameTextMapHash];
         this.id = nameCardId;
         this.name = nameCardLocalization[lang];
         this.icon = getAssetUrl(nameCardAsset.icon);
         this.banner = getAssetUrl(nameCardAsset.picPath[0]);
         this.navbar = getAssetUrl(nameCardAsset.picPath[0]);
     }
-
 }

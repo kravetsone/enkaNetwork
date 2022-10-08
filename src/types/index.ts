@@ -23,21 +23,21 @@ export interface IProfilePicture {
 }
 export interface ILocalizations {
     [key: string]: {
-        [key: string]: string
-    }
+        [key: string]: string;
+    };
 }
 export interface INameCardAssets {
-    [key: string]: INameCardAsset
+    [key: string]: INameCardAsset;
 }
 export interface INameCardAsset {
-    nameTextMapHash: number
-    icon: string
-    picPath: string[]
-    rankLevel: number
-    materialType: string
+    nameTextMapHash: number;
+    icon: string;
+    picPath: string[];
+    rankLevel: number;
+    materialType: string;
 }
 export interface ICharacterAssets {
-    [key: string]: ICharacterAsset
+    [key: string]: ICharacterAsset;
 }
 export interface ICharacterAsset {
     nameTextMapHash: number;
@@ -49,17 +49,30 @@ export interface ICharacterAsset {
     talents: number[];
 }
 export interface ICharacterConstellationAssets {
-    [key: string]: ICharacterConstellationAsset
+    [key: string]: ICharacterConstellationAsset;
 }
 export interface ICharacterConstellationAsset {
     nameTextMapHash: number;
     icon: string;
 }
 export interface ICharacterSkillAssets {
-    [key: string]: ICharacterSkillAsset
+    [key: string]: ICharacterSkillAsset;
 }
 export interface ICharacterSkillAsset {
     nameTextMapHash: number;
     skillIcon: string;
 }
-export type TLanguage = "CHS" | "CHT" | "DE" | "EN" | "ES" | "FR" | "ID" | "JP" | "KR" | "PT" | "RU" | "TH" | "VI"
+export type TLanguage =
+    | "CHS"
+    | "CHT"
+    | "DE"
+    | "EN"
+    | "ES"
+    | "FR"
+    | "ID"
+    | "JP"
+    | "KR"
+    | "PT"
+    | "RU"
+    | "TH"
+    | "VI";

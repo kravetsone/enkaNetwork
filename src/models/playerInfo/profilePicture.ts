@@ -1,11 +1,9 @@
 import { ICharacterAssets, ILocalizations } from "../../types/index";
 import { getAssetUrl } from "../../helpers/getAssetUrl";
-// @ts-ignore: Json Import
-import CharactersAssets from "../../../assets/data/characters.json";
-// @ts-ignore: Json Import
-import CharactersLocalizations from "../../../assets/localizations/characters.json";
-const charactersAssets: ICharacterAssets = CharactersAssets;
-const charactersLocalizations: ILocalizations = CharactersLocalizations;
+import {
+    charactersAssets,
+    charactersLocalizations,
+} from "../../helpers/getJsonAssets";
 
 export class ProfilePicture {
     id: number;
@@ -13,9 +11,10 @@ export class ProfilePicture {
     icon: string;
     constructor(lang: string, profilePicture: { avatarId: number }) {
         const characterAsset = charactersAssets[profilePicture.avatarId];
-        const characterLocalization = charactersLocalizations[characterAsset.nameTextMapHash];
+        const characterLocalization =
+            charactersLocalizations[characterAsset.nameTextMapHash];
         this.id = profilePicture.avatarId;
         this.name = characterLocalization[lang];
-        this.icon = getAssetUrl(characterAsset.iconName)
+        this.icon = getAssetUrl(characterAsset.iconName);
     }
 }

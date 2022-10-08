@@ -1,34 +1,16 @@
-import { ICharacterAssets, ICharacterConstellationAssets, ICharacterSkillAssets, ILocalizations } from "../../types/index";
 import { getAssetUrl } from "../../helpers/getAssetUrl";
 import { getNormalElement } from "../../helpers/getNormalElement";
-// @ts-ignore: Json Import
-import CharactersAssets from "../../../assets/data/characters.json";
-// @ts-ignore: Json Import
-import CharactersConstellationAssets from "../../../assets/data/conselations.json";
-// @ts-ignore: Json Import
-import CharactersSkillsAssets from "../../../assets/data/skills.json";
-// @ts-ignore: Json Import
-import CharactersLocalizations from "../../../assets/localizations/characters.json";
-// @ts-ignore: Json Import
-import CharactersConstellationLocalizations from "../../../assets/localizations/conselations.json";
-// @ts-ignore: Json Import
-import CharactersSkillsLocalizations from "../../../assets/localizations/skills.json";
-// @ts-ignore: Json Import
-import CharactersWeaponLocalizations from "../../../assets/localizations/weapons.json";
-// @ts-ignore: Json Import
-import CharactersReluquaryLocalizations from "../../../assets/localizations/artifacts.json";
-// @ts-ignore: Json Import
-import CharactersReluquarySetsLocalizations from "../../../assets/localizations/artifactSets.json";
-
-const charactersAssets: ICharacterAssets = CharactersAssets;
-const charactersLocalizations: ILocalizations = CharactersLocalizations;
-const charactersConstellationAssets: ICharacterConstellationAssets = CharactersConstellationAssets;
-const charactersConstellationLocalizations: ILocalizations = CharactersConstellationLocalizations;
-const charactersSkillsAssets: ICharacterSkillAssets = CharactersSkillsAssets;
-const charactersSkillsLocalizations: ILocalizations = CharactersSkillsLocalizations;
-const charactersWeaponLocalizations: ILocalizations = CharactersWeaponLocalizations;
-const charactersReluquaryLocalizations: ILocalizations = CharactersReluquaryLocalizations;
-const charactersReluquarySetsLocalizations: ILocalizations = CharactersReluquarySetsLocalizations;
+import {
+    charactersAssets,
+    charactersLocalizations,
+    charactersConstellationAssets,
+    charactersConstellationLocalizations,
+    charactersSkillsAssets,
+    charactersSkillsLocalizations,
+    charactersWeaponLocalizations,
+    charactersReluquaryLocalizations,
+    charactersReluquarySetsLocalizations,
+} from "../../helpers/getJsonAssets";
 
 export class Character {
     id: number;
@@ -49,17 +31,40 @@ export class Character {
     reluquary: CharacterReluquary[];
     constructor(lang: string, character: any) {
         const characterAsset = charactersAssets[character.avatarId];
-        const characterLocalization = charactersLocalizations[characterAsset.nameTextMapHash];
+        const characterLocalization =
+            charactersLocalizations[characterAsset.nameTextMapHash];
         this.id = character.avatarId;
         this.name = characterLocalization[lang];
         this.rarity = characterAsset.qualityType == "QUALITY_ORANGE" ? 5 : 4;
         this.element = getNormalElement(characterAsset.costElemType);
-        this.icons = { avatar: getAssetUrl(characterAsset.iconName), side: getAssetUrl(characterAsset.sideIconName) };
-        this.weapon = new CharacterWeapon(lang, character.equipList.filter((x: { weapon: any; }) => x.weapon)[0]);
-        this.reluquary = character.equipList.filter((x: { reliquary: any; }) => x.reliquary).map((reliquary: any) => new CharacterReluquary(lang, reliquary));
+        this.icons = {
+            avatar: getAssetUrl(characterAsset.iconName),
+            side: getAssetUrl(characterAsset.sideIconName),
+        };
+        this.weapon = new CharacterWeapon(
+            lang,
+            character.equipList.filter((x: { weapon: any }) => x.weapon)[0]
+        );
+        this.reluquary = character.equipList
+            .filter((x: { reliquary: any }) => x.reliquary)
+            .map((reliquary: any) => new CharacterReluquary(lang, reliquary));
         this.stats = new CharacterStats(character.fightPropMap);
-        this.constellation = characterAsset.talents.map((talent) => { return new CharacterConstellation(lang, talent, character?.talentIdList || []); });
-        this.skills = characterAsset.skills.map((skill) => { return new CharacterSkill(lang, skill, character?.skillLevelMap[skill] || 0); });
+        this.constellation = characterAsset.talents.map(
+            (talent) =>
+                new CharacterConstellation(
+                    lang,
+                    talent,
+                    character?.talentIdList || []
+                )
+        );
+        this.skills = characterAsset.skills.map(
+            (skill) =>
+                new CharacterSkill(
+                    lang,
+                    skill,
+                    character?.skillLevelMap[skill] || 0
+                )
+        );
         this.skillSetId = character.skillDepotId;
         this.skillData = character.inherentProudSkillList;
         this.level = Number(character.propMap["4001"]?.ival || 0);
@@ -69,28 +74,34 @@ export class Character {
     }
 }
 const reluquaryTypes: { [key: string]: string } = {
-    "EQUIP_BRACER": "Flower",
-    "EQUIP_NECKLACE": "Feather",
-    "EQUIP_SHOES": "Sands",
-    "EQUIP_RING": "Goblet",
-    "EQUIP_DRESS": "Circlet"
-}
+    EQUIP_BRACER: "Flower",
+    EQUIP_NECKLACE: "Feather",
+    EQUIP_SHOES: "Sands",
+    EQUIP_RING: "Goblet",
+    EQUIP_DRESS: "Circlet",
+};
 export class CharacterReluquary {
     id: number;
     level: number;
     rarity: number;
-    mainStats: { appendPropId: string, statValue: number };
-    subStats: { appendPropId: string, statValue: number }[];
+    mainStats: { appendPropId: string; statValue: number };
+    subStats: { appendPropId: string; statValue: number }[];
     icon: string;
     name: string;
     type: string;
     setName: string;
     constructor(lang: string, equipment: any) {
         this.id = equipment.itemId;
-        this.name = charactersReluquaryLocalizations[equipment.flat.nameTextMapHash][lang];
-        this.setName = charactersReluquarySetsLocalizations[equipment.flat.setNameTextMapHash][lang];
+        this.name =
+            charactersReluquaryLocalizations[equipment.flat.nameTextMapHash][
+                lang
+            ];
+        this.setName =
+            charactersReluquarySetsLocalizations[
+                equipment.flat.setNameTextMapHash
+            ][lang];
         this.icon = getAssetUrl(equipment.flat.icon);
-        this.type = reluquaryTypes[equipment.flat.equipType]
+        this.type = reluquaryTypes[equipment.flat.equipType];
         this.level = --equipment.reliquary.level;
         this.rarity = equipment.flat.rankLevel;
         this.mainStats = equipment.flat.reliquaryMainstat;
@@ -103,17 +114,22 @@ export class CharacterWeapon {
     elevations: number;
     improvement: number;
     rarity: number;
-    mainStat: { appendPropId: string, statValue: number };
-    subStat?: { appendPropId: string, statValue: number };
+    mainStat: { appendPropId: string; statValue: number };
+    subStat?: { appendPropId: string; statValue: number };
     icon: string;
     name: string;
     constructor(lang: string, equipment: any) {
         this.id = equipment.itemId;
-        this.name = charactersWeaponLocalizations[equipment.flat.nameTextMapHash][lang];
+        this.name =
+            charactersWeaponLocalizations[equipment.flat.nameTextMapHash][lang];
         this.icon = getAssetUrl(equipment.flat.icon);
         this.level = equipment.weapon.level;
         this.elevations = equipment.weapon.promoteLevel || 0;
-        this.improvement = equipment.weapon.affixMap ? equipment.weapon.affixMap[Object.keys(equipment.weapon.affixMap)[0]] + 1 : 1;
+        this.improvement = equipment.weapon.affixMap
+            ? equipment.weapon.affixMap[
+                  Object.keys(equipment.weapon.affixMap)[0]
+              ] + 1
+            : 1;
         this.rarity = equipment.flat.rankLevel;
         this.mainStat = equipment.flat.weaponStats[0];
         this.subStat = equipment.flat.weaponStats[1] || false;
@@ -125,12 +141,16 @@ export class CharacterConstellation {
     name: string;
     unlocked: boolean;
     constructor(lang: string, talent: number, talents: number[]) {
-        const characteConstellationAsset = charactersConstellationAssets[talent];
-        const characterConstellationLocalization = charactersConstellationLocalizations[characteConstellationAsset.nameTextMapHash];
+        const characteConstellationAsset =
+            charactersConstellationAssets[talent];
+        const characterConstellationLocalization =
+            charactersConstellationLocalizations[
+                characteConstellationAsset.nameTextMapHash
+            ];
         this.id = talent;
         this.icon = getAssetUrl(characteConstellationAsset.icon);
         this.name = characterConstellationLocalization[lang];
-        this.unlocked = talents.includes(talent)
+        this.unlocked = talents.includes(talent);
     }
 }
 export class CharacterSkill {
@@ -140,7 +160,10 @@ export class CharacterSkill {
     level: number;
     constructor(lang: string, skill: number, level: number) {
         const charactersSkillsAsset = charactersSkillsAssets[skill];
-        const charactersSkillsLocalization = charactersSkillsLocalizations[charactersSkillsAsset.nameTextMapHash];
+        const charactersSkillsLocalization =
+            charactersSkillsLocalizations[
+                charactersSkillsAsset.nameTextMapHash
+            ];
         this.id = skill;
         this.icon = getAssetUrl(charactersSkillsAsset.skillIcon);
         this.name = charactersSkillsLocalization[lang];

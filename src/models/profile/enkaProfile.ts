@@ -7,17 +7,20 @@ export class EnkaProfile {
     signupState: number;
     imageUrl: string;
     id: string;
-    constructor(data: {
-        username: string;
-        profile: {
-            bio: string;
-            level: number;
-            draw_name: boolean;
-            draw_uid: boolean;
-            signup_state: number;
-            image_url: string;
-        };
-    }, id: string) {
+    constructor(
+        data: {
+            username: string;
+            profile: {
+                bio: string;
+                level: number;
+                draw_name: boolean;
+                draw_uid: boolean;
+                signup_state: number;
+                image_url: string;
+            };
+        },
+        id: string
+    ) {
         this.id = id;
         this.username = data.username;
         this.bio = data.profile.bio;

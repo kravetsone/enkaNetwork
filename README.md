@@ -34,13 +34,14 @@
 # 🛠️ Usage
 
 ```js
-const { EnkaNetwork } = require("enkanetwork"); //import { EnkaNetwork } from "enkanetwork";
-const enka = new EnkaNetwork({ language: "EN" });
+import { EnkaNetwork } from "enkanetwork"; //const { EnkaNetwork } = require("enkanetwork");
+const enka = new EnkaNetwork({ language: "EN", caching: true });
 ```
 
-| Key      | In API | Type   | Description                                                                                         | Required? |
-| -------- | ------ | ------ | --------------------------------------------------------------------------------------------------- | --------- |
-| language | -      | number | The language to be used in the localization of names (characters, artifacts, etc.). Default is «EN» | -         |
+| Key      | In API | Type    | Description                                                                                           | Required? |
+| -------- | ------ | ------- | ----------------------------------------------------------------------------------------------------- | --------- |
+| language | -      | number  | The language to be used in the localization of names (characters, artifacts, etc.). Default is «`EN`» | -         |
+| caching  | -      | boolean | Cache responses? Default is `true`                                                                    | -         |
 
 ## Fetch user by uid from the game (response is [FetchUserUID](#fetchuseruid))
 
@@ -53,10 +54,10 @@ const user = await enka.fetchUser(700832641, "RU");
 | UID      | -      | number | `UID` from the game                                                                                                              | +         |
 | language | -      | number | The language to be used in the localization of names (characters, artifacts, etc.). Default is [EnkaNetwork.language](#🛠️-usage) | -         |
 
-## Or fetch user by enka profile tag (response is [FetchUserProfilee](#fetchuserprofile))
+## Or fetch user by enka profile tag (response is [FetchUserProfile](#fetchuserprofile))
 
 ```js
-const user = await enka.fetchUser("kaito", "RU");
+const user = await enka.fetchProfile("kaito", "RU");
 ```
 
 | Key         | In API | Type   | Description                                                                                                                      | Required? |

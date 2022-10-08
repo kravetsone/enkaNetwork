@@ -28,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/kravetsone/enkaNetwork/issues"
   },
-  "homepage": "https://github.com/kravetsone/enkaNetwork#readme"
+  "homepage": "https://github.com/kravetsone/enkaNetwork#readme",
+  "dependencies": {
+    "axios": "^1.1.2",
+    "node-cache": "^5.1.2"
+  }
 }

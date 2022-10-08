@@ -1,3 +1,4 @@
 .npmignore
 dist
 test.mjs
+node_modules
