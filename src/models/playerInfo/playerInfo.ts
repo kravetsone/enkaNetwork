@@ -24,11 +24,11 @@ export class PlayerInfo {
         this.abyssLevel = data.towerLevelIndex;
         this.charactersPreview = data.showAvatarInfoList.map(
             (character: { avatarId: number; level: number }) => {
-                return new CharacterPreview(language, character);
+                return new CharacterPreview(language, character) ?? undefined;
             }
         );
         this.nameCardsPreview = data.showNameCardIdList.map((nameCardId) => {
-            return new NameCard(language, nameCardId);
+            return new NameCard(language, nameCardId) ?? undefined;
         });
         this.profilePicture = new ProfilePicture(language, data.profilePicture);
     }
