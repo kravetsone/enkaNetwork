@@ -17,7 +17,7 @@ export class NameCard {
         this.id = nameCardId;
         this.name = nameCardLocalization[lang];
         this.icon = getAssetUrl(nameCardAsset.icon);
-        this.banner = getAssetUrl(nameCardAsset.picPath[0]);
+        this.banner = getAssetUrl(nameCardAsset.picPath[1]);
         this.navbar = getAssetUrl(nameCardAsset.picPath[0]);
     }
 }
