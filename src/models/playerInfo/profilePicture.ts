@@ -7,7 +7,7 @@ import {
 export class ProfilePicture {
     id: number;
     name: string;
-    icon: string;
+    icon?: string;
     constructor(lang: string, profilePicture: { avatarId: number }) {
         const characterAsset = charactersAssets[profilePicture.avatarId];
         const characterLocalization =

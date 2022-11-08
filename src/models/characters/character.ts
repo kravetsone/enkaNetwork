@@ -15,7 +15,7 @@ import { CharacterStats } from "./characterStats";
 export class Character {
     id: number;
     name: string;
-    icons: { avatar: string; side: string };
+    icons: { avatar?: string; side?: string };
     level: number;
     friendshipLevel: number;
     rarity: number;
@@ -49,7 +49,7 @@ export class Character {
             .filter((x: { reliquary: any }) => x.reliquary)
             .map((reliquary: any) => new CharacterReluquary(lang, reliquary));
         this.stats = new CharacterStats(character.fightPropMap);
-        this.constellation = characterAsset.talents.map(
+        this.constellation = (characterAsset || []).talents.map(
             (talent) =>
                 new CharacterConstellation(
                     lang,
@@ -57,7 +57,7 @@ export class Character {
                     character?.talentIdList || []
                 )
         );
-        this.skills = characterAsset.skills.map(
+        this.skills = (characterAsset.skills || []).map(
             (skill) =>
                 new CharacterSkill(
                     lang,

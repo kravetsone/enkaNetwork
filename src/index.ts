@@ -11,14 +11,15 @@ export class EnkaNetwork {
         this.language = data.language || "EN";
         this.request = new Axios({
             baseURL: "https://enka.network",
+            timeout: 10 * 1000,
             headers: {
                 Accept: "application/json",
-                "User-Agent": "enkaNetwork@1.1.1",
+                "User-Agent": "enkaNetwork@1.1.5",
             },
         });
         this.cache =
             data.caching !== false
-                ? new NodeCache({ checkperiod: 40 })
+                ? new NodeCache({ checkperiod: 20 })
                 : undefined;
     }
     /**
@@ -26,10 +27,7 @@ export class EnkaNetwork {
      * @param {number} uid `UID` from the game.
      * @param {string} language The language to be used in the localization of names (characters, artifacts, etc.). Default is EnkaNetwork.language.
      */
-    async fetchUser(
-        uid: number,
-        language: TLanguage = "EN"
-    ): Promise<FetchUserUID> {
+    async fetchUser(uid: number, language: TLanguage = "EN") {
         let cache: FetchUserUID | undefined = this.cache?.get(
             `uid-${uid}-${language || this.language}`
         );
@@ -66,7 +64,7 @@ export class EnkaNetwork {
             .get(`/api/profile/${tag}/hoyos/`)
             .then((response) => JSON.parse(response.data))
             .then((data) =>
-                data.map((account: any) => {
+                (data || []).map((account: any) => {
                     return {
                         is_uid_public: account.is_uid_public,
                         player: new PlayerInfo(

@@ -15,7 +15,7 @@ export class FetchUserProfile {
         }
     ) {
         this.profile = data.profile;
-        this.accounts = data.hoyos.map((account: any) => {
+        this.accounts = (data.hoyos || []).map((account: any) => {
             return {
                 is_uid_public: account.is_uid_public,
                 player: new PlayerInfo(language, account.player_info),

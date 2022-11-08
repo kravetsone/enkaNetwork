@@ -3,13 +3,13 @@ import { NameCard, ProfilePicture, CharacterPreview } from "../index";
 
 export class PlayerInfo {
     nickname: string;
-    signature: string;
+    signature?: string;
     level: number;
-    worldLevel: number;
+    worldLevel?: number;
     nameCard: NameCard;
-    achievements: number;
-    abyssFloor: number;
-    abyssLevel: number;
+    achievements?: number;
+    abyssFloor?: number;
+    abyssLevel?: number;
     charactersPreview: CharacterPreview[];
     nameCardsPreview: NameCard[];
     profilePicture: ProfilePicture;
@@ -22,14 +22,16 @@ export class PlayerInfo {
         this.achievements = data.finishAchievementNum;
         this.abyssFloor = data.towerFloorIndex;
         this.abyssLevel = data.towerLevelIndex;
-        this.charactersPreview = data.showAvatarInfoList.map(
+        this.charactersPreview = (data.showAvatarInfoList || []).map(
             (character: { avatarId: number; level: number }) => {
                 return new CharacterPreview(language, character) ?? undefined;
             }
         );
-        this.nameCardsPreview = data.showNameCardIdList.map((nameCardId) => {
-            return new NameCard(language, nameCardId) ?? undefined;
-        });
+        this.nameCardsPreview = (data.showNameCardIdList || []).map(
+            (nameCardId) => {
+                return new NameCard(language, nameCardId) ?? undefined;
+            }
+        );
         this.profilePicture = new ProfilePicture(language, data.profilePicture);
     }
 }

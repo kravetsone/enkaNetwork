@@ -18,7 +18,7 @@ export class CharacterReluquary {
     rarity: number;
     mainStats: { appendPropId: string; statValue: number };
     subStats: { appendPropId: string; statValue: number }[];
-    icon: string;
+    icon?: string;
     name: string;
     type: string;
     setName: string;

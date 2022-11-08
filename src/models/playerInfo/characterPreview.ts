@@ -7,7 +7,7 @@ import {
 export class CharacterPreview {
     id: number;
     name: string;
-    icon: string;
+    icon?: string;
     level: number;
     constructor(
         lang: string,

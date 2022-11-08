@@ -6,7 +6,7 @@ import {
 
 export class CharacterConstellation {
     id: number;
-    icon: string;
+    icon?: string;
     name: string;
     unlocked: boolean;
     constructor(lang: string, talent: number, talents: number[]) {

@@ -7,9 +7,9 @@ import {
 export class NameCard {
     id: number;
     name: string;
-    icon: string;
-    banner: string;
-    navbar: string;
+    icon?: string;
+    banner?: string;
+    navbar?: string;
     constructor(lang: string, nameCardId: number) {
         const nameCardAsset = namecardsAssets[nameCardId];
         const nameCardLocalization =

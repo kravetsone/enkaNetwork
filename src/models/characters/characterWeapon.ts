@@ -9,7 +9,7 @@ export class CharacterWeapon {
     rarity: number;
     mainStat: { appendPropId: string; statValue: number };
     subStat?: { appendPropId: string; statValue: number };
-    icon: string;
+    icon?: string;
     name: string;
     constructor(lang: string, equipment: any) {
         this.id = equipment.itemId;

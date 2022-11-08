@@ -6,7 +6,7 @@ import {
 
 export class CharacterSkill {
     id: number;
-    icon: string;
+    icon?: string;
     name: string;
     level: number;
     constructor(lang: string, skill: number, level: number) {
