@@ -38,10 +38,11 @@ import { EnkaNetwork } from "enkanetwork"; //const { EnkaNetwork } = require("en
 const enka = new EnkaNetwork({ language: "EN", caching: true });
 ```
 
-| Key      | In API | Type    | Description                                                                                           | Required? |
-| -------- | ------ | ------- | ----------------------------------------------------------------------------------------------------- | --------- |
-| language | -      | number  | The language to be used in the localization of names (characters, artifacts, etc.). Default is «`EN`» | -         |
-| caching  | -      | boolean | Cache responses? Default is `true`                                                                    | -         |
+| Key       | In API | Type              | Description                                                                                           | Required? |
+| --------- | ------ | ----------------- | ----------------------------------------------------------------------------------------------------- | --------- |
+| language  | -      | number            | The language to be used in the localization of names (characters, artifacts, etc.). Default is «`EN`» | -         |
+| caching   | -      | boolean           | Cache responses? Default is `true`                                                                    | -         |
+| userAgent | -      | string or boolean | Disable or change the header `User-Agent`. (`false` for disable)                                      | -         |
 
 ## Fetch user by uid from the game (response is [FetchUserUID](#fetchuseruid))
 

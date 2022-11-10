@@ -7,14 +7,23 @@ export class EnkaNetwork {
     language: TLanguage;
     private readonly request: Axios;
     private readonly cache?: NodeCache;
-    constructor(data: { language?: TLanguage; caching: boolean }) {
+    constructor(data: {
+        language?: TLanguage;
+        caching: boolean;
+        userAgent?: string | boolean;
+    }) {
         this.language = data.language || "EN";
         this.request = new Axios({
             baseURL: "https://enka.network",
             timeout: 10 * 1000,
             headers: {
                 Accept: "application/json",
-                "User-Agent": "enkaNetwork@1.1.5",
+                ...(data.userAgent !== false && {
+                    "User-Agent":
+                        typeof data.userAgent == "string"
+                            ? data.userAgent
+                            : "enkaNetwork@1.1.6",
+                }),
             },
         });
         this.cache =
