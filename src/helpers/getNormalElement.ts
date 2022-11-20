@@ -2,7 +2,7 @@ const elements: { [key: string]: string } = {
     Ice: "Cryo",
     Water: "Hydro",
     Wind: "Anemo",
-    Fire: "Piro",
+    Fire: "Pyro",
     Rock: "Geo",
     Electric: "Electro",
 } as const;
