@@ -42,8 +42,13 @@ export class Character {
                           )
                               return charactersAssets[x];
                       })
-                      .filter((x) => x)[0]; //This is a temporary solution that first came to mind please don't hit.
-        console.log(characterAsset);
+                      .find(
+                          (x) =>
+                              x?.iconName ==
+                              (character.avatarId == 10000007
+                                  ? "UI_AvatarIcon_PlayerGirl"
+                                  : "UI_AvatarIcon_PlayerBoy")
+                      ); //This is a temporary solution that first came to mind please don't hit.
         const characterLocalization =
             charactersLocalizations[characterAsset.nameTextMapHash];
         this.id = character.avatarId;
