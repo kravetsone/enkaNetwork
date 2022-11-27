@@ -30,7 +30,20 @@ export class Character {
     weapon: CharacterWeapon;
     reluquary: CharacterReluquary[];
     constructor(lang: string, character: any) {
-        const characterAsset = charactersAssets[character.avatarId];
+        const characterAsset: any =
+            character.avatarId !== 10000007 && character.avatarId !== 10000005
+                ? charactersAssets[character.avatarId]
+                : Object.keys(charactersAssets)
+                      .map((x) => {
+                          if (
+                              charactersAssets[x].skills.includes(
+                                  +Object.keys(character.skillLevelMap)[0]
+                              )
+                          )
+                              return charactersAssets[x];
+                      })
+                      .filter((x) => x)[0]; //This is a temporary solution that first came to mind please don't hit.
+        console.log(characterAsset);
         const characterLocalization =
             charactersLocalizations[characterAsset.nameTextMapHash];
         this.id = character.avatarId;
@@ -49,16 +62,16 @@ export class Character {
             .filter((x: { reliquary: any }) => x.reliquary)
             .map((reliquary: any) => new CharacterReluquary(lang, reliquary));
         this.stats = new CharacterStats(character.fightPropMap);
-        this.constellation = (characterAsset || []).talents.map(
-            (talent) =>
+        this.constellation = (characterAsset?.talents || []).map(
+            (talent: any) =>
                 new CharacterConstellation(
                     lang,
                     talent,
                     character?.talentIdList || []
                 )
         );
-        this.skills = (characterAsset.skills || []).map(
-            (skill) =>
+        this.skills = (characterAsset?.skills || []).map(
+            (skill: any) =>
                 new CharacterSkill(
                     lang,
                     skill,

@@ -22,11 +22,11 @@
 
 ## 📦 Download
 
--   **используя `npm`**
+-   **usage `npm`**
     ```shell
     npm i enkanetwork
     ```
--   **используя `Yarn`**
+-   **usage `Yarn`**
     ```shell
     yarn add enkanetwork
     ```
