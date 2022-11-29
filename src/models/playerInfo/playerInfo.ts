@@ -14,24 +14,24 @@ export class PlayerInfo {
     nameCardsPreview: NameCard[];
     profilePicture: ProfilePicture;
     constructor(language: string, data: IPlayerInfo) {
-        this.nickname = data.nickname;
-        this.signature = data.signature;
-        this.level = data.level;
-        this.worldLevel = data.worldLevel;
-        this.nameCard = new NameCard(language, data.nameCardId);
-        this.achievements = data.finishAchievementNum;
-        this.abyssFloor = data.towerFloorIndex;
-        this.abyssLevel = data.towerLevelIndex;
-        this.charactersPreview = (data.showAvatarInfoList || []).map(
+        this.nickname = data?.nickname;
+        this.signature = data?.signature;
+        this.level = data?.level;
+        this.worldLevel = data?.worldLevel;
+        this.nameCard = new NameCard(language, data?.nameCardId);
+        this.achievements = data?.finishAchievementNum;
+        this.abyssFloor = data?.towerFloorIndex;
+        this.abyssLevel = data?.towerLevelIndex;
+        this.charactersPreview = (data?.showAvatarInfoList || []).map(
             (character: { avatarId: number; level: number }) => {
                 return new CharacterPreview(language, character) ?? undefined;
             }
         );
-        this.nameCardsPreview = (data.showNameCardIdList || []).map(
+        this.nameCardsPreview = (data?.showNameCardIdList || []).map(
             (nameCardId) => {
                 return new NameCard(language, nameCardId) ?? undefined;
             }
         );
-        this.profilePicture = new ProfilePicture(language, data.profilePicture);
+        this.profilePicture = new ProfilePicture(language, data?.profilePicture);
     }
 }
