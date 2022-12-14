@@ -61,6 +61,7 @@ export interface ICharacterSkillAssets {
 export interface ICharacterSkillAsset {
     nameTextMapHash: number;
     skillIcon: string;
+    proudSkillGroupId?: number | null;
 }
 export type TLanguage =
     | "CHS"

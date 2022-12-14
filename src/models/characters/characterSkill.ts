@@ -9,7 +9,13 @@ export class CharacterSkill {
     icon?: string;
     name: string;
     level: number;
-    constructor(lang: string, skill: number, level: number) {
+    isBoosted: boolean;
+    constructor(
+        lang: string,
+        skill: number,
+        level: number,
+        proudSkillExtraLevelMap: string[]
+    ) {
         const charactersSkillsAsset = charactersSkillsAssets[skill];
         const charactersSkillsLocalization =
             charactersSkillsLocalizations[
@@ -18,6 +24,12 @@ export class CharacterSkill {
         this.id = skill;
         this.icon = getAssetUrl(charactersSkillsAsset.skillIcon);
         this.name = charactersSkillsLocalization[lang];
-        this.level = level;
+        this.isBoosted =
+            typeof charactersSkillsAsset.proudSkillGroupId == "number"
+                ? !!proudSkillExtraLevelMap.includes(
+                      String(charactersSkillsAsset.proudSkillGroupId)
+                  )
+                : false;
+        this.level = this.isBoosted ? level + 3 : level;
     }
 }

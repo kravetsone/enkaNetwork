@@ -80,9 +80,11 @@ export class Character {
                 new CharacterSkill(
                     lang,
                     skill,
-                    character?.skillLevelMap[skill] || 0
+                    character?.skillLevelMap[skill] || 0,
+                    Object.keys(character?.proudSkillExtraLevelMap || [])
                 )
         );
+
         this.skillSetId = character.skillDepotId;
         this.skillData = character.inherentProudSkillList;
         this.level = Number(character.propMap["4001"]?.ival || 0);
