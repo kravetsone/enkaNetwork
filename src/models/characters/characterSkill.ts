@@ -14,22 +14,24 @@ export class CharacterSkill {
         lang: string,
         skill: number,
         level: number,
-        proudSkillExtraLevelMap: string[]
+        proudSkillExtraLevelMap: Record<string, number>
     ) {
         const charactersSkillsAsset = charactersSkillsAssets[skill];
         const charactersSkillsLocalization =
             charactersSkillsLocalizations[
                 charactersSkillsAsset.nameTextMapHash
             ];
+        const boost =
+            typeof charactersSkillsAsset.proudSkillGroupId == "number"
+                ? Object.keys(proudSkillExtraLevelMap).find(
+                      (x) =>
+                          x == String(charactersSkillsAsset.proudSkillGroupId)
+                  )
+                : false;
         this.id = skill;
         this.icon = getAssetUrl(charactersSkillsAsset.skillIcon);
         this.name = charactersSkillsLocalization[lang];
-        this.isBoosted =
-            typeof charactersSkillsAsset.proudSkillGroupId == "number"
-                ? !!proudSkillExtraLevelMap.includes(
-                      String(charactersSkillsAsset.proudSkillGroupId)
-                  )
-                : false;
-        this.level = this.isBoosted ? level + 3 : level;
+        this.isBoosted = !!boost;
+        this.level = level + (boost ? +proudSkillExtraLevelMap[boost] : 0); //my code has gotten worse lately...
     }
 }

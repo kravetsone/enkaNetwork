@@ -81,7 +81,7 @@ export class Character {
                     lang,
                     skill,
                     character?.skillLevelMap[skill] || 0,
-                    Object.keys(character?.proudSkillExtraLevelMap || [])
+                    character?.proudSkillExtraLevelMap ?? {}
                 )
         );
 

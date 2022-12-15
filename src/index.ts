@@ -22,7 +22,7 @@ export class EnkaNetwork {
                     "User-Agent":
                         typeof data.userAgent == "string"
                             ? data.userAgent
-                            : "enkaNetwork@1.1.6",
+                            : "enkaNetwork@1.2.4",
                 }),
             },
         });
