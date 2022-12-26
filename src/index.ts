@@ -22,7 +22,7 @@ export class EnkaNetwork {
                     "User-Agent":
                         typeof data.userAgent == "string"
                             ? data.userAgent
-                            : "enkaNetwork@1.2.4",
+                            : "enkaNetwork@1.2.5",
                 }),
             },
         });
@@ -42,7 +42,9 @@ export class EnkaNetwork {
         );
         if (cache) return cache;
         return this.request
-            .get(`/u/${uid}/__data.json`)
+            .get(`/u/${uid}/__data.json`, {
+                headers: { "Accept-Encoding": "gzip,deflate,compress" }, //waiting for a fix (https://github.com/axios/axios/issues/5346)
+            })
             .then((response) => JSON.parse(response.data))
             .then((data) => {
                 const res = new FetchUserUID(language || this.language, data);
