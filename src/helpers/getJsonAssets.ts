@@ -14,11 +14,11 @@ import CharactersLocalizations from "../../assets/localizations/characters.json"
 export const charactersLocalizations: ILocalizations = CharactersLocalizations;
 
 // @ts-ignore: Json Import
-import CharactersConstellationAssets from "../../assets/data/conselations.json";
+import CharactersConstellationAssets from "../../assets/data/constellations.json";
 export const charactersConstellationAssets: ICharacterConstellationAssets =
     CharactersConstellationAssets;
 // @ts-ignore: Json Import
-import CharactersConstellationLocalizations from "../../assets/localizations/conselations.json";
+import CharactersConstellationLocalizations from "../../assets/localizations/constellations.json";
 export const charactersConstellationLocalizations: ILocalizations =
     CharactersConstellationLocalizations;
 

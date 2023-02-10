@@ -1,5 +1,7 @@
 export * from "./fetchUserUID";
 export * from "./fetchUserProfile";
+export * from "./fetchProfileInfo";
+export * from "./fetchProfileAccount";
 
 export * from "./playerInfo/characterPreview";
 export * from "./playerInfo/nameCard";
@@ -12,3 +14,4 @@ export * from "./characters/characterWeapon";
 export * from "./characters/characterConstellation";
 
 export * from "./profile/enkaProfile";
+

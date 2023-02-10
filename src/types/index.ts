@@ -14,6 +14,17 @@ export interface IPlayerInfo {
     showNameCardIdList: number[];
     profilePicture: IProfilePicture;
 }
+export interface IOwner {
+    hash: string;
+    username: string;
+    profile: IProfile;
+}
+export interface IProfile {
+    bio: string;
+    level: number;
+    signup_state: number;
+    image_url: string;
+}
 export interface IShowAvatarInfoList {
     avatarId: number;
     level: number;

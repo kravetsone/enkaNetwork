@@ -22,14 +22,14 @@
 
 ## 📦 Download
 
--   **usage `npm`**
-    ```shell
-    npm i enkanetwork
-    ```
--   **usage `Yarn`**
-    ```shell
-    yarn add enkanetwork
-    ```
+- **usage `npm`**
+  ```shell
+  npm i enkanetwork
+  ```
+- **usage `Yarn`**
+  ```shell
+  yarn add enkanetwork
+  ```
 
 # 🛠️ Usage
 
@@ -44,7 +44,7 @@ const enka = new EnkaNetwork({ language: "EN", caching: true });
 | caching   | -      | boolean           | Cache responses? Default is `true`                                                                    | -         |
 | userAgent | -      | string or boolean | Disable or change the header `User-Agent`. (`false` for disable)                                      | -         |
 
-## Fetch user by uid from the game (response is [FetchUserUID](#fetchuseruid))
+## Fetch user with characters by uid from the game (response is [FetchUserUID](#fetchuseruid))
 
 ```js
 const user = await enka.fetchUser(700832641, "RU");
@@ -55,16 +55,41 @@ const user = await enka.fetchUser(700832641, "RU");
 | UID      | -      | number | `UID` from the game                                                                                                              | +         |
 | language | -      | number | The language to be used in the localization of names (characters, artifacts, etc.). Default is [EnkaNetwork.language](#🛠️-usage) | -         |
 
+## Fetch playerInfo by uid from the game (response is [FetchPlayerInfo](#fetchplayerinfo))
+
+```js
+const user = await enka.fetchPlayerInfo(700832641, "RU");
+```
+
+| Key      | In API | Type   | Description                                                                                                                      | Required? |
+| -------- | ------ | ------ | -------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| UID      | -      | number | `UID` from the game                                                                                                              | +         |
+| language | -      | number | The language to be used in the localization of names (characters, artifacts, etc.). Default is [EnkaNetwork.language](#🛠️-usage) | -         |
+
 ## Or fetch user by enka profile tag (response is [FetchUserProfile](#fetchuserprofile))
 
 ```js
-const user = await enka.fetchProfile("kaito", "RU");
+const user = await enka.fetchProfile("Algoinde", "RU");
 ```
 
 | Key         | In API | Type   | Description                                                                                                                      | Required? |
 | ----------- | ------ | ------ | -------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| Profile tag | -      | number | Enka patreon `profile tag` from the [site EnkaNetwork](https://enka.network/)                                                    | +         |
+| Profile tag | -      | string | Enka patreon `profile tag` from the [site EnkaNetwork](https://enka.network/)                                                    | +         |
 | language    | -      | number | The language to be used in the localization of names (characters, artifacts, etc.). Default is [EnkaNetwork.language](#🛠️-usage) | -         |
+
+## Or fetch user by enka profile tag (response is [FetchUserProfile](#fetchuserprofile) or array of [FetchUserProfile](#fetchuserprofile))
+
+```js
+const accounts = await enka.fetchProfileAccounts("Algoinde", "RU");
+//or
+const account = await enka.fetchProfileAccount("Algoinde", "4Wjv2e", "RU");
+```
+
+| Key              | In API | Type   | Description                                                                                                                      | Required? |
+| ---------------- | ------ | ------ | -------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| Profile username | -      | string | Enka `profile username` from the [site EnkaNetwork](https://enka.network/)                                                       | +         |
+| Account hash     | -      | string | Enka `account hash` from an account on the [site EnkaNetwork](https://enka.network/) (only for `fetchProfileAccount`)            | +-        |
+| language         | -      | number | The language to be used in the localization of names (characters, artifacts, etc.). Default is [EnkaNetwork.language](#🛠️-usage) | -         |
 
 # ⚙ Response structure
 
@@ -76,13 +101,35 @@ const user = await enka.fetchProfile("kaito", "RU");
 | characters | avatarInfoList | array  | See [Characters](#characters)  |
 | ttl        | ttl            | number | Cache lifetime in milliseconds |
 
+## FetchPlayerInfo
+
+| Key    | In API     | Type   | Description                    |
+| ------ | ---------- | ------ | ------------------------------ |
+| player | playerInfo | object | See [Player](#player)          |
+| owner  | owner      | object | See [Owner](#owner)            |
+| ttl    | ttl        | number | Cache lifetime in milliseconds |
+
 ## FetchUserProfile
 
-| Key         | In API  | Type    | Description                  |
-| ----------- | ------- | ------- | ---------------------------- |
-| profile     | profile | boolean | User fetched by profile tag? |
-| accounts    | hoyos   | array   | See [Accounts](#accounts)    |
-| enkaProfile | user    | object  | See [EnkaProfile](#accounts) |
+| Key         | In API               | Type   | Description                  |
+| ----------- | -------------------- | ------ | ---------------------------- |
+| username    | username             | string | Profile username             |
+| bio         | profile.bio          | string | Profile bio                  |
+| level       | profile.level        | number | Profile patreon level        |
+| signupState | profile.signup_state | number | Profile username is verifed? |
+| imageUrl    | profile.image_url    | string | Profile url of image         |
+
+## FetchProfileAccount
+
+| Key       | In API      | Type    | Description           |
+| --------- | ----------- | ------- | --------------------- |
+| uidPublic | uid_public  | boolean | Uid is public?        |
+| public    | public      | boolean | Profile is public?    |
+| verified  | verified    | boolean | Profile is verifed?   |
+| player    | player_info | object  | See [Player](#player) |
+| hash      | hash        | string  | Account  |
+| region    | region      | string  | Profile url of image  |
+| order     | order       | number  | Profile url of image  |
 
 ## FetchAccounts[]
 
@@ -109,6 +156,21 @@ const user = await enka.fetchProfile("kaito", "RU");
 | drawUid     | profile.draw_uid     | booolean | Enka profile draw uid?      |
 | signupState | profile.signup_state | integer  | Enka profile sign up state  |
 | imageUrl    | profile.image_url    | string   | Url of enka profile picture |
+
+## Owner
+
+| Key      | In API   | Type   | Description             |
+| -------- | -------- | ------ | ----------------------- |
+| hash     | hash     | string | Enka profile hash       |
+| username | username | string | Enka profile username   |
+| profile  | profile  | object | See [Profile](#profile) |
+
+## Profile
+
+| Key         | In API               | Type    | Description                 |
+| ----------- | -------------------- | ------- | --------------------------- |
+| signupState | profile.signup_state | integer | Enka profile sign up state  |
+| imageUrl    | profile.image_url    | string  | Url of enka profile picture |
 
 ## Player
 
