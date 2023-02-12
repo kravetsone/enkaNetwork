@@ -12,7 +12,7 @@ export class PlayerInfo {
     abyssLevel?: number;
     charactersPreview: CharacterPreview[];
     nameCardsPreview: NameCard[];
-    profilePicture: ProfilePicture;
+    profilePicture?: ProfilePicture;
     constructor(language: string, data: IPlayerInfo) {
         this.nickname = data.nickname;
         this.signature = data.signature;
@@ -32,6 +32,6 @@ export class PlayerInfo {
                 return new NameCard(language, nameCardId) ?? undefined;
             }
         );
-        this.profilePicture = new ProfilePicture(language, data.profilePicture);
+        this.profilePicture = data.profilePicture.avatarId ? new ProfilePicture(language, data.profilePicture) : undefined;
     }
 }

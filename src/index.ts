@@ -18,7 +18,7 @@ export class EnkaNetwork {
   private readonly cache?: NodeCache;
   constructor(data: {
     language?: TLanguage;
-    caching: boolean;
+    caching?: boolean;
     userAgent?: string | boolean;
   }) {
     this.language = data.language || "EN";
