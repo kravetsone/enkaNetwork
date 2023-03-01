@@ -1,6 +1,7 @@
 import { getAssetUrl } from "../../helpers/getAssetUrl";
 import {
     charactersAssets,
+    charactersCostumes,
     charactersLocalizations,
 } from "../../helpers/getJsonAssets";
 
@@ -11,14 +12,22 @@ export class CharacterPreview {
     level: number;
     constructor(
         lang: string,
-        CharacterPreview: { avatarId: number; level: number }
+        characterPreview: {
+            avatarId: number;
+            level: number;
+            costumeId?: number;
+        }
     ) {
-        const characterAsset = charactersAssets[CharacterPreview.avatarId];
+        const characterAsset = charactersAssets[characterPreview.avatarId];
         const characterLocalization =
             charactersLocalizations[characterAsset.nameTextMapHash];
-        this.id = CharacterPreview.avatarId;
+        this.id = characterPreview.avatarId;
         this.name = characterLocalization[lang];
-        this.icon = getAssetUrl(characterAsset.iconName);
-        this.level = CharacterPreview.level;
+        this.icon = getAssetUrl(
+            characterPreview.costumeId
+                ? charactersCostumes[characterPreview.costumeId].iconName
+                : characterAsset.iconName
+        );
+        this.level = characterPreview.level;
     }
 }

@@ -1592,12 +1592,12 @@
     "10793": {
         "nameTextMapHash": 2706644389,
         "skillIcon": "Skill_S_Dehya_02",
-        "proudSkillGroupId": ""
+        "proudSkillGroupId": null
     },
     "10794": {
         "nameTextMapHash": 3699125269,
         "skillIcon": "Skill_E_Dehya_02",
-        "proudSkillGroupId": ""
+        "proudSkillGroupId": null
     },
     "10795": {
         "nameTextMapHash": 594609117,
@@ -2022,7 +2022,7 @@
     "20345": {
         "nameTextMapHash": 1316655253,
         "skillIcon": "Btn_PacMan",
-        "proudSkillGroupId": ""
+        "proudSkillGroupId": null
     },
     "10384": {
         "nameTextMapHash": 1543775045,
@@ -2502,11 +2502,11 @@
     "5079010": {
         "nameTextMapHash": 2895358061,
         "skillIcon": "Skill_A_04",
-        "proudSkillGroupId": ""
+        "proudSkillGroupId": null
     },
     "5080010": {
         "nameTextMapHash": 886703661,
         "skillIcon": "Skill_A_03",
-        "proudSkillGroupId": ""
+        "proudSkillGroupId": null
     }
 }
