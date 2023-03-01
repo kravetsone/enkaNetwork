@@ -2,6 +2,7 @@ import { getAssetUrl } from "../../helpers/getAssetUrl";
 import { getNormalElement } from "../../helpers/getNormalElement";
 import {
     charactersAssets,
+    charactersCostumes,
     charactersLocalizations,
 } from "../../helpers/getJsonAssets";
 import {
@@ -56,8 +57,16 @@ export class Character {
         this.rarity = characterAsset.qualityType == "QUALITY_ORANGE" ? 5 : 4;
         this.element = getNormalElement(characterAsset.costElemType);
         this.icons = {
-            avatar: getAssetUrl(characterAsset.iconName),
-            side: getAssetUrl(characterAsset.sideIconName),
+            avatar: getAssetUrl(
+                character.costumeId
+                    ? charactersCostumes[character.costumeId].iconName
+                    : characterAsset.iconName
+            ),
+            side: getAssetUrl(
+                character.costumeId
+                    ? charactersCostumes[character.costumeId].sideIconName
+                    : characterAsset.sideIconName
+            ),
         };
         this.weapon = new CharacterWeapon(
             lang,

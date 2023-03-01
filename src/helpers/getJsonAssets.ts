@@ -1,6 +1,8 @@
 import {
     ICharacterAssets,
     ICharacterConstellationAssets,
+    ICharacterCostume,
+    ICharacterCostumes,
     ICharacterSkillAssets,
     ILocalizations,
     INameCardAssets,
@@ -9,6 +11,9 @@ import {
 // @ts-ignore: Json Import
 import CharactersAssets from "../../assets/data/characters.json";
 export const charactersAssets: ICharacterAssets = CharactersAssets;
+// @ts-ignore: Json Import
+import CharactersCostumes from "../../assets/data/costumes.json";
+export const charactersCostumes: ICharacterCostumes = CharactersCostumes;
 // @ts-ignore: Json Import
 import CharactersLocalizations from "../../assets/localizations/characters.json";
 export const charactersLocalizations: ILocalizations = CharactersLocalizations;

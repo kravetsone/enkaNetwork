@@ -74,6 +74,14 @@ export interface ICharacterSkillAsset {
     skillIcon: string;
     proudSkillGroupId?: number | null;
 }
+export interface ICharacterCostumes {
+    [key: string]: ICharacterCostume;
+}
+export interface ICharacterCostume {
+    iconName: string;
+    sideIconName: string;
+    nameTextMapHash: number;
+}
 export type TLanguage =
     | "CHS"
     | "CHT"
