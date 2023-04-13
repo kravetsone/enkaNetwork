@@ -1,49 +1,49 @@
 {
-  "name": "enkanetwork",
-  "version": "1.3.1",
-  "description": "NodeJS/TypeScript api wrapper data from https://enka.network/",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "start": "tsc && node test.mjs",
-    "publish": "tsc && npm publish"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kravetsone/enkaNetwork.git"
-  },
-  "keywords": [
-    "enkanetwork",
-    "enka",
-    "genshinapi",
-    "genshinimpact",
-    "gensinimpactapi",
-    "nodejs",
-    "typescript",
-    "shinshin",
-    "moe"
-  ],
-  "author": "Kravetsone",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kravetsone/enkaNetwork/issues"
-  },
-  "homepage": "https://github.com/kravetsone/enkaNetwork#readme",
-  "dependencies": {
-    "axios": "^1.3.2",
-    "node-cache": "^5.1.2"
-  },
-  "files": [
-    "assets/",
-    "dist/"
-  ],
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.54.0",
-    "@typescript-eslint/parser": "^5.54.0",
-    "eslint": "^8.35.0",
-    "typescript": "^4.9.5"
-  }
+    "name": "enkanetwork",
+    "version": "1.3.2",
+    "description": "NodeJS/TypeScript api wrapper data from https://enka.network/",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "typings": "./dist/index.d.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc",
+        "start": "tsc && node test.mjs",
+        "publish": "tsc && npm publish"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kravetsone/enkaNetwork.git"
+    },
+    "keywords": [
+        "enkanetwork",
+        "enka",
+        "genshinapi",
+        "genshinimpact",
+        "gensinimpactapi",
+        "nodejs",
+        "typescript",
+        "shinshin",
+        "moe"
+    ],
+    "author": "Kravetsone",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/kravetsone/enkaNetwork/issues"
+    },
+    "homepage": "https://github.com/kravetsone/enkaNetwork#readme",
+    "dependencies": {
+        "axios": "^1.3.2",
+        "node-cache": "^5.1.2"
+    },
+    "files": [
+        "assets/",
+        "dist/"
+    ],
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.54.0",
+        "@typescript-eslint/parser": "^5.54.0",
+        "eslint": "^8.35.0",
+        "typescript": "^4.9.5"
+    }
 }
