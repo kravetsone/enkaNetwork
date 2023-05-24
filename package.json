@@ -1,6 +1,6 @@
 {
     "name": "enkanetwork",
-    "version": "1.3.2",
+    "version": "1.3.3",
     "description": "NodeJS/TypeScript api wrapper data from https://enka.network/",
     "main": "./dist/index.js",
     "module": "./dist/index.js",
