@@ -1,10 +1,10 @@
 import { getAssetUrl } from "../../helpers/getAssetUrl";
 import {
-    charactersReluquaryLocalizations,
-    charactersReluquarySetsLocalizations,
+    charactersReliquaryLocalizations,
+    charactersReliquarySetsLocalizations,
 } from "../../helpers/getJsonAssets";
 
-const reluquaryTypes: { [key: string]: string } = {
+const reliquaryTypes: { [key: string]: string } = {
     EQUIP_BRACER: "Flower",
     EQUIP_NECKLACE: "Feather",
     EQUIP_SHOES: "Sands",
@@ -12,7 +12,7 @@ const reluquaryTypes: { [key: string]: string } = {
     EQUIP_DRESS: "Circlet",
 };
 
-export class CharacterReluquary {
+export class CharacterReliquary {
     id: number;
     level: number;
     rarity: number;
@@ -25,15 +25,15 @@ export class CharacterReluquary {
     constructor(lang: string, equipment: any) {
         this.id = equipment.itemId;
         this.name =
-            charactersReluquaryLocalizations[equipment.flat.nameTextMapHash][
+            charactersReliquaryLocalizations[equipment.flat.nameTextMapHash][
                 lang
             ];
         this.setName =
-            charactersReluquarySetsLocalizations[
+            charactersReliquarySetsLocalizations[
                 equipment.flat.setNameTextMapHash
             ][lang];
         this.icon = getAssetUrl(equipment.flat.icon);
-        this.type = reluquaryTypes[equipment.flat.equipType];
+        this.type = reliquaryTypes[equipment.flat.equipType];
         this.level = --equipment.reliquary.level;
         this.rarity = equipment.flat.rankLevel;
         this.mainStats = equipment.flat.reliquaryMainstat;

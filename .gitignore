@@ -1,4 +1,5 @@
-.npmignore
-test.mjs
 dist
 node_modules
+.idea
+.npmignore
+test.mjs

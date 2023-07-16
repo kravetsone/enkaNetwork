@@ -16,7 +16,7 @@ export class CharacterPreview {
             avatarId: number;
             level: number;
             costumeId?: number;
-        }
+        },
     ) {
         const characterAsset = charactersAssets[characterPreview.avatarId];
         const characterLocalization =
@@ -26,7 +26,7 @@ export class CharacterPreview {
         this.icon = getAssetUrl(
             characterPreview.costumeId
                 ? charactersCostumes[characterPreview.costumeId].iconName
-                : characterAsset.iconName
+                : characterAsset.iconName,
         );
         this.level = characterPreview.level;
     }

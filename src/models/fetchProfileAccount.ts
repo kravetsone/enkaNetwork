@@ -8,6 +8,7 @@ export class FetchProfileAccount {
     hash: string;
     region: string;
     order: number;
+
     constructor(
         language: string,
         data: {
@@ -18,7 +19,7 @@ export class FetchProfileAccount {
             hash: string;
             region: string;
             order: number;
-        }
+        },
     ) {
         this.uidPublic = data.uid_public;
         this.public = data.public;

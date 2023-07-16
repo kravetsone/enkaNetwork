@@ -1,16 +1,10 @@
 {
     "name": "enkanetwork",
-    "version": "1.3.3",
+    "version": "2.0.0",
     "description": "NodeJS/TypeScript api wrapper data from https://enka.network/",
-    "main": "./dist/index.js",
-    "module": "./dist/index.js",
-    "typings": "./dist/index.d.ts",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc",
-        "start": "tsc && node test.mjs",
-        "publish": "tsc && npm publish"
-    },
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "typings": "dist/index.d.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/kravetsone/enkaNetwork.git"
@@ -32,18 +26,32 @@
         "url": "https://github.com/kravetsone/enkaNetwork/issues"
     },
     "homepage": "https://github.com/kravetsone/enkaNetwork#readme",
-    "dependencies": {
-        "axios": "^1.3.2",
-        "node-cache": "^5.1.2"
-    },
     "files": [
         "assets/",
         "dist/"
     ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc",
+        "start": "tsc && node test.mjs",
+        "publish": "tsc && npm publish",
+        "lint": "eslint \"src/**/*.{js,ts}\"",
+        "lint:fix": "eslint \"src/**/*.{js,ts}\" --fix"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "singleQuote": false,
+        "semi": true,
+        "endOfLine": "auto"
+    },
+    "dependencies": {
+        "axios": "^1.4.0",
+        "node-cache": "^5.1.2"
+    },
     "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^5.54.0",
-        "@typescript-eslint/parser": "^5.54.0",
-        "eslint": "^8.35.0",
-        "typescript": "^4.9.5"
+        "eslint": "^8.45.0",
+        "eslint-kit": "^10.1.0",
+        "prettier": "^3.0.0",
+        "typescript": "^5.1.6"
     }
 }

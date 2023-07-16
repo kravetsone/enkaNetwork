@@ -10,14 +10,14 @@ export class CharacterConstellation {
     name: string;
     unlocked: boolean;
     constructor(lang: string, talent: number, talents: number[]) {
-        const characteConstellationAsset =
+        const characterConstellationAsset =
             charactersConstellationAssets[talent];
         const characterConstellationLocalization =
             charactersConstellationLocalizations[
-                characteConstellationAsset.nameTextMapHash
+                characterConstellationAsset.nameTextMapHash
             ];
         this.id = talent;
-        this.icon = getAssetUrl(characteConstellationAsset.icon);
+        this.icon = getAssetUrl(characterConstellationAsset.icon);
         this.name = characterConstellationLocalization[lang];
         this.unlocked = talents.includes(talent);
     }

@@ -1,5 +1,5 @@
-import { IPlayerInfo } from "../types/index";
-import { PlayerInfo, Character } from "./index";
+import { IPlayerInfo } from "../types";
+import { Character, PlayerInfo } from "./index";
 
 export class FetchUserUID {
     player: PlayerInfo;
@@ -11,7 +11,7 @@ export class FetchUserUID {
             avatarInfoList: string[];
             playerInfo: IPlayerInfo;
             ttl: number;
-        }
+        },
     ) {
         this.player = new PlayerInfo(language, data.playerInfo);
         this.characters = (data.avatarInfoList || []).map((avatar) => {

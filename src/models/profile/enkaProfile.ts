@@ -4,17 +4,15 @@ export class EnkaProfile {
     level: number;
     signupState: number;
     imageUrl: string;
-    constructor(
-        data: {
-            username: string;
-            profile: {
-                bio: string;
-                level: number;
-                signup_state: number;
-                image_url: string;
-            };
-        },
-    ) {
+    constructor(data: {
+        username: string;
+        profile: {
+            bio: string;
+            level: number;
+            signup_state: number;
+            image_url: string;
+        };
+    }) {
         this.username = data.username;
         this.bio = data.profile.bio;
         this.level = data.profile.level;

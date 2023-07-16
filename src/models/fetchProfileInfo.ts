@@ -1,4 +1,4 @@
-import { IPlayerInfo, IOwner } from "../types/index";
+import { IOwner, IPlayerInfo } from "../types";
 import { PlayerInfo } from "./index";
 
 export class FetchProfileInfo {
@@ -9,8 +9,8 @@ export class FetchProfileInfo {
         data: {
             playerInfo: IPlayerInfo;
             ttl: number;
-            owner?: IOwner
-        }
+            owner?: IOwner;
+        },
     ) {
         this.player = new PlayerInfo(language, data.playerInfo);
         this.ttl = data.ttl;

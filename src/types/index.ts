@@ -1,4 +1,4 @@
-import { NameCard } from "../models/index";
+import { NameCard } from "../models";
 
 export interface IPlayerInfo {
     nickname: string;

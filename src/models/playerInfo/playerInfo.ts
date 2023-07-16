@@ -1,5 +1,5 @@
-import { IPlayerInfo } from "../../types/index";
-import { NameCard, ProfilePicture, CharacterPreview } from "../index";
+import { IPlayerInfo } from "../../types";
+import { CharacterPreview, NameCard, ProfilePicture } from "../index";
 
 export class PlayerInfo {
     nickname: string;
@@ -25,13 +25,16 @@ export class PlayerInfo {
         this.charactersPreview = (data.showAvatarInfoList || []).map(
             (character: { avatarId: number; level: number }) => {
                 return new CharacterPreview(language, character) ?? undefined;
-            }
+            },
         );
         this.nameCardsPreview = (data.showNameCardIdList || []).map(
             (nameCardId) => {
                 return new NameCard(language, nameCardId) ?? undefined;
-            }
+            },
         );
-        this.profilePicture = data.profilePicture.avatarId ? new ProfilePicture(language, data.profilePicture) : undefined;
+
+        this.profilePicture = data.profilePicture.avatarId
+            ? new ProfilePicture(language, data.profilePicture)
+            : undefined;
     }
 }

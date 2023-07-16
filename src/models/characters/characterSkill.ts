@@ -14,7 +14,7 @@ export class CharacterSkill {
         lang: string,
         skill: number,
         level: number,
-        proudSkillExtraLevelMap: Record<string, number>
+        proudSkillExtraLevelMap: Record<string, number>,
     ) {
         const charactersSkillsAsset = charactersSkillsAssets[skill];
         const charactersSkillsLocalization =
@@ -25,7 +25,7 @@ export class CharacterSkill {
             typeof charactersSkillsAsset.proudSkillGroupId == "number"
                 ? Object.keys(proudSkillExtraLevelMap).find(
                       (x) =>
-                          x == String(charactersSkillsAsset.proudSkillGroupId)
+                          x === String(charactersSkillsAsset.proudSkillGroupId),
                   )
                 : false;
         this.id = skill;
