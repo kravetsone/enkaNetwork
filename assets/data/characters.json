@@ -1,14 +1,16 @@
-{
-    "10000002": {
+[
+    {
+        "id": 10000002,
+        "skillDepotId": 201,
         "nameTextMapHash": 1006042610,
         "iconName": "UI_AvatarIcon_Ayaka",
         "sideIconName": "UI_AvatarIcon_Side_Ayaka",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Ice",
+        "qualityStars": 5,
+        "element": "Cryo",
         "skills": [
             10024,
             10018,
-            10019
+            10013
         ],
         "talents": [
             21,
@@ -19,16 +21,17 @@
             26
         ]
     },
-    "10000003": {
+    {
+        "id": 10000003,
+        "skillDepotId": 301,
         "nameTextMapHash": 3221566250,
         "iconName": "UI_AvatarIcon_Qin",
         "sideIconName": "UI_AvatarIcon_Side_Qin",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Wind",
+        "qualityStars": 5,
+        "element": "Anemo",
         "skills": [
             10031,
-            10033,
-            10034
+            10033
         ],
         "talents": [
             31,
@@ -39,149 +42,17 @@
             36
         ]
     },
-    "10000005-501": {
-        "nameTextMapHash": 1533656818,
-        "iconName": "UI_AvatarIcon_PlayerBoy",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "",
-        "skills": [
-            100540
-        ],
-        "talents": []
-    },
-    "10000005-502": {
-        "nameTextMapHash": 1533656818,
-        "iconName": "UI_AvatarIcon_PlayerBoy",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "",
-        "skills": [
-            100541
-        ],
-        "talents": []
-    },
-    "10000005-503": {
-        "nameTextMapHash": 1533656818,
-        "iconName": "UI_AvatarIcon_PlayerBoy",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "",
-        "skills": [
-            100542
-        ],
-        "talents": []
-    },
-    "10000005-504": {
-        "nameTextMapHash": 1533656818,
-        "iconName": "UI_AvatarIcon_PlayerBoy",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Wind",
-        "skills": [
-            100543,
-            10067,
-            10068
-        ],
-        "talents": [
-            71,
-            72,
-            73,
-            74,
-            75,
-            76
-        ]
-    },
-    "10000005-505": {
-        "nameTextMapHash": 1533656818,
-        "iconName": "UI_AvatarIcon_PlayerBoy",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Wind",
-        "skills": [
-            100544
-        ],
-        "talents": []
-    },
-    "10000005-506": {
-        "nameTextMapHash": 1533656818,
-        "iconName": "UI_AvatarIcon_PlayerBoy",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Rock",
-        "skills": [
-            100545,
-            10077,
-            10078
-        ],
-        "talents": [
-            91,
-            92,
-            93,
-            94,
-            95,
-            96
-        ]
-    },
-    "10000005-507": {
-        "nameTextMapHash": 1533656818,
-        "iconName": "UI_AvatarIcon_PlayerBoy",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Electric",
-        "skills": [
-            100546,
-            10602,
-            10605
-        ],
-        "talents": [
-            101,
-            102,
-            103,
-            104,
-            105,
-            106
-        ]
-    },
-    "10000005-508": {
-        "nameTextMapHash": 1533656818,
-        "iconName": "UI_AvatarIcon_PlayerBoy",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Grass",
-        "skills": [
-            100547,
-            10117,
-            10118
-        ],
-        "talents": [
-            111,
-            112,
-            113,
-            114,
-            115,
-            116
-        ]
-    },
-    "10000005": {
-        "nameTextMapHash": 1533656818,
-        "iconName": "UI_AvatarIcon_PlayerBoy",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Grass",
-        "skills": [],
-        "talents": []
-    },
-    "10000006": {
+    {
+        "id": 10000006,
+        "skillDepotId": 601,
         "nameTextMapHash": 3344622722,
         "iconName": "UI_AvatarIcon_Lisa",
         "sideIconName": "UI_AvatarIcon_Side_Lisa",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Electric",
+        "qualityStars": 4,
+        "element": "Electro",
         "skills": [
             10060,
-            10061,
-            10062
+            10061
         ],
         "talents": [
             41,
@@ -192,149 +63,17 @@
             46
         ]
     },
-    "10000007-701": {
-        "nameTextMapHash": 3816664530,
-        "iconName": "UI_AvatarIcon_PlayerGirl",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "",
-        "skills": [
-            100550
-        ],
-        "talents": []
-    },
-    "10000007-702": {
-        "nameTextMapHash": 3816664530,
-        "iconName": "UI_AvatarIcon_PlayerGirl",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "",
-        "skills": [
-            100551
-        ],
-        "talents": []
-    },
-    "10000007-703": {
-        "nameTextMapHash": 3816664530,
-        "iconName": "UI_AvatarIcon_PlayerGirl",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "",
-        "skills": [
-            100552
-        ],
-        "talents": []
-    },
-    "10000007-704": {
-        "nameTextMapHash": 3816664530,
-        "iconName": "UI_AvatarIcon_PlayerGirl",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Wind",
-        "skills": [
-            100553,
-            10067,
-            10068
-        ],
-        "talents": [
-            71,
-            72,
-            73,
-            74,
-            75,
-            76
-        ]
-    },
-    "10000007-705": {
-        "nameTextMapHash": 3816664530,
-        "iconName": "UI_AvatarIcon_PlayerGirl",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Wind",
-        "skills": [
-            100554
-        ],
-        "talents": []
-    },
-    "10000007-706": {
-        "nameTextMapHash": 3816664530,
-        "iconName": "UI_AvatarIcon_PlayerGirl",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Rock",
-        "skills": [
-            100555,
-            10077,
-            10078
-        ],
-        "talents": [
-            91,
-            92,
-            93,
-            94,
-            95,
-            96
-        ]
-    },
-    "10000007-707": {
-        "nameTextMapHash": 3816664530,
-        "iconName": "UI_AvatarIcon_PlayerGirl",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Electric",
-        "skills": [
-            100556,
-            10602,
-            10605
-        ],
-        "talents": [
-            101,
-            102,
-            103,
-            104,
-            105,
-            106
-        ]
-    },
-    "10000007-708": {
-        "nameTextMapHash": 3816664530,
-        "iconName": "UI_AvatarIcon_PlayerGirl",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Grass",
-        "skills": [
-            100557,
-            10117,
-            10118
-        ],
-        "talents": [
-            111,
-            112,
-            113,
-            114,
-            115,
-            116
-        ]
-    },
-    "10000007": {
-        "nameTextMapHash": 3816664530,
-        "iconName": "UI_AvatarIcon_PlayerGirl",
-        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Grass",
-        "skills": [],
-        "talents": []
-    },
-    "10000014": {
+    {
+        "id": 10000014,
+        "skillDepotId": 1401,
         "nameTextMapHash": 3775299170,
         "iconName": "UI_AvatarIcon_Barbara",
         "sideIconName": "UI_AvatarIcon_Side_Barbara",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Water",
+        "qualityStars": 4,
+        "element": "Hydro",
         "skills": [
             10070,
-            10071,
-            10072
+            10071
         ],
         "talents": [
             141,
@@ -345,16 +84,17 @@
             146
         ]
     },
-    "10000015": {
+    {
+        "id": 10000015,
+        "skillDepotId": 1501,
         "nameTextMapHash": 4119663210,
         "iconName": "UI_AvatarIcon_Kaeya",
         "sideIconName": "UI_AvatarIcon_Side_Kaeya",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Ice",
+        "qualityStars": 4,
+        "element": "Cryo",
         "skills": [
             10073,
-            10074,
-            10075
+            10074
         ],
         "talents": [
             151,
@@ -365,16 +105,17 @@
             156
         ]
     },
-    "10000016": {
+    {
+        "id": 10000016,
+        "skillDepotId": 1601,
         "nameTextMapHash": 3608180322,
         "iconName": "UI_AvatarIcon_Diluc",
         "sideIconName": "UI_AvatarIcon_Side_Diluc",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Fire",
+        "qualityStars": 5,
+        "element": "Pyro",
         "skills": [
             10160,
-            10161,
-            10165
+            10161
         ],
         "talents": [
             161,
@@ -385,16 +126,17 @@
             166
         ]
     },
-    "10000020": {
+    {
+        "id": 10000020,
+        "skillDepotId": 2001,
         "nameTextMapHash": 4160147242,
         "iconName": "UI_AvatarIcon_Razor",
         "sideIconName": "UI_AvatarIcon_Side_Razor",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Electric",
+        "qualityStars": 4,
+        "element": "Electro",
         "skills": [
             10201,
-            10202,
-            10203
+            10202
         ],
         "talents": [
             201,
@@ -405,16 +147,17 @@
             206
         ]
     },
-    "10000021": {
+    {
+        "id": 10000021,
+        "skillDepotId": 2101,
         "nameTextMapHash": 1966438658,
         "iconName": "UI_AvatarIcon_Ambor",
         "sideIconName": "UI_AvatarIcon_Side_Ambor",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Fire",
+        "qualityStars": 4,
+        "element": "Pyro",
         "skills": [
             10041,
-            10032,
-            10017
+            10032
         ],
         "talents": [
             211,
@@ -425,16 +168,17 @@
             216
         ]
     },
-    "10000022": {
+    {
+        "id": 10000022,
+        "skillDepotId": 2201,
         "nameTextMapHash": 2466140362,
         "iconName": "UI_AvatarIcon_Venti",
         "sideIconName": "UI_AvatarIcon_Side_Venti",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Wind",
+        "qualityStars": 5,
+        "element": "Anemo",
         "skills": [
             10221,
-            10224,
-            10225
+            10224
         ],
         "talents": [
             221,
@@ -445,16 +189,17 @@
             226
         ]
     },
-    "10000023": {
+    {
+        "id": 10000023,
+        "skillDepotId": 2301,
         "nameTextMapHash": 1130996346,
         "iconName": "UI_AvatarIcon_Xiangling",
         "sideIconName": "UI_AvatarIcon_Side_Xiangling",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Fire",
+        "qualityStars": 4,
+        "element": "Pyro",
         "skills": [
             10231,
-            10232,
-            10235
+            10232
         ],
         "talents": [
             231,
@@ -465,16 +210,17 @@
             236
         ]
     },
-    "10000024": {
+    {
+        "id": 10000024,
+        "skillDepotId": 2401,
         "nameTextMapHash": 2646367730,
         "iconName": "UI_AvatarIcon_Beidou",
         "sideIconName": "UI_AvatarIcon_Side_Beidou",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Electric",
+        "qualityStars": 4,
+        "element": "Electro",
         "skills": [
             10241,
-            10242,
-            10245
+            10242
         ],
         "talents": [
             241,
@@ -485,16 +231,17 @@
             246
         ]
     },
-    "10000025": {
+    {
+        "id": 10000025,
+        "skillDepotId": 2501,
         "nameTextMapHash": 4197635682,
         "iconName": "UI_AvatarIcon_Xingqiu",
         "sideIconName": "UI_AvatarIcon_Side_Xingqiu",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Water",
+        "qualityStars": 4,
+        "element": "Hydro",
         "skills": [
             10381,
-            10382,
-            10385
+            10382
         ],
         "talents": [
             251,
@@ -505,16 +252,17 @@
             256
         ]
     },
-    "10000026": {
+    {
+        "id": 10000026,
+        "skillDepotId": 2601,
         "nameTextMapHash": 1021947690,
         "iconName": "UI_AvatarIcon_Xiao",
         "sideIconName": "UI_AvatarIcon_Side_Xiao",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Wind",
+        "qualityStars": 5,
+        "element": "Anemo",
         "skills": [
             10261,
-            10262,
-            10265
+            10262
         ],
         "talents": [
             261,
@@ -525,16 +273,17 @@
             266
         ]
     },
-    "10000027": {
+    {
+        "id": 10000027,
+        "skillDepotId": 2701,
         "nameTextMapHash": 4127888970,
         "iconName": "UI_AvatarIcon_Ningguang",
         "sideIconName": "UI_AvatarIcon_Side_Ningguang",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Rock",
+        "qualityStars": 4,
+        "element": "Geo",
         "skills": [
             10271,
-            10272,
-            10274
+            10272
         ],
         "talents": [
             271,
@@ -545,16 +294,17 @@
             276
         ]
     },
-    "10000029": {
+    {
+        "id": 10000029,
+        "skillDepotId": 2901,
         "nameTextMapHash": 3339083250,
         "iconName": "UI_AvatarIcon_Klee",
         "sideIconName": "UI_AvatarIcon_Side_Klee",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Fire",
+        "qualityStars": 5,
+        "element": "Pyro",
         "skills": [
             10291,
-            10292,
-            10295
+            10292
         ],
         "talents": [
             291,
@@ -565,16 +315,17 @@
             296
         ]
     },
-    "10000030": {
+    {
+        "id": 10000030,
+        "skillDepotId": 3001,
         "nameTextMapHash": 3862787418,
         "iconName": "UI_AvatarIcon_Zhongli",
         "sideIconName": "UI_AvatarIcon_Side_Zhongli",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Rock",
+        "qualityStars": 5,
+        "element": "Geo",
         "skills": [
             10301,
-            10302,
-            10303
+            10302
         ],
         "talents": [
             301,
@@ -585,16 +336,17 @@
             306
         ]
     },
-    "10000031": {
+    {
+        "id": 10000031,
+        "skillDepotId": 3101,
         "nameTextMapHash": 3277782506,
         "iconName": "UI_AvatarIcon_Fischl",
         "sideIconName": "UI_AvatarIcon_Side_Fischl",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Electric",
+        "qualityStars": 4,
+        "element": "Electro",
         "skills": [
             10311,
-            10312,
-            10313
+            10312
         ],
         "talents": [
             311,
@@ -605,16 +357,17 @@
             316
         ]
     },
-    "10000032": {
+    {
+        "id": 10000032,
+        "skillDepotId": 3201,
         "nameTextMapHash": 968893378,
         "iconName": "UI_AvatarIcon_Bennett",
         "sideIconName": "UI_AvatarIcon_Side_Bennett",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Fire",
+        "qualityStars": 4,
+        "element": "Pyro",
         "skills": [
             10321,
-            10322,
-            10323
+            10322
         ],
         "talents": [
             321,
@@ -625,16 +378,17 @@
             326
         ]
     },
-    "10000033": {
+    {
+        "id": 10000033,
+        "skillDepotId": 3301,
         "nameTextMapHash": 3847143266,
         "iconName": "UI_AvatarIcon_Tartaglia",
         "sideIconName": "UI_AvatarIcon_Side_Tartaglia",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Water",
+        "qualityStars": 5,
+        "element": "Hydro",
         "skills": [
             10331,
-            10332,
-            10333
+            10332
         ],
         "talents": [
             331,
@@ -645,16 +399,17 @@
             336
         ]
     },
-    "10000034": {
+    {
+        "id": 10000034,
+        "skillDepotId": 3401,
         "nameTextMapHash": 1921418842,
         "iconName": "UI_AvatarIcon_Noel",
         "sideIconName": "UI_AvatarIcon_Side_Noel",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Rock",
+        "qualityStars": 4,
+        "element": "Geo",
         "skills": [
             10341,
-            10342,
-            10343
+            10342
         ],
         "talents": [
             341,
@@ -665,16 +420,17 @@
             346
         ]
     },
-    "10000035": {
+    {
+        "id": 10000035,
+        "skillDepotId": 3501,
         "nameTextMapHash": 168956722,
         "iconName": "UI_AvatarIcon_Qiqi",
         "sideIconName": "UI_AvatarIcon_Side_Qiqi",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Ice",
+        "qualityStars": 5,
+        "element": "Cryo",
         "skills": [
             10351,
-            10352,
-            10353
+            10352
         ],
         "talents": [
             351,
@@ -685,16 +441,17 @@
             356
         ]
     },
-    "10000036": {
+    {
+        "id": 10000036,
+        "skillDepotId": 3601,
         "nameTextMapHash": 2876340530,
         "iconName": "UI_AvatarIcon_Chongyun",
         "sideIconName": "UI_AvatarIcon_Side_Chongyun",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Ice",
+        "qualityStars": 4,
+        "element": "Cryo",
         "skills": [
             10401,
-            10402,
-            10403
+            10402
         ],
         "talents": [
             361,
@@ -705,16 +462,17 @@
             366
         ]
     },
-    "10000037": {
+    {
+        "id": 10000037,
+        "skillDepotId": 3701,
         "nameTextMapHash": 2679781122,
         "iconName": "UI_AvatarIcon_Ganyu",
         "sideIconName": "UI_AvatarIcon_Side_Ganyu",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Ice",
+        "qualityStars": 5,
+        "element": "Cryo",
         "skills": [
             10371,
-            10372,
-            10373
+            10372
         ],
         "talents": [
             371,
@@ -725,16 +483,17 @@
             376
         ]
     },
-    "10000038": {
+    {
+        "id": 10000038,
+        "skillDepotId": 3801,
         "nameTextMapHash": 4108620722,
         "iconName": "UI_AvatarIcon_Albedo",
         "sideIconName": "UI_AvatarIcon_Side_Albedo",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Rock",
+        "qualityStars": 5,
+        "element": "Geo",
         "skills": [
             10386,
-            10387,
-            10388
+            10387
         ],
         "talents": [
             381,
@@ -745,16 +504,17 @@
             386
         ]
     },
-    "10000039": {
+    {
+        "id": 10000039,
+        "skillDepotId": 3901,
         "nameTextMapHash": 1468367538,
         "iconName": "UI_AvatarIcon_Diona",
         "sideIconName": "UI_AvatarIcon_Side_Diona",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Ice",
+        "qualityStars": 4,
+        "element": "Cryo",
         "skills": [
             10391,
-            10392,
-            10395
+            10392
         ],
         "talents": [
             391,
@@ -765,16 +525,18 @@
             396
         ]
     },
-    "10000041": {
+    {
+        "id": 10000041,
+        "skillDepotId": 4101,
         "nameTextMapHash": 1113306282,
         "iconName": "UI_AvatarIcon_Mona",
         "sideIconName": "UI_AvatarIcon_Side_Mona",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Water",
+        "qualityStars": 5,
+        "element": "Hydro",
         "skills": [
             10411,
             10412,
-            10415
+            10413
         ],
         "talents": [
             411,
@@ -785,16 +547,17 @@
             416
         ]
     },
-    "10000042": {
+    {
+        "id": 10000042,
+        "skillDepotId": 4201,
         "nameTextMapHash": 1864015138,
         "iconName": "UI_AvatarIcon_Keqing",
         "sideIconName": "UI_AvatarIcon_Side_Keqing",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Electric",
+        "qualityStars": 5,
+        "element": "Electro",
         "skills": [
             10421,
-            10422,
-            10425
+            10422
         ],
         "talents": [
             421,
@@ -805,16 +568,17 @@
             426
         ]
     },
-    "10000043": {
+    {
+        "id": 10000043,
+        "skillDepotId": 4301,
         "nameTextMapHash": 1053433018,
         "iconName": "UI_AvatarIcon_Sucrose",
         "sideIconName": "UI_AvatarIcon_Side_Sucrose",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Wind",
+        "qualityStars": 4,
+        "element": "Anemo",
         "skills": [
             10431,
-            10432,
-            10435
+            10432
         ],
         "talents": [
             431,
@@ -825,16 +589,17 @@
             436
         ]
     },
-    "10000044": {
+    {
+        "id": 10000044,
+        "skillDepotId": 4401,
         "nameTextMapHash": 4273845410,
         "iconName": "UI_AvatarIcon_Xinyan",
         "sideIconName": "UI_AvatarIcon_Side_Xinyan",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Fire",
+        "qualityStars": 4,
+        "element": "Pyro",
         "skills": [
             10441,
-            10442,
-            10443
+            10442
         ],
         "talents": [
             441,
@@ -845,16 +610,17 @@
             446
         ]
     },
-    "10000045": {
+    {
+        "id": 10000045,
+        "skillDepotId": 4501,
         "nameTextMapHash": 4260733330,
         "iconName": "UI_AvatarIcon_Rosaria",
         "sideIconName": "UI_AvatarIcon_Side_Rosaria",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Ice",
+        "qualityStars": 4,
+        "element": "Cryo",
         "skills": [
             10451,
-            10452,
-            10453
+            10452
         ],
         "talents": [
             451,
@@ -865,16 +631,17 @@
             456
         ]
     },
-    "10000046": {
+    {
+        "id": 10000046,
+        "skillDepotId": 4601,
         "nameTextMapHash": 1940919994,
         "iconName": "UI_AvatarIcon_Hutao",
         "sideIconName": "UI_AvatarIcon_Side_Hutao",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Fire",
+        "qualityStars": 5,
+        "element": "Pyro",
         "skills": [
             10461,
-            10462,
-            10463
+            10462
         ],
         "talents": [
             461,
@@ -885,16 +652,17 @@
             466
         ]
     },
-    "10000047": {
+    {
+        "id": 10000047,
+        "skillDepotId": 4701,
         "nameTextMapHash": 88505754,
         "iconName": "UI_AvatarIcon_Kazuha",
         "sideIconName": "UI_AvatarIcon_Side_Kazuha",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Wind",
+        "qualityStars": 5,
+        "element": "Anemo",
         "skills": [
             10471,
-            10472,
-            10475
+            10472
         ],
         "talents": [
             471,
@@ -905,16 +673,17 @@
             476
         ]
     },
-    "10000048": {
+    {
+        "id": 10000048,
+        "skillDepotId": 4801,
         "nameTextMapHash": 697277554,
         "iconName": "UI_AvatarIcon_Feiyan",
         "sideIconName": "UI_AvatarIcon_Side_Feiyan",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Fire",
+        "qualityStars": 4,
+        "element": "Pyro",
         "skills": [
             10481,
-            10482,
-            10485
+            10482
         ],
         "talents": [
             481,
@@ -925,16 +694,17 @@
             486
         ]
     },
-    "10000049": {
+    {
+        "id": 10000049,
+        "skillDepotId": 4901,
         "nameTextMapHash": 2504399314,
         "iconName": "UI_AvatarIcon_Yoimiya",
         "sideIconName": "UI_AvatarIcon_Side_Yoimiya",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Fire",
+        "qualityStars": 5,
+        "element": "Pyro",
         "skills": [
             10491,
-            10492,
-            10495
+            10492
         ],
         "talents": [
             491,
@@ -945,16 +715,17 @@
             496
         ]
     },
-    "10000050": {
+    {
+        "id": 10000050,
+        "skillDepotId": 5001,
         "nameTextMapHash": 3555115602,
         "iconName": "UI_AvatarIcon_Tohma",
         "sideIconName": "UI_AvatarIcon_Side_Tohma",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Fire",
+        "qualityStars": 4,
+        "element": "Pyro",
         "skills": [
             10501,
-            10502,
-            10505
+            10502
         ],
         "talents": [
             501,
@@ -965,16 +736,17 @@
             506
         ]
     },
-    "10000051": {
+    {
+        "id": 10000051,
+        "skillDepotId": 5101,
         "nameTextMapHash": 3717667418,
         "iconName": "UI_AvatarIcon_Eula",
         "sideIconName": "UI_AvatarIcon_Side_Eula",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Ice",
+        "qualityStars": 5,
+        "element": "Cryo",
         "skills": [
             10511,
-            10512,
-            10515
+            10512
         ],
         "talents": [
             511,
@@ -985,16 +757,17 @@
             516
         ]
     },
-    "10000052": {
+    {
+        "id": 10000052,
+        "skillDepotId": 5201,
         "nameTextMapHash": 3024507506,
         "iconName": "UI_AvatarIcon_Shougun",
         "sideIconName": "UI_AvatarIcon_Side_Shougun",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Electric",
+        "qualityStars": 5,
+        "element": "Electro",
         "skills": [
             10521,
-            10522,
-            10525
+            10522
         ],
         "talents": [
             521,
@@ -1005,16 +778,17 @@
             526
         ]
     },
-    "10000053": {
+    {
+        "id": 10000053,
+        "skillDepotId": 5301,
         "nameTextMapHash": 2388785242,
         "iconName": "UI_AvatarIcon_Sayu",
         "sideIconName": "UI_AvatarIcon_Side_Sayu",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Wind",
+        "qualityStars": 4,
+        "element": "Anemo",
         "skills": [
             10531,
-            10532,
-            10535
+            10532
         ],
         "talents": [
             531,
@@ -1025,16 +799,17 @@
             536
         ]
     },
-    "10000054": {
+    {
+        "id": 10000054,
+        "skillDepotId": 5401,
         "nameTextMapHash": 3914045794,
         "iconName": "UI_AvatarIcon_Kokomi",
         "sideIconName": "UI_AvatarIcon_Side_Kokomi",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Water",
+        "qualityStars": 5,
+        "element": "Hydro",
         "skills": [
             10541,
-            10542,
-            10545
+            10542
         ],
         "talents": [
             541,
@@ -1045,16 +820,17 @@
             546
         ]
     },
-    "10000055": {
+    {
+        "id": 10000055,
+        "skillDepotId": 5501,
         "nameTextMapHash": 3400133546,
         "iconName": "UI_AvatarIcon_Gorou",
         "sideIconName": "UI_AvatarIcon_Side_Gorou",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Rock",
+        "qualityStars": 4,
+        "element": "Geo",
         "skills": [
             10551,
-            10552,
-            10555
+            10552
         ],
         "talents": [
             551,
@@ -1065,16 +841,17 @@
             556
         ]
     },
-    "10000056": {
+    {
+        "id": 10000056,
+        "skillDepotId": 5601,
         "nameTextMapHash": 1483922610,
         "iconName": "UI_AvatarIcon_Sara",
         "sideIconName": "UI_AvatarIcon_Side_Sara",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Electric",
+        "qualityStars": 4,
+        "element": "Electro",
         "skills": [
             10561,
-            10562,
-            10565
+            10562
         ],
         "talents": [
             561,
@@ -1085,16 +862,17 @@
             566
         ]
     },
-    "10000057": {
+    {
+        "id": 10000057,
+        "skillDepotId": 5701,
         "nameTextMapHash": 3068316954,
         "iconName": "UI_AvatarIcon_Itto",
         "sideIconName": "UI_AvatarIcon_Side_Itto",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Rock",
+        "qualityStars": 5,
+        "element": "Geo",
         "skills": [
             10571,
-            10572,
-            10575
+            10572
         ],
         "talents": [
             571,
@@ -1105,16 +883,17 @@
             576
         ]
     },
-    "10000058": {
+    {
+        "id": 10000058,
+        "skillDepotId": 5801,
         "nameTextMapHash": 2713453234,
         "iconName": "UI_AvatarIcon_Yae",
         "sideIconName": "UI_AvatarIcon_Side_Yae",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Electric",
+        "qualityStars": 5,
+        "element": "Electro",
         "skills": [
             10581,
-            10582,
-            10585
+            10582
         ],
         "talents": [
             581,
@@ -1125,16 +904,17 @@
             586
         ]
     },
-    "10000059": {
+    {
+        "id": 10000059,
+        "skillDepotId": 5901,
         "nameTextMapHash": 646032090,
         "iconName": "UI_AvatarIcon_Heizo",
         "sideIconName": "UI_AvatarIcon_Side_Heizo",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Wind",
+        "qualityStars": 4,
+        "element": "Anemo",
         "skills": [
             10591,
-            10592,
-            10595
+            10592
         ],
         "talents": [
             591,
@@ -1145,16 +925,17 @@
             596
         ]
     },
-    "10000060": {
+    {
+        "id": 10000060,
+        "skillDepotId": 6001,
         "nameTextMapHash": 2848374378,
         "iconName": "UI_AvatarIcon_Yelan",
         "sideIconName": "UI_AvatarIcon_Side_Yelan",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Water",
+        "qualityStars": 5,
+        "element": "Hydro",
         "skills": [
             10606,
-            10607,
-            10610
+            10607
         ],
         "talents": [
             601,
@@ -1165,16 +946,17 @@
             606
         ]
     },
-    "10000061": {
+    {
+        "id": 10000061,
+        "skillDepotId": 6101,
         "nameTextMapHash": 1456643042,
         "iconName": "UI_AvatarIcon_Momoka",
         "sideIconName": "UI_AvatarIcon_Side_Momoka",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Grass",
+        "qualityStars": 4,
+        "element": "Dendro",
         "skills": [
             10611,
-            10612,
-            10615
+            10612
         ],
         "talents": [
             611,
@@ -1185,16 +967,16 @@
             616
         ]
     },
-    "10000062": {
+    {
+        "id": 10000062,
+        "skillDepotId": 6201,
         "nameTextMapHash": 3689108098,
         "iconName": "UI_AvatarIcon_Aloy",
         "sideIconName": "UI_AvatarIcon_Side_Aloy",
-        "qualityType": "QUALITY_ORANGE_SP",
-        "costElemType": "Ice",
+        "element": "Cryo",
         "skills": [
             10621,
-            10622,
-            10625
+            10622
         ],
         "talents": [
             621,
@@ -1205,16 +987,17 @@
             626
         ]
     },
-    "10000063": {
+    {
+        "id": 10000063,
+        "skillDepotId": 6301,
         "nameTextMapHash": 334242634,
         "iconName": "UI_AvatarIcon_Shenhe",
         "sideIconName": "UI_AvatarIcon_Side_Shenhe",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Ice",
+        "qualityStars": 5,
+        "element": "Cryo",
         "skills": [
             10631,
-            10632,
-            10635
+            10632
         ],
         "talents": [
             631,
@@ -1225,16 +1008,17 @@
             636
         ]
     },
-    "10000064": {
+    {
+        "id": 10000064,
+        "skillDepotId": 6401,
         "nameTextMapHash": 655825874,
         "iconName": "UI_AvatarIcon_Yunjin",
         "sideIconName": "UI_AvatarIcon_Side_Yunjin",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Rock",
+        "qualityStars": 4,
+        "element": "Geo",
         "skills": [
             10641,
-            10642,
-            10643
+            10642
         ],
         "talents": [
             641,
@@ -1245,16 +1029,17 @@
             646
         ]
     },
-    "10000065": {
+    {
+        "id": 10000065,
+        "skillDepotId": 6501,
         "nameTextMapHash": 1940821986,
         "iconName": "UI_AvatarIcon_Shinobu",
         "sideIconName": "UI_AvatarIcon_Side_Shinobu",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Electric",
+        "qualityStars": 4,
+        "element": "Electro",
         "skills": [
             10651,
-            10652,
-            10655
+            10652
         ],
         "talents": [
             651,
@@ -1265,16 +1050,17 @@
             656
         ]
     },
-    "10000066": {
+    {
+        "id": 10000066,
+        "skillDepotId": 6601,
         "nameTextMapHash": 1588620330,
         "iconName": "UI_AvatarIcon_Ayato",
         "sideIconName": "UI_AvatarIcon_Side_Ayato",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Water",
+        "qualityStars": 5,
+        "element": "Hydro",
         "skills": [
             10661,
-            10662,
-            10665
+            10662
         ],
         "talents": [
             661,
@@ -1285,16 +1071,17 @@
             666
         ]
     },
-    "10000067": {
+    {
+        "id": 10000067,
+        "skillDepotId": 6701,
         "nameTextMapHash": 2948362178,
         "iconName": "UI_AvatarIcon_Collei",
         "sideIconName": "UI_AvatarIcon_Side_Collei",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Grass",
+        "qualityStars": 4,
+        "element": "Dendro",
         "skills": [
             10671,
-            10672,
-            10675
+            10672
         ],
         "talents": [
             671,
@@ -1305,16 +1092,17 @@
             676
         ]
     },
-    "10000068": {
+    {
+        "id": 10000068,
+        "skillDepotId": 6801,
         "nameTextMapHash": 388272194,
         "iconName": "UI_AvatarIcon_Dori",
         "sideIconName": "UI_AvatarIcon_Side_Dori",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Electric",
+        "qualityStars": 4,
+        "element": "Electro",
         "skills": [
             10681,
-            10682,
-            10685
+            10682
         ],
         "talents": [
             681,
@@ -1325,16 +1113,17 @@
             686
         ]
     },
-    "10000069": {
+    {
+        "id": 10000069,
+        "skillDepotId": 6901,
         "nameTextMapHash": 2506955778,
         "iconName": "UI_AvatarIcon_Tighnari",
         "sideIconName": "UI_AvatarIcon_Side_Tighnari",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Grass",
+        "qualityStars": 5,
+        "element": "Dendro",
         "skills": [
             10691,
-            10692,
-            10695
+            10692
         ],
         "talents": [
             691,
@@ -1345,16 +1134,17 @@
             696
         ]
     },
-    "10000070": {
+    {
+        "id": 10000070,
+        "skillDepotId": 7001,
         "nameTextMapHash": 3850149970,
         "iconName": "UI_AvatarIcon_Nilou",
         "sideIconName": "UI_AvatarIcon_Side_Nilou",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Water",
+        "qualityStars": 5,
+        "element": "Hydro",
         "skills": [
             10701,
-            10702,
-            10705
+            10702
         ],
         "talents": [
             701,
@@ -1365,16 +1155,17 @@
             706
         ]
     },
-    "10000071": {
+    {
+        "id": 10000071,
+        "skillDepotId": 7101,
         "nameTextMapHash": 1049891906,
         "iconName": "UI_AvatarIcon_Cyno",
         "sideIconName": "UI_AvatarIcon_Side_Cyno",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Electric",
+        "qualityStars": 5,
+        "element": "Electro",
         "skills": [
             10711,
-            10712,
-            10715
+            10712
         ],
         "talents": [
             711,
@@ -1385,16 +1176,17 @@
             716
         ]
     },
-    "10000072": {
+    {
+        "id": 10000072,
+        "skillDepotId": 7201,
         "nameTextMapHash": 3092975658,
         "iconName": "UI_AvatarIcon_Candace",
         "sideIconName": "UI_AvatarIcon_Side_Candace",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Water",
+        "qualityStars": 4,
+        "element": "Hydro",
         "skills": [
             10721,
-            10722,
-            10725
+            10722
         ],
         "talents": [
             721,
@@ -1405,16 +1197,17 @@
             726
         ]
     },
-    "10000073": {
+    {
+        "id": 10000073,
+        "skillDepotId": 7301,
         "nameTextMapHash": 712501082,
         "iconName": "UI_AvatarIcon_Nahida",
         "sideIconName": "UI_AvatarIcon_Side_Nahida",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Grass",
+        "qualityStars": 5,
+        "element": "Dendro",
         "skills": [
             10731,
-            10732,
-            10735
+            10732
         ],
         "talents": [
             731,
@@ -1425,16 +1218,17 @@
             736
         ]
     },
-    "10000074": {
+    {
+        "id": 10000074,
+        "skillDepotId": 7401,
         "nameTextMapHash": 2889777514,
         "iconName": "UI_AvatarIcon_Layla",
         "sideIconName": "UI_AvatarIcon_Side_Layla",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Ice",
+        "qualityStars": 4,
+        "element": "Cryo",
         "skills": [
             10741,
-            10742,
-            10745
+            10742
         ],
         "talents": [
             741,
@@ -1445,16 +1239,17 @@
             746
         ]
     },
-    "10000075": {
+    {
+        "id": 10000075,
+        "skillDepotId": 7501,
         "nameTextMapHash": 3230559562,
         "iconName": "UI_AvatarIcon_Wanderer",
         "sideIconName": "UI_AvatarIcon_Side_Wanderer",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Wind",
+        "qualityStars": 5,
+        "element": "Anemo",
         "skills": [
             10751,
-            10752,
-            10755
+            10752
         ],
         "talents": [
             751,
@@ -1465,16 +1260,17 @@
             756
         ]
     },
-    "10000076": {
+    {
+        "id": 10000076,
+        "skillDepotId": 7601,
         "nameTextMapHash": 2387711994,
         "iconName": "UI_AvatarIcon_Faruzan",
         "sideIconName": "UI_AvatarIcon_Side_Faruzan",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Wind",
+        "qualityStars": 4,
+        "element": "Anemo",
         "skills": [
             10761,
-            10762,
-            10765
+            10762
         ],
         "talents": [
             761,
@@ -1485,16 +1281,17 @@
             766
         ]
     },
-    "10000077": {
+    {
+        "id": 10000077,
+        "skillDepotId": 7701,
         "nameTextMapHash": 1732418482,
         "iconName": "UI_AvatarIcon_Yaoyao",
         "sideIconName": "UI_AvatarIcon_Side_Yaoyao",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Grass",
+        "qualityStars": 4,
+        "element": "Dendro",
         "skills": [
             10771,
-            10772,
-            10775
+            10772
         ],
         "talents": [
             771,
@@ -1505,16 +1302,17 @@
             776
         ]
     },
-    "10000078": {
+    {
+        "id": 10000078,
+        "skillDepotId": 7801,
         "nameTextMapHash": 4002157418,
         "iconName": "UI_AvatarIcon_Alhatham",
         "sideIconName": "UI_AvatarIcon_Side_Alhatham",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Grass",
+        "qualityStars": 5,
+        "element": "Dendro",
         "skills": [
             10781,
-            10782,
-            10785
+            10782
         ],
         "talents": [
             781,
@@ -1525,16 +1323,17 @@
             786
         ]
     },
-    "10000079": {
+    {
+        "id": 10000079,
+        "skillDepotId": 7901,
         "nameTextMapHash": 2360533154,
         "iconName": "UI_AvatarIcon_Dehya",
         "sideIconName": "UI_AvatarIcon_Side_Dehya",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Fire",
+        "qualityStars": 5,
+        "element": "Pyro",
         "skills": [
             10791,
-            10792,
-            10795
+            10792
         ],
         "talents": [
             791,
@@ -1545,16 +1344,17 @@
             796
         ]
     },
-    "10000080": {
+    {
+        "id": 10000080,
+        "skillDepotId": 8001,
         "nameTextMapHash": 231911858,
         "iconName": "UI_AvatarIcon_Mika",
         "sideIconName": "UI_AvatarIcon_Side_Mika",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Ice",
+        "qualityStars": 4,
+        "element": "Cryo",
         "skills": [
             10801,
-            10802,
-            10805
+            10802
         ],
         "talents": [
             801,
@@ -1565,16 +1365,17 @@
             806
         ]
     },
-    "10000081": {
+    {
+        "id": 10000081,
+        "skillDepotId": 8101,
         "nameTextMapHash": 466355514,
         "iconName": "UI_AvatarIcon_Kaveh",
         "sideIconName": "UI_AvatarIcon_Side_Kaveh",
-        "qualityType": "QUALITY_PURPLE",
-        "costElemType": "Grass",
+        "qualityStars": 4,
+        "element": "Dendro",
         "skills": [
             10811,
-            10812,
-            10815
+            10812
         ],
         "talents": [
             811,
@@ -1585,16 +1386,17 @@
             816
         ]
     },
-    "10000082": {
+    {
+        "id": 10000082,
+        "skillDepotId": 8201,
         "nameTextMapHash": 2984815066,
         "iconName": "UI_AvatarIcon_Baizhuer",
         "sideIconName": "UI_AvatarIcon_Side_Baizhuer",
-        "qualityType": "QUALITY_ORANGE",
-        "costElemType": "Grass",
+        "qualityStars": 5,
+        "element": "Dendro",
         "skills": [
             10821,
-            10822,
-            10825
+            10822
         ],
         "talents": [
             821,
@@ -1604,5 +1406,173 @@
             825,
             826
         ]
+    },
+    {
+        "id": 10000005,
+        "skillDepotId": 504,
+        "nameTextMapHash": 1533656818,
+        "iconName": "UI_AvatarIcon_PlayerBoy",
+        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
+        "qualityStars": 5,
+        "element": "Anemo",
+        "skills": [
+            100543,
+            10067
+        ],
+        "talents": [
+            71,
+            72,
+            73,
+            74,
+            75,
+            76
+        ]
+    },
+    {
+        "id": 10000005,
+        "skillDepotId": 506,
+        "nameTextMapHash": 1533656818,
+        "iconName": "UI_AvatarIcon_PlayerBoy",
+        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
+        "qualityStars": 5,
+        "element": "Geo",
+        "skills": [
+            100545,
+            10077
+        ],
+        "talents": [
+            91,
+            92,
+            93,
+            94,
+            95,
+            96
+        ]
+    },
+    {
+        "id": 10000005,
+        "skillDepotId": 507,
+        "nameTextMapHash": 1533656818,
+        "iconName": "UI_AvatarIcon_PlayerBoy",
+        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
+        "qualityStars": 5,
+        "element": "Electro",
+        "skills": [
+            100546,
+            10602
+        ],
+        "talents": [
+            101,
+            102,
+            103,
+            104,
+            105,
+            106
+        ]
+    },
+    {
+        "id": 10000005,
+        "skillDepotId": 508,
+        "nameTextMapHash": 1533656818,
+        "iconName": "UI_AvatarIcon_PlayerBoy",
+        "sideIconName": "UI_AvatarIcon_Side_PlayerBoy",
+        "qualityStars": 5,
+        "element": "Dendro",
+        "skills": [
+            100547,
+            10117
+        ],
+        "talents": [
+            111,
+            112,
+            113,
+            114,
+            115,
+            116
+        ]
+    },
+    {
+        "id": 10000007,
+        "skillDepotId": 704,
+        "nameTextMapHash": 3816664530,
+        "iconName": "UI_AvatarIcon_PlayerGirl",
+        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
+        "qualityStars": 5,
+        "element": "Anemo",
+        "skills": [
+            100553,
+            10067
+        ],
+        "talents": [
+            71,
+            72,
+            73,
+            74,
+            75,
+            76
+        ]
+    },
+    {
+        "id": 10000007,
+        "skillDepotId": 706,
+        "nameTextMapHash": 3816664530,
+        "iconName": "UI_AvatarIcon_PlayerGirl",
+        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
+        "qualityStars": 5,
+        "element": "Geo",
+        "skills": [
+            100555,
+            10077
+        ],
+        "talents": [
+            91,
+            92,
+            93,
+            94,
+            95,
+            96
+        ]
+    },
+    {
+        "id": 10000007,
+        "skillDepotId": 707,
+        "nameTextMapHash": 3816664530,
+        "iconName": "UI_AvatarIcon_PlayerGirl",
+        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
+        "qualityStars": 5,
+        "element": "Electro",
+        "skills": [
+            100556,
+            10602
+        ],
+        "talents": [
+            101,
+            102,
+            103,
+            104,
+            105,
+            106
+        ]
+    },
+    {
+        "id": 10000007,
+        "skillDepotId": 708,
+        "nameTextMapHash": 3816664530,
+        "iconName": "UI_AvatarIcon_PlayerGirl",
+        "sideIconName": "UI_AvatarIcon_Side_PlayerGirl",
+        "qualityStars": 5,
+        "element": "Dendro",
+        "skills": [
+            100557,
+            10117
+        ],
+        "talents": [
+            111,
+            112,
+            113,
+            114,
+            115,
+            116
+        ]
     }
-}
+]

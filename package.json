@@ -49,8 +49,9 @@
         "node-cache": "^5.1.2"
     },
     "devDependencies": {
+        "@types/node": "^20.4.2",
         "eslint": "^8.45.0",
-        "eslint-kit": "^10.1.0",
+        "eslint-kit": "^10.2.0",
         "prettier": "^3.0.0",
         "typescript": "^5.1.6"
     }
