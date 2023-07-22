@@ -1,87 +1,7 @@
-import { NameCard } from "../models";
+export * from "./assets";
+export * from "./parseDatas";
+export * from "./responses";
 
-export interface IPlayerInfo {
-    nickname: string;
-    level: number;
-    signature: string;
-    worldLevel: number;
-    nameCardId: number;
-    nameCard: NameCard;
-    finishAchievementNum: number;
-    towerFloorIndex: number;
-    towerLevelIndex: number;
-    showAvatarInfoList: IShowAvatarInfoList[];
-    showNameCardIdList: number[];
-    profilePicture: IProfilePicture;
-}
-export interface IOwner {
-    hash: string;
-    username: string;
-    profile: IProfile;
-}
-export interface IProfile {
-    bio: string;
-    level: number;
-    signup_state: number;
-    image_url: string;
-}
-export interface IShowAvatarInfoList {
-    avatarId: number;
-    level: number;
-}
-export interface IProfilePicture {
-    avatarId: number;
-}
-export interface ILocalizations {
-    [key: string]: {
-        [key: string]: string;
-    };
-}
-export interface INameCardAssets {
-    [key: string]: INameCardAsset;
-}
-export interface INameCardAsset {
-    nameTextMapHash: number;
-    icon: string;
-    picPath: string[];
-    rankLevel: number;
-    materialType: string;
-}
-export interface ICharacterAssets {
-    [key: string]: ICharacterAsset;
-}
-export interface ICharacterAsset {
-    nameTextMapHash: number;
-    iconName: string;
-    sideIconName: string;
-    qualityType: string;
-    costElemType: string;
-    skills: number[];
-    talents: number[];
-}
-export interface ICharacterConstellationAssets {
-    [key: string]: ICharacterConstellationAsset;
-}
-export interface ICharacterConstellationAsset {
-    nameTextMapHash: number;
-    icon: string;
-}
-export interface ICharacterSkillAssets {
-    [key: string]: ICharacterSkillAsset;
-}
-export interface ICharacterSkillAsset {
-    nameTextMapHash: number;
-    skillIcon: string;
-    proudSkillGroupId?: number | null;
-}
-export interface ICharacterCostumes {
-    [key: string]: ICharacterCostume;
-}
-export interface ICharacterCostume {
-    iconName: string;
-    sideIconName: string;
-    nameTextMapHash: number;
-}
 export type TLanguage =
     | "CHS"
     | "CHT"
@@ -96,3 +16,12 @@ export type TLanguage =
     | "RU"
     | "TH"
     | "VI";
+
+export interface IAssetsUpdaterParams {
+    // Array of languages with localization. Already contains enkaNetwork.language value
+    languages?: TLanguage[];
+    // The interval for checking the relevance of assets in **`ms`**. Default is 30 * 60 * 1000 (half hour)
+    checkInterval?: number | false;
+    // Check immediately for the first time
+    instant?: boolean;
+}

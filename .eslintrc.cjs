@@ -3,6 +3,7 @@ const { configure, presets } = require("eslint-kit");
 module.exports = configure({
     extend: {
         rules: {
+            "unicorn/explicit-length-check": "off",
             "no-implicit-coercion": "off",
             "require-atomic-updates": "off",
         },
