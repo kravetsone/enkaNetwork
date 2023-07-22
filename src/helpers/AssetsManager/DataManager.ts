@@ -36,7 +36,7 @@ export class DataManager {
         this.characters = Object.assign(this.characters, data);
 
         await fs.writeFile(
-            "assets/data/character.json",
+            "assets/data/characters.json",
             JSON.stringify(data, null, 4),
         );
     }

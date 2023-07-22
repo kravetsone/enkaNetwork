@@ -26,10 +26,6 @@
         "url": "https://github.com/kravetsone/enkaNetwork/issues"
     },
     "homepage": "https://github.com/kravetsone/enkaNetwork#readme",
-    "files": [
-        "assets/",
-        "dist/"
-    ],
     "scripts": {
         "install": "node scripts/install.js",
         "test": "echo \"Error: no test specified\" && exit 1",
