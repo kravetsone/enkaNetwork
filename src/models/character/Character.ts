@@ -91,7 +91,6 @@ export class Character {
                     characterInfo.talentIdList || [],
                 ),
         );
-        console.log(character.skills);
         this.skills = character.skills.map(
             (skill) =>
                 new CharacterSkill(
