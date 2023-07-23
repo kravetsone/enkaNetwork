@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+import path from "path";
 import axios from "axios";
 // @ts-ignore: JSON IMPORT OUT OF BASE-DIR
 import config from "../../../assets/config.json";
@@ -22,6 +23,7 @@ import {
     TLanguage,
 } from "../../types";
 import {
+    ASSETS_PATH,
     CHARACTER_DATA_URL,
     CONSTELLATION_DATA_URL,
     COSTUME_DATA_URL,
@@ -146,7 +148,11 @@ export class AssetsUpdater {
                 );
                 if (!energyBurst) return null;
 
-                skillIds.push(...skillset.skills.filter(Boolean));
+                skillIds.push(
+                    ...skillset.skills
+                        .concat(skillset!.energySkill)
+                        .filter(Boolean),
+                );
 
                 return {
                     id: character.id,
@@ -159,7 +165,9 @@ export class AssetsUpdater {
                         .at(-1)}`,
                     qualityStars: qualityTypesStars[character.qualityType],
                     element: elements[energyBurst.costElemType],
-                    skills: skillset.skills.filter(Boolean),
+                    skills: skillset.skills
+                        .concat(skillset!.energySkill)
+                        .filter(Boolean),
                     talents: skillset.talents.filter(Boolean),
                 };
             })
@@ -305,7 +313,7 @@ export class AssetsUpdater {
         config.lastUpdate = new Date().toISOString();
         config.languages = this.languages as never[];
         await fs.writeFile(
-            `assets/config.json`,
+            path.resolve(ASSETS_PATH, `config.json`),
             JSON.stringify(config, null, 4),
         );
     }

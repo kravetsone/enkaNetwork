@@ -91,22 +91,23 @@ export class Character {
                     characterInfo.talentIdList || [],
                 ),
         );
+        console.log(character.skills);
         this.skills = character.skills.map(
             (skill) =>
                 new CharacterSkill(
                     assets,
                     language,
                     skill,
-                    characterInfo?.skillLevelMap[skill] || 0,
-                    characterInfo?.proudSkillExtraLevelMap ?? {},
+                    characterInfo.skillLevelMap[skill] || 0,
+                    characterInfo.proudSkillExtraLevelMap ?? {},
                 ),
         );
 
         this.skillSetId = character.skillDepotId;
         this.skillData = characterInfo.inherentProudSkillList;
-        this.level = Number(characterInfo.propMap["4001"]?.ival || 0);
-        this.elevations = Number(characterInfo.propMap["1002"]?.ival || 0);
-        this.xp = Number(characterInfo.propMap["1001"]?.ival || 0);
+        this.level = Number(characterInfo.propMap["4001"].ival || 0);
+        this.elevations = Number(characterInfo.propMap["1002"].ival || 0);
+        this.xp = Number(characterInfo.propMap["1001"].ival || 0);
         this.friendshipLevel = characterInfo.fetterInfo.expLevel;
         this.costumeId = costume ? costume.id : null;
         this.costumeName = costume

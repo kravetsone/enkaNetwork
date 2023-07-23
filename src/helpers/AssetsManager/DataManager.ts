@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+import path from "path";
 // @ts-ignore: Json Import
 import characters from "../../../assets/data/characters.json";
 // @ts-ignore: Json Import
@@ -16,6 +17,7 @@ import {
     INamecardData,
     ISkillData,
 } from "../../types";
+import { ASSETS_PATH } from "./constants";
 
 export class DataManager {
     characters: ICharacterData[];
@@ -36,7 +38,7 @@ export class DataManager {
         this.characters = Object.assign(this.characters, data);
 
         await fs.writeFile(
-            "assets/data/characters.json",
+            path.resolve(ASSETS_PATH, "data", `characters.json`),
             JSON.stringify(data, null, 4),
         );
     }
@@ -45,7 +47,7 @@ export class DataManager {
         this.constellations = Object.assign(this.constellations, data);
 
         await fs.writeFile(
-            "assets/data/constellations.json",
+            path.resolve(ASSETS_PATH, "data", `constellations.json`),
             JSON.stringify(data, null, 4),
         );
     }
@@ -54,7 +56,7 @@ export class DataManager {
         this.costumes = Object.assign(this.costumes, data);
 
         await fs.writeFile(
-            "assets/data/costumes.json",
+            path.resolve(ASSETS_PATH, "data", `costumes.json`),
             JSON.stringify(data, null, 4),
         );
     }
@@ -63,7 +65,7 @@ export class DataManager {
         this.namecards = Object.assign(this.namecards, data);
 
         await fs.writeFile(
-            "assets/data/namecards.json",
+            path.resolve(ASSETS_PATH, "data", `namecards.json`),
             JSON.stringify(data, null, 4),
         );
     }
@@ -72,7 +74,7 @@ export class DataManager {
         this.skills = Object.assign(this.skills, data);
 
         await fs.writeFile(
-            "assets/data/skills.json",
+            path.resolve(ASSETS_PATH, "data", `skills.json`),
             JSON.stringify(data, null, 4),
         );
     }

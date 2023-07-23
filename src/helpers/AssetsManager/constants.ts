@@ -1,3 +1,4 @@
+import path from "path";
 import { TElement, TLanguage } from "../../types";
 
 export const PROJECT_GITLAB_URL =
@@ -68,3 +69,5 @@ export const localizationLanguages: TLanguage[] = [
     "TH",
     "VI",
 ];
+
+export const ASSETS_PATH = path.resolve(__dirname, "..", "..", "..", "assets");

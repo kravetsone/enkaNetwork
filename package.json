@@ -1,6 +1,6 @@
 {
     "name": "enkanetwork",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "NodeJS/TypeScript api wrapper data from https://enka.network/",
     "main": "dist/index.js",
     "module": "dist/index.js",
@@ -25,13 +25,13 @@
     "bugs": {
         "url": "https://github.com/kravetsone/enkaNetwork/issues"
     },
-    "homepage": "https://github.com/kravetsone/enkaNetwork#readme",
+    "homepage": "https://kravets.gitbook.io/enkanetwork",
     "scripts": {
         "install": "node scripts/install.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc",
         "start": "tsc && node test.mjs",
-        "publish": "tsc && npm publish",
+        "build-publish": "tsc && npm publish",
         "lint": "eslint \"src/**/*.{js,ts}\"",
         "lint:fix": "eslint \"src/**/*.{js,ts}\" --fix"
     },
