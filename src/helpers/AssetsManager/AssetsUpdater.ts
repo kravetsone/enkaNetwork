@@ -225,9 +225,9 @@ export class AssetsUpdater {
 
         const costumes = costumesData.data.map((costume) => ({
             id: costume.KKGNHHIFAMD,
-            iconName: costume.NGEMPNOFHLJ,
+            iconName: costume.sideIconName.replace("_Side", ""),
             sideIconName: costume.sideIconName,
-            gachaIcon: `UI_Costume_${costume.NGEMPNOFHLJ.split("_").at(-1)}`,
+            gachaIcon: `UI_Costume_${costume.sideIconName.split("_").at(-1)}`,
             nameTextMapHash: costume.nameTextMapHash,
         })) as ICostumeData[];
 

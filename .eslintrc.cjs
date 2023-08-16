@@ -17,6 +17,6 @@ module.exports = configure({
             semi: true,
             endOfLine: "auto",
         }),
-        presets.typescript(),
+        presets.typescript({tsconfig: "./tsconfig.json"}),
     ],
 });
