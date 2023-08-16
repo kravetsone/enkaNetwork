@@ -224,7 +224,7 @@ export class AssetsUpdater {
         })) as IConstellationData[];
 
         const costumes = costumesData.data.map((costume) => ({
-            id: costume.KKGNHHIFAMD,
+            id: Object.values(costume).at(0),
             iconName: costume.sideIconName.replace("_Side", ""),
             sideIconName: costume.sideIconName,
             gachaIcon: `UI_Costume_${costume.sideIconName.split("_").at(-1)}`,
