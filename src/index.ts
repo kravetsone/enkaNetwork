@@ -85,8 +85,11 @@ export class EnkaNetwork {
 			: undefined;
 	}
 
-	async request<T>(url: string) {
-		// TODO: add timeout
+	async request<T>(url: string, cacheKey?: string) {
+		if (cacheKey && this.cache) {
+			const cache = await this.cache.get(cacheKey);
+			if (cache) return cache as T;
+		}
 		const res = await fetch(`https://enka.network/api${url}`, {
 			method: "GET",
 			headers: {
@@ -100,7 +103,13 @@ export class EnkaNetwork {
 		});
 		if (!res.ok) throw new APIError(res.status);
 
-		return res.json() as T;
+		const data = await res.json();
+
+		if (cacheKey && this.cache && data.ttl) {
+			this.cache.set(cacheKey, data, data.ttl);
+		}
+
+		return data as T;
 	}
 
 	/**
@@ -109,24 +118,15 @@ export class EnkaNetwork {
 	 * @param {string} language The language to be used in the localization of names (character, artifacts, etc.). Default is EnkaNetwork.language.
 	 */
 	async fetchProfileInfo(uid: number, language?: TLanguage) {
-		const cache = await this.cache?.get<FetchProfileInfo>(
+		const response = await this.request<IProfileInfo>(
+			`/uid/${uid}/?info`,
 			`playerInfoByUID-${uid}-${language || this.language}`,
 		);
-
-		if (cache) return cache;
-
-		const response = await this.request<IProfileInfo>(`/uid/${uid}/?info`);
 
 		const data = new FetchProfileInfo(
 			this.assets,
 			language || this.language,
 			response,
-		);
-
-		this.cache?.set(
-			`playerInfoByUID-${uid}-${language || this.language}`,
-			data,
-			data.ttl,
 		);
 
 		return data;
@@ -140,21 +140,16 @@ export class EnkaNetwork {
 	 * @param {string} language The language to be used in the localization of names (character, artifacts, etc.). Default is EnkaNetwork.language.
 	 */
 	async fetchUser(uid: number, language?: TLanguage) {
-		const cache = await this.cache?.get<FetchUserUID>(
+		const response = await this.request<IProfileAvatarsInfo>(
+			`/uid/${uid}/`,
 			`uid-${uid}-${language || this.language}`,
 		);
-
-		if (cache) return cache;
-
-		const response = await this.request<IProfileAvatarsInfo>(`/uid/${uid}/`);
 
 		const data = new FetchUserUID(
 			this.assets,
 			language || this.language,
 			response,
 		);
-
-		this.cache?.set(`uid-${uid}-${language || this.language}`, data, data.ttl);
 
 		return data;
 	}
@@ -216,7 +211,7 @@ export class EnkaNetwork {
 			Record<string, IEnkaAccountBuildData[]>
 		>(`/profile/${username}/hoyos/${hash}/builds`);
 
-		return Object.values(response.data)
+		return Object.values(response)
 			.flat()
 			.map(
 				(build) =>
