@@ -38,5 +38,6 @@
     "lint": "bunx @biomejs/biome check ./src",
     "lint:fix": "bun lint --apply"
   },
-  "typings": "dist/index.d.ts"
+  "typings": "dist/index.d.ts",
+  "files": ["dist", "scripts"]
 }
