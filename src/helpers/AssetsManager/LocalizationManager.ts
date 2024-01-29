@@ -1,5 +1,5 @@
-import fs from "fs/promises";
 import path from "path";
+import fs from "fs/promises";
 // @ts-ignore: Json Import
 import characters from "../../../assets/localizations/characters.json";
 // @ts-ignore: Json Import
@@ -20,32 +20,32 @@ import { TAssetsList, TLocalizationData } from "../../types";
 import { ASSETS_PATH } from "./constants";
 
 export class LocalizationManager {
-    characters: TLocalizationData;
-    costumes: TLocalizationData;
-    constellations: TLocalizationData;
-    namecards: TLocalizationData;
-    reliquary: TLocalizationData;
-    reliquarySets: TLocalizationData;
-    skills: TLocalizationData;
-    weapons: TLocalizationData;
+	characters: TLocalizationData;
+	costumes: TLocalizationData;
+	constellations: TLocalizationData;
+	namecards: TLocalizationData;
+	reliquary: TLocalizationData;
+	reliquarySets: TLocalizationData;
+	skills: TLocalizationData;
+	weapons: TLocalizationData;
 
-    constructor() {
-        this.characters = characters as TLocalizationData;
-        this.costumes = costumes as TLocalizationData;
-        this.constellations = constellations as TLocalizationData;
-        this.namecards = namecards as TLocalizationData;
-        this.reliquary = reliquary as TLocalizationData;
-        this.reliquarySets = reliquarySets as TLocalizationData;
-        this.skills = skills as TLocalizationData;
-        this.weapons = weapons as TLocalizationData;
-    }
+	constructor() {
+		this.characters = characters as TLocalizationData;
+		this.costumes = costumes as TLocalizationData;
+		this.constellations = constellations as TLocalizationData;
+		this.namecards = namecards as TLocalizationData;
+		this.reliquary = reliquary as TLocalizationData;
+		this.reliquarySets = reliquarySets as TLocalizationData;
+		this.skills = skills as TLocalizationData;
+		this.weapons = weapons as TLocalizationData;
+	}
 
-    async write(assetType: TAssetsList, localization: TLocalizationData) {
-        this[assetType] = Object.assign(this[assetType], localization);
+	async write(assetType: TAssetsList, localization: TLocalizationData) {
+		this[assetType] = Object.assign(this[assetType], localization);
 
-        await fs.writeFile(
-            path.resolve(ASSETS_PATH, "localizations", `${assetType}.json`),
-            JSON.stringify(localization, null, 4),
-        );
-    }
+		await fs.writeFile(
+			path.resolve(ASSETS_PATH, "localizations", `${assetType}.json`),
+			JSON.stringify(localization, null, 4),
+		);
+	}
 }

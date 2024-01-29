@@ -35,8 +35,8 @@
     "build": "tsc",
     "start": "tsc && node test.mjs",
     "build-publish": "tsc && npm publish",
-    "lint": "eslint \"src/**/*.{js,ts}\"",
-    "lint:fix": "eslint \"src/**/*.{js,ts}\" --fix"
+    "lint": "bunx @biomejs/biome check ./src",
+    "lint:fix": "bun lint --apply"
   },
   "typings": "dist/index.d.ts"
 }
