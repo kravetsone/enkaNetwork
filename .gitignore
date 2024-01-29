@@ -2,7 +2,7 @@ dist
 node_modules
 .idea
 .npmignore
-test.mjs
+src/test.ts
 assets/data
 assets/localizations
 assets/config.json
