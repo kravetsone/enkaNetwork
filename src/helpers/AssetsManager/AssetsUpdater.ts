@@ -95,9 +95,10 @@ export class AssetsUpdater {
 		if (this.isFetching) throw new Error("Content is already fetching!");
 		this.isFetching = true;
 
-		const data = await request<unknown[]>(
-			`${PROJECT_GITLAB_URL}?since=${config.lastUpdate}`,
+		const res = await fetch(
+			`${PROJECT_GITLAB_URL}?since=1990-12-20T04:40:14.000+00:00`,
 		);
+		const data = await res.json();
 
 		if (
 			!data.length &&
