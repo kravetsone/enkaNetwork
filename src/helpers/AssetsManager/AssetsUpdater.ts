@@ -47,7 +47,7 @@ import {
 
 async function request<T>(url: string) {
 	const res = await fetch(BASE_URL + url);
-	if (!res.ok) throw new AssetsUpdateError(res);
+	if (!res.ok) throw new AssetsUpdateError(url, res);
 
 	return res.json() as T;
 }
@@ -90,20 +90,21 @@ export class AssetsUpdater {
 			setInterval(() => this.fetchAssets().catch(() => {}), checkInterval);
 	}
 
-	// Async function that checks the relevance of assets data and localization
+	// function that checks the relevance of assets data and localization
 	async fetchAssets() {
 		if (this.isFetching) throw new Error("Content is already fetching!");
 		this.isFetching = true;
 
-		const res = await fetch(`${PROJECT_GITLAB_URL}?since=${config.lastUpdate}`);
-		if (!res) throw new Error("Error with updating assets");
+		const data = await request<unknown[]>(
+			`${PROJECT_GITLAB_URL}?since=${config.lastUpdate}`,
+		);
 
-		const data = await res.json();
 		if (
 			!data.length &&
 			!this.languages.filter(
 				(language) => !(config.languages as TLanguage[]).includes(language),
-			).length
+			).length &&
+			config.languages.length
 		) {
 			this.isFetching = false;
 			return;
@@ -176,12 +177,12 @@ export class AssetsUpdater {
 			for (const skillDepotId of character.candSkillDepotIds) {
 				const skillset = skillsetsData.find((x) => x.id === skillDepotId);
 
-				if (!skillset) return;
+				if (!skillset) continue;
 
 				const energyBurst = skillsData.find(
 					(x) => x.id === skillset?.energySkill,
 				);
-				if (!energyBurst) return;
+				if (!energyBurst) continue;
 
 				skillIds.push(...skillset.skills.filter(Boolean));
 

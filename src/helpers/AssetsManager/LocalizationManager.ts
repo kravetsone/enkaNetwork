@@ -1,21 +1,21 @@
 import path from "path";
 import fs from "fs/promises";
 // @ts-ignore: Json Import
-import characters from "../../../assets/localizations/characters.json";
+import characters from "../../../assets/localization/characters.json";
 // @ts-ignore: Json Import
-import constellations from "../../../assets/localizations/constellations.json";
+import constellations from "../../../assets/localization/constellations.json";
 // @ts-ignore: Json Import
-import costumes from "../../../assets/localizations/costumes.json";
+import costumes from "../../../assets/localization/costumes.json";
 // @ts-ignore: Json Import
-import namecards from "../../../assets/localizations/namecards.json";
+import namecards from "../../../assets/localization/namecards.json";
 // @ts-ignore: Json Import
-import reliquary from "../../../assets/localizations/reliquary.json";
+import reliquary from "../../../assets/localization/reliquary.json";
 // @ts-ignore: Json Import
-import reliquarySets from "../../../assets/localizations/reliquarySets.json";
+import reliquarySets from "../../../assets/localization/reliquarySets.json";
 // @ts-ignore: Json Import
-import skills from "../../../assets/localizations/skills.json";
+import skills from "../../../assets/localization/skills.json";
 // @ts-ignore: Json Import
-import weapons from "../../../assets/localizations/weapons.json";
+import weapons from "../../../assets/localization/weapons.json";
 import { TAssetsList, TLocalizationData } from "../../types";
 import { ASSETS_PATH } from "./constants";
 
@@ -44,7 +44,7 @@ export class LocalizationManager {
 		this[assetType] = Object.assign(this[assetType], localization);
 
 		await fs.writeFile(
-			path.resolve(ASSETS_PATH, "localizations", `${assetType}.json`),
+			path.resolve(ASSETS_PATH, "localization", `${assetType}.json`),
 			JSON.stringify(localization, null, 4),
 		);
 	}

@@ -1,6 +1,6 @@
 import { IEnkaProfileData } from "../../types";
 
-// [](https://app.gitbook.com/o/37WAVmOUOTPfNqDwXYiL/s/HRuRVaMzLuUsL0mMhv72/~/changes/3/models/enkaprofile)
+// [DOCUMENTATION](https://app.gitbook.com/o/37WAVmOUOTPfNqDwXYiL/s/HRuRVaMzLuUsL0mMhv72/~/changes/3/models/enkaprofile)
 export class EnkaProfile {
 	// Username of enka.network account
 	username: string;
