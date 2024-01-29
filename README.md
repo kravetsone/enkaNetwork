@@ -1,9 +1,9 @@
 # enkaNetwork
 
-> Node JS [enka.network](https://enka.network/) API wrapper written on TypeScript which provides localization, caching and convenience.
+> Node JS [enka.network](https://enka.network/) API wrapper written on TypeScript which provides `auto-updated assets`, localization, caching and convenience.
 
 <div align="center">
-  <img src="assets/logo.png" alt="enkaNetwork" /> 
+  <img src="https://github.com/kravetsone/enkaNetwork/assets/57632712/60fbc4d8-d2f3-4735-9512-5313262f2f80" alt="enkaNetwork" /> 
 </div>
 
 <div align="center">
@@ -28,19 +28,19 @@
     ```shell
     npm install enkanetwork --languages=EN
     ```
--   **usage `Yarn`**
+-   **usage `yarn`**
 
     ```shell
     yarn add enkanetwork --languages=EN
     ```
 
--   **usage `Pnpm`**
+-   **usage `pnpm`**
 
     ```shell
     pnpm install enkanetwork --languages=EN
     ```
 
--   **usage `Bun`**
+-   **usage `bun`**
     ```shell
     bun install enkanetwork --languages=EN
     ```

@@ -4,5 +4,5 @@ node_modules
 .npmignore
 src/test.ts
 assets/data
-assets/localizations
+assets/localization
 assets/config.json
