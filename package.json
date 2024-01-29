@@ -28,7 +28,6 @@
     "homepage": "https://kravets.gitbook.io/enkanetwork",
     "scripts": {
         "install": "node scripts/install.js",
-        "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc",
         "start": "tsc && node test.mjs",
         "build-publish": "tsc && npm publish",
