@@ -26,11 +26,23 @@
 
 -   **usage `npm`**
     ```shell
-    npm i enkanetwork --languages=EN
+    npm install enkanetwork --languages=EN
     ```
 -   **usage `Yarn`**
+
     ```shell
     yarn add enkanetwork --languages=EN
+    ```
+
+-   **usage `Pnpm`**
+
+    ```shell
+    pnpm install enkanetwork --languages=EN
+    ```
+
+-   **usage `Bun`**
+    ```shell
+    bun install enkanetwork --languages=EN
     ```
 
 # You can see more information in the [documentation](https://kravets.gitbook.io/enkanetwork)
