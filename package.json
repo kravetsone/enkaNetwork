@@ -1,53 +1,45 @@
 {
-    "name": "enkanetwork",
-    "version": "2.0.2",
-    "description": "API wrapper for enka.network written on TypeScript which provides localization, caching and convenience",
-    "main": "dist/index.js",
-    "module": "dist/index.js",
-    "typings": "dist/index.d.ts",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/kravetsone/enkaNetwork.git"
-    },
-    "keywords": [
-        "enkanetwork",
-        "enka",
-        "genshinapi",
-        "genshinimpact",
-        "gensinimpactapi",
-        "nodejs",
-        "typescript",
-        "shinshin",
-        "moe"
-    ],
-    "author": "Kravetsone",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/kravetsone/enkaNetwork/issues"
-    },
-    "homepage": "https://kravets.gitbook.io/enkanetwork",
-    "scripts": {
-        "install": "node scripts/install.js",
-        "build": "tsc",
-        "start": "tsc && node test.mjs",
-        "build-publish": "tsc && npm publish",
-        "lint": "eslint \"src/**/*.{js,ts}\"",
-        "lint:fix": "eslint \"src/**/*.{js,ts}\" --fix"
-    },
-    "prettier": {
-        "tabWidth": 4,
-        "singleQuote": false,
-        "semi": true,
-        "endOfLine": "auto"
-    },
-    "dependencies": {
-        "axios": "^1.4.0"
-    },
-    "devDependencies": {
-        "@types/node": "^20.5.0",
-        "eslint": "^8.47.0",
-        "eslint-kit": "^10.5.0",
-        "prettier": "^3.0.2",
-        "typescript": "^5.1.6"
-    }
+  "name": "enkanetwork",
+  "version": "2.0.2",
+  "description": "API wrapper for enka.network written on TypeScript which provides localization, caching and convenience",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kravetsone/enkaNetwork.git"
+  },
+  "keywords": [
+    "enkanetwork",
+    "enka",
+    "genshinapi",
+    "genshinimpact",
+    "gensinimpactapi",
+    "nodejs",
+    "typescript",
+    "shinshin",
+    "moe"
+  ],
+  "author": "Kravetsone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kravetsone/enkaNetwork/issues"
+  },
+  "homepage": "https://kravets.gitbook.io/enkanetwork",
+  "scripts": {
+    "install": "node scripts/install.js",
+    "build": "tsc",
+    "start": "tsc && node test.mjs",
+    "build-publish": "tsc && npm publish",
+    "lint": "eslint \"src/**/*.{js,ts}\"",
+    "lint:fix": "eslint \"src/**/*.{js,ts}\" --fix"
+  },
+  "dependencies": {
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.3",
+    "@types/node": "^20.5.0",
+    "typescript": "^5.1.6"
+  }
 }

@@ -3,3 +3,6 @@ node_modules
 .idea
 .npmignore
 test.mjs
+assets/data
+assets/localizations
+assets/config.json
