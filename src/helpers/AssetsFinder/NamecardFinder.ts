@@ -19,8 +19,7 @@ export class NamecardFinder {
 		const namecard = this.data.find((namecard) => namecard.id === id);
 		if (!namecard)
 			throw new NoDataAssetsFound(
-				`There is no namecard with id = ${id}! ` +
-					`(check the actuality of assets)`,
+				`There is no namecard with id = ${id}! (check the actuality of assets)`,
 			);
 
 		return namecard;
@@ -30,8 +29,7 @@ export class NamecardFinder {
 		const nameLocalizations = this.localization[namecard.nameTextMapHash];
 		if (!nameLocalizations)
 			throw new NoLocalizationAssetsFound(
-				`There is no localization for namecard with id = ${namecard.id}! ` +
-					`(check the actuality of assets)`,
+				`There is no localization for namecard with id = ${namecard.id}! (check the actuality of assets)`,
 			);
 
 		const name = nameLocalizations[language];

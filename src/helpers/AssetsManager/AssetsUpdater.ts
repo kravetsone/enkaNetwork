@@ -25,6 +25,7 @@ import { DataManager } from "./DataManager";
 import { LocalizationManager } from "./LocalizationManager";
 import {
 	ASSETS_PATH,
+	BASE_URL,
 	CHARACTER_DATA_URL,
 	CONSTELLATION_DATA_URL,
 	COSTUME_DATA_URL,
@@ -44,7 +45,7 @@ import {
 } from "./constants";
 
 async function request<T>(url: string) {
-	const res = await fetch(url);
+	const res = await fetch(BASE_URL + url);
 	if (!res.ok) throw new Error("TODO: custom error");
 
 	return res.json() as T;
@@ -61,7 +62,7 @@ export class AssetsUpdater {
 			languages = ["EN"],
 			checkInterval = 30 * 60 * 1000, // 0.5 hour
 			instant = false,
-		}: IAssetsUpdaterParams = {},
+		}: IAssetsUpdaterParams,
 		dataManager: DataManager,
 		localizationManager: LocalizationManager,
 	) {
@@ -142,12 +143,12 @@ export class AssetsUpdater {
 				if (!skillset) return null;
 
 				const energyBurst = skillsData.find(
-					(x) => x.id === skillset!.energySkill,
+					(x) => x.id === skillset?.energySkill,
 				);
 				if (!energyBurst) return null;
 
 				skillIds.push(
-					...skillset.skills.concat(skillset!.energySkill).filter(Boolean),
+					...skillset.skills.concat(skillset?.energySkill).filter(Boolean),
 				);
 
 				return {
@@ -161,47 +162,44 @@ export class AssetsUpdater {
 						.at(-1)}`,
 					qualityStars: qualityTypesStars[character.qualityType],
 					element: elements[energyBurst.costElemType],
-					skills: skillset.skills.concat(skillset!.energySkill).filter(Boolean),
+					skills: skillset.skills.concat(skillset?.energySkill).filter(Boolean),
 					talents: skillset.talents.filter(Boolean),
 				};
 			})
 			.filter(Boolean) as ICharacterData[];
 
-		// Aether and Lumine
-		// for (const character of charactersData) {
-		//     if(character.id)
-		// }
-		charactersData
-			.filter((x) => x.id === 10000005 || x.id === 10000007)
-			.forEach((character) => {
-				character.candSkillDepotIds.forEach((skillDepotId) => {
-					const skillset = skillsetsData.find((x) => x.id === skillDepotId);
+		// Aether and Lumine problem
+		for (const character of charactersData) {
+			if (character.id !== 10000005 && character.id !== 10000007) continue;
 
-					if (!skillset) return;
+			for (const skillDepotId of character.candSkillDepotIds) {
+				const skillset = skillsetsData.find((x) => x.id === skillDepotId);
 
-					const energyBurst = skillsData.find(
-						(x) => x.id === skillset!.energySkill,
-					);
-					if (!energyBurst) return;
+				if (!skillset) return;
 
-					skillIds.push(...skillset.skills.filter(Boolean));
+				const energyBurst = skillsData.find(
+					(x) => x.id === skillset?.energySkill,
+				);
+				if (!energyBurst) return;
 
-					characters.push({
-						id: character.id,
-						skillDepotId,
-						nameTextMapHash: character.nameTextMapHash,
-						iconName: character.iconName,
-						sideIconName: character.sideIconName,
-						gachaIcon: `UI_Gacha_AvatarImg_${character.iconName
-							.split("_")
-							.at(-1)}`,
-						qualityStars: qualityTypesStars[character.qualityType],
-						element: elements[energyBurst.costElemType],
-						skills: skillset.skills.filter(Boolean),
-						talents: skillset.talents.filter(Boolean),
-					});
+				skillIds.push(...skillset.skills.filter(Boolean));
+
+				characters.push({
+					id: character.id,
+					skillDepotId,
+					nameTextMapHash: character.nameTextMapHash,
+					iconName: character.iconName,
+					sideIconName: character.sideIconName,
+					gachaIcon: `UI_Gacha_AvatarImg_${character.iconName
+						.split("_")
+						.at(-1)}`,
+					qualityStars: qualityTypesStars[character.qualityType],
+					element: elements[energyBurst.costElemType],
+					skills: skillset.skills.filter(Boolean),
+					talents: skillset.talents.filter(Boolean),
 				});
-			});
+			}
+		}
 
 		const skills = skillsData
 			.filter((skill) => skillIds.includes(skill.id))
@@ -258,7 +256,7 @@ export class AssetsUpdater {
 
 		//lang imports
 		const nameTextHashMaps: Record<TAssetsList, number[]> = {
-			characters: characters.map((character) => character!.nameTextMapHash),
+			characters: characters.map((character) => character?.nameTextMapHash),
 			costumes: costumes.map((costume) => costume.nameTextMapHash),
 			constellations: constellations.map(
 				(constellation) => constellation.nameTextMapHash,
@@ -273,7 +271,7 @@ export class AssetsUpdater {
 		const languagesData = await Promise.all(
 			this.languages.map(async (lang) => {
 				return request<Record<string, string>>(
-					LOCALIZATION_BASE_URL + lang + ".json",
+					`${LOCALIZATION_BASE_URL + lang}.json`,
 				);
 			}),
 		);
@@ -302,7 +300,7 @@ export class AssetsUpdater {
 		config.lastUpdate = new Date().toISOString();
 		config.languages = this.languages as never[];
 		await fs.writeFile(
-			path.resolve(ASSETS_PATH, `config.json`),
+			path.resolve(ASSETS_PATH, "config.json"),
 			JSON.stringify(config, null, 4),
 		);
 	}

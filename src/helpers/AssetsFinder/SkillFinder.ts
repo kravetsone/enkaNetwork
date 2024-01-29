@@ -19,8 +19,7 @@ export class SkillFinder {
 		const skill = this.data.find((skill) => skill.id === id);
 		if (!skill)
 			throw new NoDataAssetsFound(
-				`There is no skill with id = ${id}! ` +
-					`(check the actuality of assets)`,
+				`There is no skill with id = ${id}! (check the actuality of assets)`,
 			);
 
 		return skill;
@@ -30,8 +29,7 @@ export class SkillFinder {
 		const nameLocalizations = this.localization[skill.nameTextMapHash];
 		if (!nameLocalizations)
 			throw new NoLocalizationAssetsFound(
-				`There is no localization for skill with id = ${skill.id}! ` +
-					`(check the actuality of assets)`,
+				`There is no localization for skill with id = ${skill.id}! (check the actuality of assets)`,
 			);
 
 		const name = nameLocalizations[language];

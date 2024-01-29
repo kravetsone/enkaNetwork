@@ -23,8 +23,7 @@ export class CharacterFinder {
 			);
 			if (!character)
 				throw new NoDataAssetsFound(
-					`There is no character with id = ${id} and skillDepotId = ${skillDepotId}! ` +
-						`(check the actuality of assets)`,
+					`There is no character with id = ${id} and skillDepotId = ${skillDepotId}! (check the actuality of assets)`,
 				);
 
 			return character;
@@ -33,8 +32,7 @@ export class CharacterFinder {
 		const character = this.data.find((character) => character.id === id);
 		if (!character)
 			throw new NoDataAssetsFound(
-				`There is no character with id = ${id}! ` +
-					`(check the actuality of assets)`,
+				`There is no character with id = ${id}! (check the actuality of assets)`,
 			);
 
 		return character;
@@ -44,8 +42,7 @@ export class CharacterFinder {
 		const nameLocalization = this.localization[character.nameTextMapHash];
 		if (!nameLocalization)
 			throw new NoLocalizationAssetsFound(
-				`There is no localization for character with id = ${character.id}! ` +
-					`(check the actuality of assets)`,
+				`There is no localization for character with id = ${character.id}! (check the actuality of assets)`,
 			);
 
 		const name = nameLocalization[language];

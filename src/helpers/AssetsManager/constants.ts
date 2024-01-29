@@ -4,28 +4,24 @@ import { TElement, TLanguage } from "../../types";
 export const PROJECT_GITLAB_URL =
 	"https://gitlab.com/api/v4/projects/53216109/repository/commits";
 export const BASE_URL = "https://gitlab.com/Dimbreath/AnimeGameData/-/raw/main";
-export const LOCALIZATION_BASE_URL = BASE_URL + "/TextMap/TextMap";
 
-export const CHARACTER_DATA_URL =
-	BASE_URL + "/ExcelBinOutput/AvatarExcelConfigData.json";
+export const LOCALIZATION_BASE_URL = "/TextMap/TextMap";
+export const CHARACTER_DATA_URL = "/ExcelBinOutput/AvatarExcelConfigData.json";
 export const SKILLSET_DATA_URL =
-	BASE_URL + "/ExcelBinOutput/AvatarSkillDepotExcelConfigData.json";
-export const SKILL_DATA_URL =
-	BASE_URL + "/ExcelBinOutput/AvatarSkillExcelConfigData.json";
+	"/ExcelBinOutput/AvatarSkillDepotExcelConfigData.json";
+export const SKILL_DATA_URL = "/ExcelBinOutput/AvatarSkillExcelConfigData.json";
 export const CONSTELLATION_DATA_URL =
-	BASE_URL + "/ExcelBinOutput/AvatarTalentExcelConfigData.json";
+	"/ExcelBinOutput/AvatarTalentExcelConfigData.json";
 export const COSTUME_DATA_URL =
-	BASE_URL + "/ExcelBinOutput/AvatarCostumeExcelConfigData.json";
-export const NAMECARD_DATA_URL =
-	BASE_URL + "/ExcelBinOutput/MaterialExcelConfigData.json";
-export const WEAPON_DATA_URL =
-	BASE_URL + "/ExcelBinOutput/WeaponExcelConfigData.json";
+	"/ExcelBinOutput/AvatarCostumeExcelConfigData.json";
+export const NAMECARD_DATA_URL = "/ExcelBinOutput/MaterialExcelConfigData.json";
+export const WEAPON_DATA_URL = "/ExcelBinOutput/WeaponExcelConfigData.json";
 export const RELIQUARY_DATA_URL =
-	BASE_URL + "/ExcelBinOutput/ReliquaryExcelConfigData.json";
+	"/ExcelBinOutput/ReliquaryExcelConfigData.json";
 export const RELIQUARY_SET_DATA_URL =
-	BASE_URL + "/ExcelBinOutput/ReliquarySetExcelConfigData.json";
+	"/ExcelBinOutput/ReliquarySetExcelConfigData.json";
 export const RELIQUARY_AFFIX_DATA_URL =
-	BASE_URL + "/ExcelBinOutput/EquipAffixExcelConfigData.json";
+	"/ExcelBinOutput/EquipAffixExcelConfigData.json";
 
 export const qualityTypesStars: Record<
 	"QUALITY_ORANGE" | "QUALITY_PURPLE",

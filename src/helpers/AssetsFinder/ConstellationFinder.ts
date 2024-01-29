@@ -21,8 +21,7 @@ export class ConstellationFinder {
 		);
 		if (!constellation)
 			throw new NoDataAssetsFound(
-				`There is no constellation with id = ${id}! ` +
-					`(check the actuality of assets)`,
+				`There is no constellation with id = ${id}! (check the actuality of assets)`,
 			);
 
 		return constellation;
@@ -32,8 +31,7 @@ export class ConstellationFinder {
 		const nameLocalizations = this.localization[constellation.nameTextMapHash];
 		if (!nameLocalizations)
 			throw new NoLocalizationAssetsFound(
-				`There is no localization for constellation with id = ${constellation.id}! ` +
-					`(check the actuality of assets)`,
+				`There is no localization for constellation with id = ${constellation.id}! (check the actuality of assets)`,
 			);
 
 		const name = nameLocalizations[language];

@@ -12,8 +12,7 @@ export class ReliquarySetFinder {
 		const nameLocalizations = this.localization[nameTextMapHash];
 		if (!nameLocalizations)
 			throw new NoLocalizationAssetsFound(
-				`There is no localization for reliquary set with nameTextMapHash = ${nameTextMapHash}! ` +
-					`(check the actuality of assets)`,
+				`There is no localization for reliquary set with nameTextMapHash = ${nameTextMapHash}! (check the actuality of assets)`,
 			);
 
 		const name = nameLocalizations[language];

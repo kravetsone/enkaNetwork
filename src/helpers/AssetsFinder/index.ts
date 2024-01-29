@@ -67,6 +67,6 @@ export class AssetsFinder {
 	}
 
 	getAssetPath(filename: string) {
-		return this.uiAssetsPath + `${filename}.png`;
+		return `${this.uiAssetsPath}${filename}.png`;
 	}
 }

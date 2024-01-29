@@ -19,8 +19,7 @@ export class CostumeFinder {
 		const costume = this.data.find((costume) => costume.id === id);
 		if (!costume)
 			throw new NoDataAssetsFound(
-				`There is no costume with id = ${id}! ` +
-					`(check the actuality of assets)`,
+				`There is no costume with id = ${id}! (check the actuality of assets)`,
 			);
 
 		return costume;
@@ -30,8 +29,7 @@ export class CostumeFinder {
 		const nameLocalizations = this.localization[costume.nameTextMapHash];
 		if (!nameLocalizations)
 			throw new NoLocalizationAssetsFound(
-				`There is no localization for costume with id = ${costume.id}! ` +
-					`(check the actuality of assets)`,
+				`There is no localization for costume with id = ${costume.id}! (check the actuality of assets)`,
 			);
 
 		const name = nameLocalizations[language];
