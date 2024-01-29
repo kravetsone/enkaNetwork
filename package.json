@@ -10,8 +10,8 @@
   "module": "dist/index.js",
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
-    "@types/node": "^20.5.0",
-    "typescript": "^5.1.6"
+    "@types/node": "^20.11.10",
+    "typescript": "^5.3.3"
   },
   "bugs": {
     "url": "https://github.com/kravetsone/enkaNetwork/issues"
@@ -32,9 +32,7 @@
   "license": "ISC",
   "scripts": {
     "install": "node scripts/install.js",
-    "build": "tsc",
-    "start": "tsc && node test.mjs",
-    "build-publish": "tsc && npm publish",
+    "prepublishOnly": "rm -rf dist && tsc",
     "lint": "bunx @biomejs/biome check ./src",
     "lint:fix": "bun lint --apply"
   },
