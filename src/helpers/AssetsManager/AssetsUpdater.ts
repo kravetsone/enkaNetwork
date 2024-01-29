@@ -2,6 +2,7 @@ import path from "path";
 import fs from "fs/promises";
 // @ts-ignore: JSON IMPORT OUT OF BASE-DIR
 import config from "../../../assets/config.json";
+import { AssetsUpdateError } from "../../errors";
 import {
 	IAssetsUpdaterParams,
 	ICharacterData,
@@ -46,7 +47,7 @@ import {
 
 async function request<T>(url: string) {
 	const res = await fetch(BASE_URL + url);
-	if (!res.ok) throw new Error("TODO: custom error");
+	if (!res.ok) throw new AssetsUpdateError(res);
 
 	return res.json() as T;
 }
@@ -86,7 +87,7 @@ export class AssetsUpdater {
 		if (instant) this.fetchAssets();
 
 		if (checkInterval)
-			setInterval(() => this.fetchAssets().catch(() => 1), checkInterval);
+			setInterval(() => this.fetchAssets().catch(() => {}), checkInterval);
 	}
 
 	// Async function that checks the relevance of assets data and localization
