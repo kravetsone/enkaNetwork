@@ -157,7 +157,7 @@ export interface IReliquarySetExcelData {
 	setId: number;
 	setIcon: string;
 	setNeedNum: number[];
-	EquipAffixId: number;
+	equipAffixId: number;
 	containsList: number[];
 	PJBFOFFGFJD: number;
 	JNBEOBPDNND: unknown[];

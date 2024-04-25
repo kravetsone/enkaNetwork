@@ -248,7 +248,7 @@ export class AssetsUpdater {
 		const reliquarySets = reliquarySetData
 			.map((reliquarySet) => {
 				const reliquaryAffix = reliquaryAffixData.find(
-					(x) => x.id === reliquarySet.EquipAffixId && x.level === 1,
+					(x) => x.id === reliquarySet.equipAffixId && x.level === 1,
 				);
 
 				return reliquaryAffix?.nameTextMapHash;
