@@ -1,41 +1,44 @@
 {
-  "name": "enkanetwork",
-  "version": "3.0.0-beta2",
-  "author": "Kravetsone",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kravetsone/enkaNetwork.git"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "devDependencies": {
-    "@biomejs/biome": "1.5.3",
-    "@types/node": "^20.11.10",
-    "typescript": "^5.3.3"
-  },
-  "bugs": {
-    "url": "https://github.com/kravetsone/enkaNetwork/issues"
-  },
-  "description": "API wrapper for enka.network written on TypeScript which provides localization, caching and convenience",
-  "homepage": "https://kravets.gitbook.io/enkanetwork",
-  "keywords": [
-    "enkanetwork",
-    "enka",
-    "genshinapi",
-    "genshinimpact",
-    "gensinimpactapi",
-    "nodejs",
-    "typescript",
-    "shinshin",
-    "moe"
-  ],
-  "license": "ISC",
-  "scripts": {
-    "install": "node scripts/install.js",
-    "prepublishOnly": "rm -rf dist && tsc",
-    "lint": "bunx @biomejs/biome check ./src",
-    "lint:fix": "bun lint --apply"
-  },
-  "typings": "dist/index.d.ts",
-  "files": ["dist", "scripts"]
+    "name": "enkanetwork",
+    "version": "3.0.0-beta3",
+    "author": "Kravetsone",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kravetsone/enkaNetwork.git"
+    },
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "devDependencies": {
+        "@biomejs/biome": "1.7.1",
+        "@types/node": "^20.12.7",
+        "typescript": "^5.4.5"
+    },
+    "bugs": {
+        "url": "https://github.com/kravetsone/enkaNetwork/issues"
+    },
+    "description": "API wrapper for enka.network written on TypeScript which provides localization, caching and convenience",
+    "homepage": "https://kravets.gitbook.io/enkanetwork",
+    "keywords": [
+        "enkanetwork",
+        "enka",
+        "genshinapi",
+        "genshinimpact",
+        "gensinimpactapi",
+        "nodejs",
+        "typescript",
+        "shinshin",
+        "moe"
+    ],
+    "license": "ISC",
+    "scripts": {
+        "install": "node scripts/install.js",
+        "prepublishOnly": "rm -rf dist && tsc",
+        "lint": "bunx @biomejs/biome check ./src",
+        "lint:fix": "bun lint --apply"
+    },
+    "typings": "dist/index.d.ts",
+    "files": [
+        "dist",
+        "scripts"
+    ]
 }
