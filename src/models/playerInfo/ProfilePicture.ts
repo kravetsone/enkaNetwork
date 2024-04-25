@@ -1,5 +1,5 @@
-import { AssetsFinder } from "../../helpers";
-import { IProfilePicture, TLanguage } from "../../types";
+import type { AssetsFinder } from "../../helpers";
+import type { IProfilePicture, TLanguage } from "../../types";
 
 export class ProfilePicture {
 	// Character id

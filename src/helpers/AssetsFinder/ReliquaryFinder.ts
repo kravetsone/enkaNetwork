@@ -1,5 +1,5 @@
 import { NoLanguageFound, NoLocalizationAssetsFound } from "../../errors";
-import { TLanguage, TLocalizationData } from "../../types";
+import type { TLanguage, TLocalizationData } from "../../types";
 
 export class ReliquaryFinder {
 	private readonly localization: TLocalizationData;

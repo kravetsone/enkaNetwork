@@ -1,5 +1,5 @@
-import { AssetsFinder } from "../../helpers";
-import { IProfileAvatarsInfo, TLanguage } from "../../types";
+import type { AssetsFinder } from "../../helpers";
+import type { IProfileAvatarsInfo, TLanguage } from "../../types";
 import { Character, PlayerInfo } from "../index";
 
 export class FetchUserUID {

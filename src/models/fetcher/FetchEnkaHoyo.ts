@@ -1,5 +1,5 @@
-import { AssetsFinder } from "../../helpers";
-import { IEnkaAccount, TLanguage } from "../../types";
+import type { AssetsFinder } from "../../helpers";
+import type { IEnkaAccount, TLanguage } from "../../types";
 import { PlayerInfo } from "../index";
 
 export class FetchEnkaHoyo {

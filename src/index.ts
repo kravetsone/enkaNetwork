@@ -17,7 +17,7 @@ import {
 	FetchProfileInfo,
 	FetchUserUID,
 } from "./models";
-import {
+import type {
 	IAssetsUpdaterParams,
 	IEnkaAccount,
 	IEnkaAccountBuildData,

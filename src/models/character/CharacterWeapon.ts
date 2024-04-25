@@ -1,5 +1,5 @@
-import { AssetsFinder } from "../../helpers";
-import { IEquipListWeapon, TLanguage } from "../../types";
+import type { AssetsFinder } from "../../helpers";
+import type { IEquipListWeapon, TLanguage } from "../../types";
 
 export class CharacterWeapon {
 	id: number;

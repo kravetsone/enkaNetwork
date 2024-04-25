@@ -3,7 +3,7 @@ import {
 	NoLanguageFound,
 	NoLocalizationAssetsFound,
 } from "../../errors";
-import { ICostumeData, TLanguage, TLocalizationData } from "../../types";
+import type { ICostumeData, TLanguage, TLocalizationData } from "../../types";
 
 export class CostumeFinder {
 	private readonly data: ICostumeData[];

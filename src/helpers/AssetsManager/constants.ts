@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 import type { TElement, TLanguage } from "../../types";
 
 export const PROJECT_GITLAB_URL =

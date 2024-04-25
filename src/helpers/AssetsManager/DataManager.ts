@@ -1,5 +1,5 @@
-import path from "path";
-import fs from "fs/promises";
+import fs from "node:fs/promises";
+import path from "node:path";
 // @ts-ignore: Json Import
 import characters from "../../../assets/data/characters.json";
 // @ts-ignore: Json Import
@@ -10,7 +10,7 @@ import costumes from "../../../assets/data/costumes.json";
 import namecards from "../../../assets/data/namecards.json";
 // @ts-ignore: Json Import
 import skills from "../../../assets/data/skills.json";
-import {
+import type {
 	ICharacterData,
 	IConstellationData,
 	ICostumeData,

@@ -3,7 +3,11 @@ import {
 	NoLanguageFound,
 	NoLocalizationAssetsFound,
 } from "../../errors";
-import { IConstellationData, TLanguage, TLocalizationData } from "../../types";
+import type {
+	IConstellationData,
+	TLanguage,
+	TLocalizationData,
+} from "../../types";
 
 export class ConstellationFinder {
 	private readonly data: IConstellationData[];

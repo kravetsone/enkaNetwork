@@ -1,5 +1,5 @@
-import { AssetsFinder } from "../../helpers";
-import {
+import type { AssetsFinder } from "../../helpers";
+import type {
 	IAvatarInfoList,
 	IEquipListWeapon,
 	IEquipReliquary,

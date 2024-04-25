@@ -1,5 +1,5 @@
-import path from "path";
-import fs from "fs/promises";
+import fs from "node:fs/promises";
+import path from "node:path";
 // @ts-ignore: Json Import
 import characters from "../../../assets/localization/characters.json";
 // @ts-ignore: Json Import
@@ -16,7 +16,7 @@ import reliquarySets from "../../../assets/localization/reliquarySets.json";
 import skills from "../../../assets/localization/skills.json";
 // @ts-ignore: Json Import
 import weapons from "../../../assets/localization/weapons.json";
-import { TAssetsList, TLocalizationData } from "../../types";
+import type { TAssetsList, TLocalizationData } from "../../types";
 import { ASSETS_PATH } from "./constants";
 
 export class LocalizationManager {

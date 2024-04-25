@@ -1,5 +1,5 @@
-import { AssetsFinder } from "../../helpers";
-import { IEquipReliquary, TLanguage } from "../../types";
+import type { AssetsFinder } from "../../helpers";
+import type { IEquipReliquary, TLanguage } from "../../types";
 
 const reliquaryTypes: Record<
 	string,

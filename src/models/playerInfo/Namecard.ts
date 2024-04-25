@@ -1,5 +1,5 @@
-import { AssetsFinder } from "../../helpers";
-import { TLanguage } from "../../types";
+import type { AssetsFinder } from "../../helpers";
+import type { TLanguage } from "../../types";
 
 export class Namecard {
 	// Namecard id

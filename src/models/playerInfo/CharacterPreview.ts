@@ -1,5 +1,5 @@
-import { AssetsFinder } from "../../helpers";
-import { IShowAvatarInfoList, TLanguage } from "../../types";
+import type { AssetsFinder } from "../../helpers";
+import type { IShowAvatarInfoList, TLanguage } from "../../types";
 
 export class CharacterPreview {
 	id: number;

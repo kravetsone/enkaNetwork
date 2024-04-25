@@ -3,7 +3,7 @@ import {
 	NoLanguageFound,
 	NoLocalizationAssetsFound,
 } from "../../errors";
-import { ISkillData, TLanguage, TLocalizationData } from "../../types";
+import type { ISkillData, TLanguage, TLocalizationData } from "../../types";
 
 export class SkillFinder {
 	private readonly data: ISkillData[];

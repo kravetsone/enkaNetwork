@@ -3,7 +3,7 @@ import {
 	NoLanguageFound,
 	NoLocalizationAssetsFound,
 } from "../../errors";
-import { ICharacterData, TLanguage, TLocalizationData } from "../../types";
+import type { ICharacterData, TLanguage, TLocalizationData } from "../../types";
 
 export class CharacterFinder {
 	private readonly data: ICharacterData[];

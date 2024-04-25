@@ -1,9 +1,9 @@
-import path from "path";
-import fs from "fs/promises";
+import fs from "node:fs/promises";
+import path from "node:path";
 // @ts-ignore: JSON IMPORT OUT OF BASE-DIR
 import config from "../../../assets/config.json";
 import { AssetsUpdateError } from "../../errors";
-import {
+import type {
 	IAssetsUpdaterParams,
 	ICharacterData,
 	ICharacterExcelData,
@@ -22,8 +22,8 @@ import {
 	TAssetsList,
 	TLanguage,
 } from "../../types";
-import { DataManager } from "./DataManager";
-import { LocalizationManager } from "./LocalizationManager";
+import type { DataManager } from "./DataManager";
+import type { LocalizationManager } from "./LocalizationManager";
 import {
 	ASSETS_PATH,
 	BASE_URL,

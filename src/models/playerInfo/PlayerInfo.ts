@@ -1,5 +1,5 @@
-import { AssetsFinder } from "../../helpers";
-import { IPlayerInfo, TLanguage } from "../../types";
+import type { AssetsFinder } from "../../helpers";
+import type { IPlayerInfo, TLanguage } from "../../types";
 import { CharacterPreview, Namecard, ProfilePicture } from "../index";
 
 export class PlayerInfo {

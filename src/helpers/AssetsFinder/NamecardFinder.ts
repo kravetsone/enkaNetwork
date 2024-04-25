@@ -3,7 +3,7 @@ import {
 	NoLanguageFound,
 	NoLocalizationAssetsFound,
 } from "../../errors";
-import { INamecardData, TLanguage, TLocalizationData } from "../../types";
+import type { INamecardData, TLanguage, TLocalizationData } from "../../types";
 
 export class NamecardFinder {
 	private readonly data: INamecardData[];

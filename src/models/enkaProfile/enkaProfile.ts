@@ -1,4 +1,4 @@
-import { IEnkaProfileData } from "../../types";
+import type { IEnkaProfileData } from "../../types";
 
 // [DOCUMENTATION](https://app.gitbook.com/o/37WAVmOUOTPfNqDwXYiL/s/HRuRVaMzLuUsL0mMhv72/~/changes/3/models/enkaprofile)
 export class EnkaProfile {
