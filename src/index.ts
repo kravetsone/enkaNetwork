@@ -141,7 +141,7 @@ export class EnkaNetwork {
 	 */
 	async fetchUser(uid: number, language?: TLanguage) {
 		const response = await this.request<IProfileAvatarsInfo>(
-			`/uid/${uid}/`,
+			`/uid/${uid}`,
 			`uid-${uid}-${language || this.language}`,
 		);
 
@@ -160,7 +160,7 @@ export class EnkaNetwork {
 	 */
 	async fetchEnkaProfile(username: string) {
 		const response = await this.request<IEnkaProfileData>(
-			`/profile/${username}/`,
+			`/profile/${username}`,
 		);
 
 		return new FetchEnkaProfile(response);
@@ -173,7 +173,7 @@ export class EnkaNetwork {
 	 */
 	async fetchEnkaHoyos(username: string, language?: TLanguage) {
 		const response = await this.request<IEnkaAccountsData>(
-			`/profile/${username}/hoyos/`,
+			`/profile/${username}/hoyos`,
 		);
 
 		return Object.values(response).map(

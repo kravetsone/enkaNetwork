@@ -6,3 +6,5 @@ tests
 assets/data
 assets/localization
 assets/config.json
+test.ts
+.env
