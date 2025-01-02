@@ -4,7 +4,7 @@ import type { TElement, TLanguage } from "../../types";
 export const PROJECT_GITLAB_URL =
 	"https://gitlab.com/api/v4/projects/53216109/repository/commits";
 export const BASE_URL =
-	"https://gitlab.com/Dimbreath/AnimeGameData/-/raw/master/";
+	"https://gitlab.com/Dimbreath/AnimeGameData/-/raw/master";
 
 export const LOCALIZATION_BASE_URL = "/TextMap/TextMap";
 export const CHARACTER_DATA_URL = "/ExcelBinOutput/AvatarExcelConfigData.json";
