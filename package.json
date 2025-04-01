@@ -32,7 +32,7 @@
 	"license": "ISC",
 	"scripts": {
 		"install": "node scripts/install.js",
-		"prepublishOnly": "rm -rf dist && tsc",
+		"prepublishOnly": "rm -rf dist && bunx tsc",
 		"lint": "bunx @biomejs/biome check ./src",
 		"lint:fix": "bun lint --apply"
 	},

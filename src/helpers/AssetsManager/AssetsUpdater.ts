@@ -95,9 +95,7 @@ export class AssetsUpdater {
 		if (this.isFetching) throw new Error("Content is already fetching!");
 		this.isFetching = true;
 
-		const res = await fetch(
-			`${PROJECT_GITLAB_URL}?since=${config.lastUpdate}`,
-		);
+		const res = await fetch(`${PROJECT_GITLAB_URL}?since=${config.lastUpdate}`);
 		const data = await res.json();
 
 		if (
@@ -290,7 +288,7 @@ export class AssetsUpdater {
 					this.languages.forEach((lang, index) => {
 						// I refer to the languagesData by index since Promise.all guarantees the preservation of order
 						acc[String(nameTextHash)][lang] =
-							languagesData[index][nameTextHash];
+							languagesData[index][nameTextHash] ?? "UNKNOWN";
 					});
 					return acc;
 				},
