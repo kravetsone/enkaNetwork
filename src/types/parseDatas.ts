@@ -114,6 +114,7 @@ export interface ICostumeExcelData {
 	NGEMPNOFHLJ: string;
 	sideIconName: string;
 	CEABIFHHIKH: number;
+	skinId: number;
 }
 
 export interface INamecardExcelData {

@@ -16,7 +16,7 @@
 <br>
 <div align="center">
   <img src="https://img.shields.io/npm/dt/enkanetwork.svg" alt="Downloads" href="https://npmjs.com/package/enkanetwork" /> 
-  <img src="https://img.shields.io/npm/dm/enkanetwork.svg" alt="Downloads/month" href="https://npmjs.com/package/enkanetwork" /> 
+  <img src="https://img.shields.io/npm/dm/enkanetwork.svg" alt="Downloads/month" href="https://npmjs.com/package/enkanetwork" />
   <img src="https://img.shields.io/github/last-commit/kravetsone/enkaNetwork.svg" alt="last commit" href="https://github.com/kravetsone/enkaNetwork" /> 
   <img src="https://img.shields.io/github/stars/kravetsone/enkaNetwork.svg" alt="GitHub" href="https://github.com/kravetsone/enkaNetwork" /> 
   <img src="https://img.shields.io/npm/v/enkanetwork.svg" alt="npm" href="https://npmjs.com/package/enkanetwork" /> 

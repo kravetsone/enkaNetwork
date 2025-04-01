@@ -96,7 +96,7 @@ export class AssetsUpdater {
 		this.isFetching = true;
 
 		const res = await fetch(
-			`${PROJECT_GITLAB_URL}?since=1990-12-20T04:40:14.000+00:00`,
+			`${PROJECT_GITLAB_URL}?since=${config.lastUpdate}`,
 		);
 		const data = await res.json();
 
@@ -220,7 +220,8 @@ export class AssetsUpdater {
 		})) as IConstellationData[];
 
 		const costumes = costumesData.map((costume) => ({
-			id: Object.values(costume).at(0),
+			// id: Object.values(costume).at(0),
+			id: costume.skinId,
 			iconName: costume.sideIconName.replace("_Side", ""),
 			sideIconName: costume.sideIconName,
 			gachaIcon: `UI_Costume_${costume.sideIconName.split("_").at(-1)}`,
