@@ -8,8 +8,11 @@ import {
 	AssetsUpdater,
 	CacheManager,
 	DataManager,
+	type IAssetAdapter,
 	LocalizationManager,
 } from "./helpers";
+
+export * from "./helpers/AssetsFinder/adapters";
 import {
 	FetchEnkaHoyo,
 	FetchEnkaHoyoBuilds,
@@ -47,6 +50,7 @@ export class EnkaNetwork {
 		userAgent,
 		assets = { instant: false, languages: [] },
 		uiAssetsPath,
+		assetAdapter,
 	}: {
 		// The **language** to be used in the localization of names (character, artifacts, etc.). Default is «**`EN`**»
 		language?: TLanguage;
@@ -56,8 +60,10 @@ export class EnkaNetwork {
 		userAgent?: string | false | null;
 		// Params for AssetsUpdater
 		assets?: IAssetsUpdaterParams | false;
-		// The path to which the **`{icon}.png`** string will be added. Default is «https://enka.network/ui/»
+		// The path to which the **`{icon}.png`** string will be added. Default is «https://enka.network/ui/». @deprecated Use `assetAdapter`.
 		uiAssetsPath?: string;
+		// Strategy that resolves (and optionally caches) image asset filenames. Default is an OriginAdapter. Use `FileSystemAdapter` to cache locally, or provide a custom adapter.
+		assetAdapter?: IAssetAdapter;
 	} = {}) {
 		this.language = language;
 		this.userAgent = userAgent;
@@ -69,6 +75,7 @@ export class EnkaNetwork {
 
 		this.assets = new AssetsFinder({
 			uiAssetsPath,
+			adapter: assetAdapter,
 			dataManager,
 			localizationManager,
 		});

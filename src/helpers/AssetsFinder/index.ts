@@ -7,7 +7,9 @@ import { ReliquaryFinder } from "./ReliquaryFinder";
 import { ReliquarySetFinder } from "./ReliquarySetFinder";
 import { SkillFinder } from "./SkillFinder";
 import { WeaponFinder } from "./WeaponFinder";
+import { type IAssetAdapter, OriginAdapter } from "./adapters";
 
+export * from "./adapters";
 export * from "./CharacterFinder";
 export * from "./NamecardFinder";
 export * from "./WeaponFinder";
@@ -15,7 +17,7 @@ export * from "./WeaponFinder";
 export class AssetsFinder {
 	private data: DataManager;
 	private localization: LocalizationManager;
-	uiAssetsPath: string;
+	adapter: IAssetAdapter;
 	characters: CharacterFinder;
 	namecards: NamecardFinder;
 	costumes: CostumeFinder;
@@ -26,15 +28,19 @@ export class AssetsFinder {
 	skills: SkillFinder;
 
 	constructor({
-		uiAssetsPath = "https://enka.network/ui/",
+		uiAssetsPath,
+		adapter,
 		dataManager = new DataManager(),
 		localizationManager = new LocalizationManager(),
 	}: {
+		// @deprecated Use `adapter` (OriginAdapter) instead. Kept for backward compatibility.
 		uiAssetsPath?: string;
+		// Strategy that resolves (and optionally caches) image asset filenames. Default is an OriginAdapter.
+		adapter?: IAssetAdapter;
 		dataManager?: DataManager;
 		localizationManager?: LocalizationManager;
 	} = {}) {
-		this.uiAssetsPath = uiAssetsPath;
+		this.adapter = adapter ?? new OriginAdapter({ baseUrl: uiAssetsPath });
 
 		this.data = dataManager;
 		this.localization = localizationManager;
@@ -67,6 +73,17 @@ export class AssetsFinder {
 	}
 
 	getAssetPath(filename: string) {
-		return `${this.uiAssetsPath}${filename}.png`;
+		return this.adapter.resolve(filename);
+	}
+
+	/** Await any in-flight background work in the adapter (e.g. cache downloads). */
+	async flush() {
+		await this.adapter.flush?.();
+	}
+
+	/** Resolve the given filenames (triggering caching) and await completion. */
+	async prefetch(filenames: string[]) {
+		for (const filename of filenames) this.adapter.resolve(filename);
+		await this.flush();
 	}
 }
