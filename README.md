@@ -45,4 +45,67 @@
     bun install enkanetwork --languages=EN
     ```
 
+## 🎮 Game support
+
+This wrapper currently supports **Genshin Impact only**. enka.network also serves
+Honkai: Star Rail (`/hsr/uid/`), Zenless Zone Zero (`/zzz/uid/`) and Arknights: Endfield,
+but those endpoints are not implemented here. The bundled game data is sourced from
+[`Dimbreath/AnimeGameData`](https://gitlab.com/Dimbreath/AnimeGameData) (`master` branch,
+`ExcelBinOutput/` + `TextMap/`), the canonical Genshin datamine.
+
+## 🖼️ Image assets & CDNs
+
+Every icon URL is produced by a pluggable **asset adapter**. By default icons resolve to
+`https://enka.network/ui/{icon}.png`.
+
+> [!NOTE]
+> enka.network only hosts images that are actually used on the site, so a freshly
+> released icon may `404`. In that case point the adapter at another CDN.
+
+All of these mirror the **same internal `UI_*` filenames** from the game data, so only the
+prefix (and extension) change — no custom code needed:
+
+| CDN | `baseUrl` | `extension` |
+| --- | --- | --- |
+| enka.network (default) | `https://enka.network/ui/` | `.png` |
+| Hakush.in | `https://static.nanoka.cc/gi/UI/` | `.webp` |
+| Project Amber | `https://gi.yatta.moe/assets/UI/` | `.png` |
+
+```ts
+import { EnkaNetwork, OriginAdapter, FileSystemAdapter } from "enkanetwork";
+
+// Use a different CDN (e.g. Hakush.in / webp)
+new EnkaNetwork({
+    assetAdapter: new OriginAdapter({
+        baseUrl: "https://static.nanoka.cc/gi/UI/",
+        extension: ".webp",
+    }),
+});
+
+// Cache icons to the local filesystem (lazy download, origin fallback)
+new EnkaNetwork({
+    assetAdapter: new FileSystemAdapter({ directory: "./.enka-cache/ui" }),
+});
+
+// Already have a complete local mirror? Just point at it:
+new EnkaNetwork({
+    assetAdapter: new OriginAdapter({ baseUrl: "/root/guoba/assets/ui/" }),
+});
+
+// Bring your own: anything implementing `{ resolve(filename): string }`
+new EnkaNetwork({
+    assetAdapter: { resolve: (file) => `https://my.cdn/${file}.webp` },
+});
+```
+
+The legacy `uiAssetsPath` option still works (it builds an `OriginAdapter` for you).
+
+> [!WARNING]
+> `FileSystemAdapter` only caches the exact filenames the library returns. If your code
+> derives sibling names from a returned path (e.g. `icon.replace(".png", "_Awaken.png")`,
+> or the gacha/costume splash from `icons.avatar`), use a **complete local mirror with
+> `OriginAdapter`** instead — the lazy downloader never fetches those derived files.
+> The HoYoverse in-game CDN uses hashed paths (not `UI_*` names), so it needs a custom
+> adapter rather than a `baseUrl` swap.
+
 # You can see more information in the [documentation](https://kravets.gitbook.io/enkanetwork)

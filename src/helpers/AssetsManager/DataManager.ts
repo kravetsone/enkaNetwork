@@ -35,7 +35,9 @@ export class DataManager {
 	}
 
 	async writeCharacters(data: ICharacterData[]) {
-		this.characters = Object.assign(this.characters, data);
+		// Replace contents in place (keeps the array reference the finders hold) and
+		// fully mirrors what is written to disk, even if the upstream list shrinks.
+		this.characters.splice(0, this.characters.length, ...data);
 
 		await fs.writeFile(
 			path.resolve(ASSETS_PATH, "data", "characters.json"),
@@ -44,7 +46,7 @@ export class DataManager {
 	}
 
 	async writeConstellations(data: IConstellationData[]) {
-		this.constellations = Object.assign(this.constellations, data);
+		this.constellations.splice(0, this.constellations.length, ...data);
 
 		await fs.writeFile(
 			path.resolve(ASSETS_PATH, "data", "constellations.json"),
@@ -53,7 +55,7 @@ export class DataManager {
 	}
 
 	async writeCostumes(data: ICostumeData[]) {
-		this.costumes = Object.assign(this.costumes, data);
+		this.costumes.splice(0, this.costumes.length, ...data);
 
 		await fs.writeFile(
 			path.resolve(ASSETS_PATH, "data", "costumes.json"),
@@ -62,7 +64,7 @@ export class DataManager {
 	}
 
 	async writeNamecards(data: INamecardData[]) {
-		this.namecards = Object.assign(this.namecards, data);
+		this.namecards.splice(0, this.namecards.length, ...data);
 
 		await fs.writeFile(
 			path.resolve(ASSETS_PATH, "data", "namecards.json"),
@@ -71,7 +73,7 @@ export class DataManager {
 	}
 
 	async writeSkills(data: ISkillData[]) {
-		this.skills = Object.assign(this.skills, data);
+		this.skills.splice(0, this.skills.length, ...data);
 
 		await fs.writeFile(
 			path.resolve(ASSETS_PATH, "data", "skills.json"),
