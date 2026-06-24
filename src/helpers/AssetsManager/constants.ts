@@ -5,6 +5,9 @@ export const PROJECT_GITLAB_URL =
 	"https://gitlab.com/api/v4/projects/53216109/repository/commits";
 export const BASE_URL =
 	"https://gitlab.com/Dimbreath/AnimeGameData/-/raw/master";
+// GitHub mirror used when the primary GitLab host is unreachable.
+export const BASE_URL_FALLBACK =
+	"https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/master";
 
 export const LOCALIZATION_BASE_URL = "/TextMap/TextMap";
 export const CHARACTER_DATA_URL = "/ExcelBinOutput/AvatarExcelConfigData.json";

@@ -15,6 +15,10 @@ export interface IFileSystemAdapterOptions {
 	extension?: string;
 	// Whether to return the origin URL while a file is not cached yet (or a download failed). Default is «`true`»
 	fallbackToOrigin?: boolean;
+	// The «`User-Agent`» sent with download requests (helps origins raise rate limits). «`false`» to disable. Default is «`enkanetwork-asset-cache`»
+	userAgent?: string | false;
+	// Maximum number of concurrent downloads. Default is «`8`»
+	concurrency?: number;
 }
 
 /**
@@ -33,9 +37,13 @@ export class FileSystemAdapter implements IAssetAdapter {
 	baseUrl: string;
 	extension: string;
 	fallbackToOrigin: boolean;
+	userAgent: string | false;
+	concurrency: number;
 
 	private cached = new Set<string>();
 	private pending = new Map<string, Promise<void>>();
+	private queue: Array<() => void> = [];
+	private active = 0;
 
 	constructor({
 		directory = path.resolve(process.cwd(), ".enka-cache", "ui"),
@@ -43,6 +51,8 @@ export class FileSystemAdapter implements IAssetAdapter {
 		baseUrl = "https://enka.network/ui/",
 		extension = ".png",
 		fallbackToOrigin = true,
+		userAgent = "enkanetwork-asset-cache",
+		concurrency = 8,
 	}: IFileSystemAdapterOptions = {}) {
 		this.directory = directory;
 		// Default to the storage directory (with a trailing separator) so `resolve` returns a real path.
@@ -50,6 +60,8 @@ export class FileSystemAdapter implements IAssetAdapter {
 		this.baseUrl = baseUrl;
 		this.extension = extension;
 		this.fallbackToOrigin = fallbackToOrigin;
+		this.userAgent = userAgent;
+		this.concurrency = concurrency;
 
 		this.init();
 	}
@@ -71,25 +83,48 @@ export class FileSystemAdapter implements IAssetAdapter {
 		return `${this.baseUrl}${filename}${this.extension}`;
 	}
 
-	private download(filename: string) {
-		const promise = (async () => {
-			const res = await fetch(this.originUrl(filename));
-			if (!res.ok) throw new Error(`Status ${res.status}`);
+	private async fetchToDisk(filename: string) {
+		try {
+			const res = await fetch(this.originUrl(filename), {
+				...(this.userAgent && {
+					headers: { "User-Agent": this.userAgent },
+				}),
+			});
+			if (!res.ok) return;
 
-			const buffer = Buffer.from(await res.arrayBuffer());
 			await fsp.writeFile(
 				path.resolve(this.directory, `${filename}${this.extension}`),
-				buffer,
+				Buffer.from(await res.arrayBuffer()),
 			);
 
 			this.cached.add(filename);
-		})()
-			.catch(() => {
-				// Best-effort: leave uncached so it is retried on the next resolve.
-			})
-			.finally(() => {
-				this.pending.delete(filename);
-			});
+		} catch {
+			// Best-effort: leave uncached so it is retried on the next resolve.
+		}
+	}
+
+	private next() {
+		if (this.active >= this.concurrency) return;
+
+		const start = this.queue.shift();
+		if (start) start();
+	}
+
+	// Schedules a download, respecting the concurrency cap.
+	private schedule(filename: string) {
+		const promise = new Promise<void>((resolve) => {
+			const start = () => {
+				this.active++;
+				this.fetchToDisk(filename).finally(() => {
+					this.active--;
+					resolve();
+					this.next();
+				});
+			};
+
+			if (this.active < this.concurrency) start();
+			else this.queue.push(start);
+		}).finally(() => this.pending.delete(filename));
 
 		this.pending.set(filename, promise);
 	}
@@ -97,7 +132,7 @@ export class FileSystemAdapter implements IAssetAdapter {
 	resolve(filename: string) {
 		if (this.cached.has(filename)) return this.localRef(filename);
 
-		if (!this.pending.has(filename)) this.download(filename);
+		if (!this.pending.has(filename)) this.schedule(filename);
 
 		return this.fallbackToOrigin
 			? this.originUrl(filename)

@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 // @ts-ignore: JSON IMPORT OUT OF BASE-DIR
 import config from "../../../assets/config.json";
-import { AssetsUpdateError } from "../../errors";
+import { AssetsUpdateError, AssetsValidationError } from "../../errors";
 import type {
 	IAssetsUpdaterParams,
 	ICharacterData,
@@ -27,6 +27,7 @@ import type { LocalizationManager } from "./LocalizationManager";
 import {
 	ASSETS_PATH,
 	BASE_URL,
+	BASE_URL_FALLBACK,
 	CHARACTER_DATA_URL,
 	CONSTELLATION_DATA_URL,
 	COSTUME_DATA_URL,
@@ -44,12 +45,25 @@ import {
 	localizationLanguages,
 	qualityTypesStars,
 } from "./constants";
+import { validateAssets } from "./validate";
 
+// Tries the primary host first, then the mirror, so a single host outage doesn't
+// break updates.
 async function request<T>(url: string) {
-	const res = await fetch(BASE_URL + url);
-	if (!res.ok) throw new AssetsUpdateError(url, res);
+	let lastError: unknown;
 
-	return res.json() as T;
+	for (const base of [BASE_URL, BASE_URL_FALLBACK]) {
+		try {
+			const res = await fetch(base + url);
+			if (!res.ok) throw new AssetsUpdateError(url, res);
+
+			return (await res.json()) as T;
+		} catch (error) {
+			lastError = error;
+		}
+	}
+
+	throw lastError;
 }
 
 export class AssetsUpdater {
@@ -87,7 +101,13 @@ export class AssetsUpdater {
 		if (instant) this.fetchAssets();
 
 		if (checkInterval)
-			setInterval(() => this.fetchAssets().catch(() => {}), checkInterval);
+			setInterval(
+				() =>
+					this.fetchAssets().catch((error) =>
+						console.error("[enkanetwork] assets update failed:", error),
+					),
+				checkInterval,
+			);
 	}
 
 	// function that checks the relevance of assets data and localization
@@ -95,8 +115,15 @@ export class AssetsUpdater {
 		if (this.isFetching) throw new Error("Content is already fetching!");
 		this.isFetching = true;
 
-		const res = await fetch(`${PROJECT_GITLAB_URL}?since=${config.lastUpdate}`);
-		const data = await res.json();
+		// Best-effort update check: if the commits API is unreachable, treat it as
+		// "no new commits" and fall back to the language diff below.
+		let data: unknown[] = [];
+		try {
+			const res = await fetch(
+				`${PROJECT_GITLAB_URL}?since=${config.lastUpdate}`,
+			);
+			data = await res.json();
+		} catch {}
 
 		if (
 			!data.length &&
@@ -235,6 +262,20 @@ export class AssetsUpdater {
 				navbar: namecard.picPath.at(0) || null,
 				banner: namecard.picPath.at(1),
 			})) as INamecardData[];
+
+		// Validate the transformed records before persisting so upstream schema drift
+		// fails loudly instead of writing broken JSON over the good data.
+		const problems = [
+			...validateAssets("characters", characters),
+			...validateAssets("skills", skills),
+			...validateAssets("constellations", constellations),
+			...validateAssets("costumes", costumes),
+			...validateAssets("namecards", namecards),
+		];
+		if (problems.length) {
+			this.isFetching = false;
+			throw new AssetsValidationError(problems);
+		}
 
 		await Promise.all([
 			this.dataManager.writeCharacters(characters),
