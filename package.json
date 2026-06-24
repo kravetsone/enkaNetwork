@@ -34,7 +34,8 @@
 		"install": "node scripts/install.js",
 		"prepublishOnly": "rm -rf dist && bunx tsc",
 		"lint": "bunx @biomejs/biome check ./src",
-		"lint:fix": "bun lint --apply"
+		"lint:fix": "bun lint --apply",
+		"test": "bun test"
 	},
 	"typings": "dist/index.d.ts",
 	"files": ["dist", "scripts"]
