@@ -39,7 +39,7 @@ export class CharacterReliquary {
 		);
 		this.icon = assets.getAssetPath(equipment.flat.icon);
 		this.type = reliquaryTypes[equipment.flat.equipType];
-		this.level = --equipment.reliquary.level;
+		this.level = equipment.reliquary.level - 1;
 		this.rarity = equipment.flat.rankLevel;
 		this.mainStats = equipment.flat.reliquaryMainstat;
 		this.subStats = equipment.flat.reliquarySubstats;

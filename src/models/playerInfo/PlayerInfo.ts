@@ -31,7 +31,7 @@ export class PlayerInfo {
 			(nameCardId) => new Namecard(assets, language, nameCardId),
 		);
 
-		this.profilePicture = data.profilePicture.avatarId
+		this.profilePicture = data.profilePicture?.avatarId
 			? new ProfilePicture(assets, language, data.profilePicture)
 			: undefined;
 	}

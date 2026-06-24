@@ -138,7 +138,7 @@ export class CharacterStats {
 		this.iceSubHurt = stats["56"] || 0;
 		this.effectHit = stats["60"] || 0;
 		this.effectResist = stats["61"] || 0;
-		this.freezeResist = stats["32"] || 0;
+		this.freezeResist = stats["62"] || 0;
 		this.torporResist = stats["63"] || 0;
 		this.dizzyResist = stats["64"] || 0;
 		this.freezeShorten = stats["65"] || 0;
@@ -171,7 +171,6 @@ export class CharacterStats {
 		this.nonextraAttack = stats["3000"] || 0;
 		this.nonextraDefense = stats["3001"] || 0;
 		this.nonextraCritical = stats["3002"] || 0;
-		this.curSpeed = stats["3003"] || 0;
 		this.nonextraCriticalHurt = stats["3004"] || 0;
 		this.nonextraChargeEfficiency = stats["3005"] || 0;
 		this.nonextraElementMastery = stats["3006"] || 0;
