@@ -26,7 +26,10 @@ export interface IPlayerInfo {
 }
 
 export interface IProfilePicture {
-	avatarId: number;
+	// Modern accounts: a ProfilePictureExcelConfigData id.
+	id?: number;
+	// Legacy accounts: a character id.
+	avatarId?: number;
 }
 
 export interface IShowAvatarInfoList {

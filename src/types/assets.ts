@@ -14,7 +14,8 @@ export type TAssetsList =
 	| "reliquary"
 	| "reliquarySets"
 	| "skills"
-	| "weapons";
+	| "weapons"
+	| "profilePictures";
 
 export interface ICharacterData {
 	id: number;
@@ -56,6 +57,14 @@ export interface ISkillData {
 	nameTextMapHash: number;
 	skillIcon: string;
 	proudSkillGroupId: number;
+}
+
+export interface IProfilePictureData {
+	// The profilePicture id sent by the game (ProfilePictureExcelConfigData id).
+	id: number;
+	// The circle icon name, e.g. "UI_AvatarIcon_Hutao_Circle".
+	iconName: string;
+	nameTextMapHash: number;
 }
 
 export type TLocalizationData = Record<string, Record<string, string> | null>;

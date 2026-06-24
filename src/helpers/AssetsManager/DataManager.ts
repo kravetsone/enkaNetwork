@@ -9,12 +9,15 @@ import costumes from "../../../assets/data/costumes.json";
 // @ts-ignore: Json Import
 import namecards from "../../../assets/data/namecards.json";
 // @ts-ignore: Json Import
+import profilePictures from "../../../assets/data/profilePictures.json";
+// @ts-ignore: Json Import
 import skills from "../../../assets/data/skills.json";
 import type {
 	ICharacterData,
 	IConstellationData,
 	ICostumeData,
 	INamecardData,
+	IProfilePictureData,
 	ISkillData,
 } from "../../types";
 import { ASSETS_PATH } from "./constants";
@@ -25,6 +28,7 @@ export class DataManager {
 	costumes: ICostumeData[];
 	namecards: INamecardData[];
 	skills: ISkillData[];
+	profilePictures: IProfilePictureData[];
 
 	constructor() {
 		this.characters = characters as ICharacterData[];
@@ -32,6 +36,7 @@ export class DataManager {
 		this.costumes = costumes as ICostumeData[];
 		this.namecards = namecards as INamecardData[];
 		this.skills = skills as ISkillData[];
+		this.profilePictures = profilePictures as IProfilePictureData[];
 	}
 
 	async writeCharacters(data: ICharacterData[]) {
@@ -77,6 +82,15 @@ export class DataManager {
 
 		await fs.writeFile(
 			path.resolve(ASSETS_PATH, "data", "skills.json"),
+			JSON.stringify(data, null, 4),
+		);
+	}
+
+	async writeProfilePictures(data: IProfilePictureData[]) {
+		this.profilePictures.splice(0, this.profilePictures.length, ...data);
+
+		await fs.writeFile(
+			path.resolve(ASSETS_PATH, "data", "profilePictures.json"),
 			JSON.stringify(data, null, 4),
 		);
 	}

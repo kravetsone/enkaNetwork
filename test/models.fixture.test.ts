@@ -55,7 +55,11 @@ d("model parsing against live fixtures", () => {
 		expect(user.player.profilePicture?.name).toBe("Amber");
 	});
 
-	// Modern accounts send `profilePicture: { id }` (a ProfilePictureExcelConfigData
-	// id), not `{ avatarId }`. Supporting it needs that table bundled as a new asset.
-	test.todo("modern fixture: profilePicture {id} resolves via ProfilePictureExcelConfigData");
+	test("modern fixture: profilePicture {id} resolves via ProfilePictureExcelConfigData", () => {
+		const user = new FetchUserUID(enka.assets, "EN", modernFixture as never);
+		expect(user.player.profilePicture).toBeDefined();
+		expect(user.player.profilePicture?.id).toBe(11200);
+		expect(user.player.profilePicture?.name).toBe("Linnea");
+		expect(user.player.profilePicture?.icon).toContain("_Circle");
+	});
 });

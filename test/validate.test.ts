@@ -50,4 +50,17 @@ describe("validateAssets", () => {
 		]);
 		expect(problems.some((p) => p.includes("banner is missing"))).toBe(true);
 	});
+
+	test("profilePictures require id, iconName and nameTextMapHash", () => {
+		expect(
+			validateAssets("profilePictures", [
+				{ id: 11200, iconName: "UI_AvatarIcon_Linnea_Circle", nameTextMapHash: 1 },
+			]),
+		).toHaveLength(0);
+
+		const problems = validateAssets("profilePictures", [
+			{ id: 11200, nameTextMapHash: 1 } as never,
+		]);
+		expect(problems.some((p) => p.includes("iconName is missing"))).toBe(true);
+	});
 });

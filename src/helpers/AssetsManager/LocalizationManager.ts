@@ -9,6 +9,8 @@ import costumes from "../../../assets/localization/costumes.json";
 // @ts-ignore: Json Import
 import namecards from "../../../assets/localization/namecards.json";
 // @ts-ignore: Json Import
+import profilePictures from "../../../assets/localization/profilePictures.json";
+// @ts-ignore: Json Import
 import reliquary from "../../../assets/localization/reliquary.json";
 // @ts-ignore: Json Import
 import reliquarySets from "../../../assets/localization/reliquarySets.json";
@@ -28,6 +30,7 @@ export class LocalizationManager {
 	reliquarySets: TLocalizationData;
 	skills: TLocalizationData;
 	weapons: TLocalizationData;
+	profilePictures: TLocalizationData;
 
 	constructor() {
 		this.characters = characters as TLocalizationData;
@@ -38,6 +41,7 @@ export class LocalizationManager {
 		this.reliquarySets = reliquarySets as TLocalizationData;
 		this.skills = skills as TLocalizationData;
 		this.weapons = weapons as TLocalizationData;
+		this.profilePictures = profilePictures as TLocalizationData;
 	}
 
 	async write(assetType: TAssetsList, localization: TLocalizationData) {

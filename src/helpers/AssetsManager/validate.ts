@@ -3,6 +3,7 @@ import type {
 	IConstellationData,
 	ICostumeData,
 	INamecardData,
+	IProfilePictureData,
 	ISkillData,
 } from "../../types";
 
@@ -56,6 +57,11 @@ const schemas: Record<keyof IDataShapes, IFieldSpec[]> = {
 		{ key: "skillIcon", type: "string" },
 		{ key: "proudSkillGroupId", type: "number" },
 	],
+	profilePictures: [
+		{ key: "id", type: "number" },
+		{ key: "iconName", type: "string" },
+		{ key: "nameTextMapHash", type: "number" },
+	],
 };
 
 interface IDataShapes {
@@ -64,6 +70,7 @@ interface IDataShapes {
 	costumes: ICostumeData;
 	namecards: INamecardData;
 	skills: ISkillData;
+	profilePictures: IProfilePictureData;
 }
 
 /**

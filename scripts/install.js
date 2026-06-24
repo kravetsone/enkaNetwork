@@ -10,6 +10,7 @@ const dataFiles = [
 	"costumes.json",
 	"namecards.json",
 	"skills.json",
+	"profilePictures.json",
 ];
 const localizationFiles = [
 	"characters.json",
@@ -20,6 +21,7 @@ const localizationFiles = [
 	"reliquarySets.json",
 	"skills.json",
 	"weapons.json",
+	"profilePictures.json",
 ];
 const cwd = path.dirname(require.main.path);
 const assetsPath = path.resolve(cwd, "assets");

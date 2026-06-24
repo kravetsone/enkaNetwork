@@ -28,6 +28,8 @@ export const RELIQUARY_SET_DATA_URL =
 	"/ExcelBinOutput/ReliquarySetExcelConfigData.json";
 export const RELIQUARY_AFFIX_DATA_URL =
 	"/ExcelBinOutput/EquipAffixExcelConfigData.json";
+export const PROFILE_PICTURE_DATA_URL =
+	"/ExcelBinOutput/ProfilePictureExcelConfigData.json";
 
 export const qualityTypesStars: Record<string, 5 | 4> = {
 	QUALITY_ORANGE: 5,

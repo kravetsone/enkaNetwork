@@ -14,6 +14,8 @@ import type {
 	INameTextMapHash,
 	INamecardData,
 	INamecardExcelData,
+	IProfilePictureData,
+	IProfilePictureExcelData,
 	IReliquaryAffixExcelData,
 	IReliquarySetExcelData,
 	ISkillData,
@@ -33,6 +35,7 @@ import {
 	COSTUME_DATA_URL,
 	LOCALIZATION_BASE_URL,
 	NAMECARD_DATA_URL,
+	PROFILE_PICTURE_DATA_URL,
 	PROJECT_GITLAB_URL,
 	RELIQUARY_AFFIX_DATA_URL,
 	RELIQUARY_DATA_URL,
@@ -181,6 +184,7 @@ export class AssetsUpdater {
 			reliquaryData,
 			reliquarySetData,
 			reliquaryAffixData,
+			profilePicturesData,
 		] = await Promise.all([
 			request<ICharacterExcelData[]>(CHARACTER_DATA_URL),
 			request<ICostumeExcelData[]>(COSTUME_DATA_URL),
@@ -192,6 +196,7 @@ export class AssetsUpdater {
 			request<INameTextMapHash[]>(RELIQUARY_DATA_URL),
 			request<IReliquarySetExcelData[]>(RELIQUARY_SET_DATA_URL),
 			request<IReliquaryAffixExcelData[]>(RELIQUARY_AFFIX_DATA_URL),
+			request<IProfilePictureExcelData[]>(PROFILE_PICTURE_DATA_URL),
 		]);
 
 		const characters = charactersData
@@ -296,6 +301,14 @@ export class AssetsUpdater {
 				banner: namecard.picPath.at(1),
 			})) as INamecardData[];
 
+		const profilePictures = profilePicturesData
+			.filter((profilePicture) => profilePicture.iconPath)
+			.map((profilePicture) => ({
+				id: profilePicture.id,
+				iconName: profilePicture.iconPath,
+				nameTextMapHash: profilePicture.nameTextMapHash,
+			})) as IProfilePictureData[];
+
 		// Validate the transformed records before persisting so upstream schema drift
 		// fails loudly instead of writing broken JSON over the good data.
 		const problems = [
@@ -304,6 +317,7 @@ export class AssetsUpdater {
 			...validateAssets("constellations", constellations),
 			...validateAssets("costumes", costumes),
 			...validateAssets("namecards", namecards),
+			...validateAssets("profilePictures", profilePictures),
 		];
 		if (problems.length) {
 			this.isFetching = false;
@@ -316,6 +330,7 @@ export class AssetsUpdater {
 			this.dataManager.writeConstellations(constellations),
 			this.dataManager.writeCostumes(costumes),
 			this.dataManager.writeNamecards(namecards),
+			this.dataManager.writeProfilePictures(profilePictures),
 		]);
 
 		const reliquarySets = reliquarySetData
@@ -342,6 +357,9 @@ export class AssetsUpdater {
 			weapons: weaponsData.map((weapon) => weapon.nameTextMapHash),
 			reliquary: reliquaryData.map((reliquary) => reliquary.nameTextMapHash),
 			reliquarySets,
+			profilePictures: profilePictures.map(
+				(profilePicture) => profilePicture.nameTextMapHash,
+			),
 		};
 
 		const languagesData = await Promise.all(

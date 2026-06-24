@@ -3,6 +3,7 @@ import { CharacterFinder } from "./CharacterFinder";
 import { ConstellationFinder } from "./ConstellationFinder";
 import { CostumeFinder } from "./CostumeFinder";
 import { NamecardFinder } from "./NamecardFinder";
+import { ProfilePictureFinder } from "./ProfilePictureFinder";
 import { ReliquaryFinder } from "./ReliquaryFinder";
 import { ReliquarySetFinder } from "./ReliquarySetFinder";
 import { SkillFinder } from "./SkillFinder";
@@ -26,6 +27,7 @@ export class AssetsFinder {
 	reliquarySets: ReliquarySetFinder;
 	constellations: ConstellationFinder;
 	skills: SkillFinder;
+	profilePictures: ProfilePictureFinder;
 
 	constructor({
 		uiAssetsPath,
@@ -69,6 +71,10 @@ export class AssetsFinder {
 		this.reliquaries = new ReliquaryFinder(localizationManager.reliquary);
 		this.reliquarySets = new ReliquarySetFinder(
 			localizationManager.reliquarySets,
+		);
+		this.profilePictures = new ProfilePictureFinder(
+			dataManager.profilePictures,
+			localizationManager.profilePictures,
 		);
 	}
 

@@ -168,3 +168,10 @@ export interface IReliquarySetExcelData {
 export interface INameTextMapHash {
 	nameTextMapHash: number;
 }
+
+export interface IProfilePictureExcelData {
+	id: number;
+	iconPath: string;
+	nameTextMapHash: number;
+	unlockParam: number;
+}
