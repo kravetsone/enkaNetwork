@@ -40,6 +40,15 @@ d("model parsing against live fixtures", () => {
 		expect(user.characters.some((c) => c.name !== "UNKNOWN")).toBe(true);
 	});
 
+	test("weapon exposes awakenIcon derived from the base icon", () => {
+		const user = new FetchUserUID(enka.assets, "EN", modernFixture as never);
+		const weapon = user.characters[0]?.weapon;
+		expect(weapon?.awakenIcon).toBeDefined();
+		expect(weapon?.awakenIcon).toBe(
+			weapon!.icon.replace(".png", "_Awaken.png"),
+		);
+	});
+
 	test("reliquary level is computed without mutating the input (regression)", () => {
 		const first = new FetchUserUID(enka.assets, "EN", modernFixture as never);
 		const second = new FetchUserUID(enka.assets, "EN", modernFixture as never);

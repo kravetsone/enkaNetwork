@@ -3,7 +3,9 @@ import fs from "node:fs";
 import http from "node:http";
 import os from "node:os";
 import path from "node:path";
+import { AssetsFinder } from "../src/helpers/AssetsFinder";
 import { FileSystemAdapter } from "../src/helpers/AssetsFinder/adapters/FileSystemAdapter";
+import { DataManager, LocalizationManager } from "../src/helpers/AssetsManager";
 
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), "enka-fsa-"));
 
@@ -69,5 +71,31 @@ describe("FileSystemAdapter", () => {
 		expect(fs.existsSync(path.join(dir, "Icon_0.png"))).toBe(true);
 		// once cached, subsequent resolve returns the local path
 		expect(adapter.resolve("Icon_0")).toBe(path.join(dir, "Icon_0.png"));
+	});
+});
+
+describe("AssetsFinder.warm", () => {
+	test("resolves the given filenames and awaits the adapter flush", async () => {
+		const resolved: string[] = [];
+		let flushed = false;
+		const adapter = {
+			resolve: (filename: string) => {
+				resolved.push(filename);
+				return filename;
+			},
+			flush: async () => {
+				flushed = true;
+			},
+		};
+
+		const finder = new AssetsFinder({
+			adapter,
+			dataManager: new DataManager(),
+			localizationManager: new LocalizationManager(),
+		});
+
+		await finder.warm(["A", "B"]);
+		expect(resolved).toEqual(["A", "B"]);
+		expect(flushed).toBe(true);
 	});
 });

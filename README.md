@@ -100,12 +100,20 @@ new EnkaNetwork({
 
 The legacy `uiAssetsPath` option still works (it builds an `OriginAdapter` for you).
 
+Warm the cache after a fetch so every referenced icon (incl. `weapon.awakenIcon` and the
+gacha/costume splash exposed as `icons.gacha`) lands on disk:
+
+```ts
+const user = await enka.fetchUser(uid);
+await enka.assets.warm(); // awaits all pending downloads
+```
+
 > [!WARNING]
-> `FileSystemAdapter` only caches the exact filenames the library returns. If your code
-> derives sibling names from a returned path (e.g. `icon.replace(".png", "_Awaken.png")`,
-> or the gacha/costume splash from `icons.avatar`), use a **complete local mirror with
-> `OriginAdapter`** instead — the lazy downloader never fetches those derived files.
-> The HoYoverse in-game CDN uses hashed paths (not `UI_*` names), so it needs a custom
-> adapter rather than a `baseUrl` swap.
+> `FileSystemAdapter` only caches the filenames the library returns. Prefer the exposed
+> fields (`weapon.awakenIcon`, `icons.gacha`) over string-deriving names like
+> `icon.replace(".png", "_Awaken.png")` — derived names never pass through the cache.
+> For renderers that need guaranteed-local paths, use `fallbackToOrigin: false` + `warm()`,
+> or point an `OriginAdapter` at a complete local mirror. The HoYoverse in-game CDN uses
+> hashed paths (not `UI_*` names), so it needs a custom adapter, not a `baseUrl` swap.
 
 # You can see more information in the [documentation](https://kravets.gitbook.io/enkanetwork)

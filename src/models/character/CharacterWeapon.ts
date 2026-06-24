@@ -10,6 +10,9 @@ export class CharacterWeapon {
 	mainStat: { appendPropId: string; statValue: number };
 	subStat?: { appendPropId: string; statValue: number };
 	icon: string;
+	// The "awakened"/ascended art (`{icon}_Awaken`). Exposed so renderers don't have
+	// to string-derive it — and so it is cacheable by the FileSystemAdapter.
+	awakenIcon: string;
 	name: string;
 
 	constructor(
@@ -23,6 +26,7 @@ export class CharacterWeapon {
 			language,
 		);
 		this.icon = assets.getAssetPath(equipment.flat.icon);
+		this.awakenIcon = assets.getAssetPath(`${equipment.flat.icon}_Awaken`);
 		this.level = equipment.weapon.level;
 		this.elevations = equipment.weapon.promoteLevel || 0;
 		this.improvement = equipment.weapon.affixMap

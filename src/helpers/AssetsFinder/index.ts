@@ -92,4 +92,14 @@ export class AssetsFinder {
 		for (const filename of filenames) this.adapter.resolve(filename);
 		await this.flush();
 	}
+
+	/**
+	 * Warm the adapter's cache: resolve any extra `filenames` (e.g. derived ones)
+	 * and await all pending downloads. Call after `fetchUser` so every icon the
+	 * models reference — including `weapon.awakenIcon` — is on disk.
+	 */
+	async warm(filenames: string[] = []) {
+		for (const filename of filenames) this.adapter.resolve(filename);
+		await this.flush();
+	}
 }
