@@ -66,6 +66,39 @@ async function request<T>(url: string) {
 	throw lastError;
 }
 
+// Upstream splits oversized TextMaps (e.g. RU, TH) into `TextMap{LANG}_0.json`,
+// `_1.json`, … Fetch the single file when it exists, otherwise merge all parts.
+async function fetchTextMap(lang: TLanguage) {
+	try {
+		return await request<Record<string, string>>(
+			`${LOCALIZATION_BASE_URL + lang}.json`,
+		);
+	} catch {
+		const merged: Record<string, string> = {};
+
+		for (let part = 0; ; part++) {
+			try {
+				Object.assign(
+					merged,
+					await request<Record<string, string>>(
+						`${LOCALIZATION_BASE_URL + lang}_${part}.json`,
+					),
+				);
+			} catch {
+				break;
+			}
+		}
+
+		if (!Object.keys(merged).length)
+			throw new AssetsUpdateError(`${LOCALIZATION_BASE_URL + lang}.json`, {
+				status: 404,
+				message: `No TextMap found for language "${lang}"`,
+			});
+
+		return merged;
+	}
+}
+
 export class AssetsUpdater {
 	languages: TLanguage[];
 	private isFetching: boolean;
@@ -312,11 +345,7 @@ export class AssetsUpdater {
 		};
 
 		const languagesData = await Promise.all(
-			this.languages.map(async (lang) => {
-				return request<Record<string, string>>(
-					`${LOCALIZATION_BASE_URL + lang}.json`,
-				);
-			}),
+			this.languages.map((lang) => fetchTextMap(lang)),
 		);
 
 		for (const dataType in nameTextHashMaps) {

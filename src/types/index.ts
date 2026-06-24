@@ -10,11 +10,13 @@ export type TLanguage =
 	| "ES"
 	| "FR"
 	| "ID"
+	| "IT"
 	| "JP"
 	| "KR"
 	| "PT"
 	| "RU"
 	| "TH"
+	| "TR"
 	| "VI";
 
 export interface IAssetsUpdaterParams {

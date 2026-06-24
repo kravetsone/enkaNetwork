@@ -9,7 +9,9 @@ export const BASE_URL =
 export const BASE_URL_FALLBACK =
 	"https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/master";
 
-export const LOCALIZATION_BASE_URL = "/TextMap/TextMap";
+// Names live in the "Medium" TextMaps; the plain TextMap{LANG}.json files do not
+// contain character/item name hashes. Oversized ones (RU, TH) are split into _0/_1.
+export const LOCALIZATION_BASE_URL = "/TextMap/TextMap_Medium";
 export const CHARACTER_DATA_URL = "/ExcelBinOutput/AvatarExcelConfigData.json";
 export const SKILLSET_DATA_URL =
 	"/ExcelBinOutput/AvatarSkillDepotExcelConfigData.json";
@@ -27,12 +29,11 @@ export const RELIQUARY_SET_DATA_URL =
 export const RELIQUARY_AFFIX_DATA_URL =
 	"/ExcelBinOutput/EquipAffixExcelConfigData.json";
 
-export const qualityTypesStars: Record<
-	"QUALITY_ORANGE" | "QUALITY_PURPLE",
-	5 | 4
-> = {
+export const qualityTypesStars: Record<string, 5 | 4> = {
 	QUALITY_ORANGE: 5,
 	QUALITY_PURPLE: 4,
+	// Collab 5★ characters (e.g. Aloy) use a special quality type.
+	QUALITY_ORANGE_SP: 5,
 };
 
 export const elements: Record<string, TElement> = {
@@ -61,11 +62,13 @@ export const localizationLanguages: TLanguage[] = [
 	"ES",
 	"FR",
 	"ID",
+	"IT",
 	"JP",
 	"KR",
 	"PT",
 	"RU",
 	"TH",
+	"TR",
 	"VI",
 ];
 
