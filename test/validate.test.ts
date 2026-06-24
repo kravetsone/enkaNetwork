@@ -29,7 +29,12 @@ describe("validateAssets", () => {
 
 	test("wrong primitive type is reported", () => {
 		const problems = validateAssets("skills", [
-			{ id: 1, nameTextMapHash: "x", skillIcon: "i", proudSkillGroupId: 1 } as never,
+			{
+				id: 1,
+				nameTextMapHash: "x",
+				skillIcon: "i",
+				proudSkillGroupId: 1,
+			} as never,
 		]);
 		expect(problems.some((p) => /expected number, got string/.test(p))).toBe(
 			true,
@@ -54,7 +59,11 @@ describe("validateAssets", () => {
 	test("profilePictures require id, iconName and nameTextMapHash", () => {
 		expect(
 			validateAssets("profilePictures", [
-				{ id: 11200, iconName: "UI_AvatarIcon_Linnea_Circle", nameTextMapHash: 1 },
+				{
+					id: 11200,
+					iconName: "UI_AvatarIcon_Linnea_Circle",
+					nameTextMapHash: 1,
+				},
 			]),
 		).toHaveLength(0);
 
