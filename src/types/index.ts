@@ -26,4 +26,8 @@ export interface IAssetsUpdaterParams {
 	checkInterval?: number | false;
 	// Check immediately for the first time
 	instant?: boolean;
+	// Force the initial fetch to rebuild assets even if the update guard thinks
+	// they are current (e.g. after switching data sources). Applies to the
+	// `instant` run; interval runs stay guarded.
+	force?: boolean;
 }

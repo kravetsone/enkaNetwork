@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 // @ts-ignore: JSON IMPORT OUT OF BASE-DIR
-import config from "../../../assets/config.json";
+import rawConfig from "../../../assets/config.json";
 import { AssetsUpdateError, AssetsValidationError } from "../../errors";
 import type {
 	IAssetsUpdaterParams,
@@ -50,12 +50,22 @@ import {
 } from "./constants";
 import { validateAssets } from "./validate";
 
+// The on-disk config is generated at runtime (gitignored), so widen its type to
+// cover fields the seed may not have written yet (e.g. lastCommitId).
+const config = rawConfig as {
+	lastUpdate: string;
+	lastCommitId?: string | null;
+	languages: TLanguage[];
+};
+
 // Tries the primary host first, then the mirror, so a single host outage doesn't
 // break updates.
 async function request<T>(url: string) {
+	const bases = [BASE_URL, BASE_URL_FALLBACK];
 	let lastError: unknown;
 
-	for (const base of [BASE_URL, BASE_URL_FALLBACK]) {
+	for (let index = 0; index < bases.length; index++) {
+		const base = bases[index];
 		try {
 			const res = await fetch(base + url);
 			if (!res.ok) throw new AssetsUpdateError(url, res);
@@ -63,6 +73,20 @@ async function request<T>(url: string) {
 			return (await res.json()) as T;
 		} catch (error) {
 			lastError = error;
+
+			// Surface each failed host so a silently-frozen primary (or a dead
+			// mirror) is visible instead of masked by the try/catch.
+			const nextBase = bases[index + 1];
+			const reason =
+				error instanceof AssetsUpdateError
+					? `HTTP ${error.data?.status ?? "?"}`
+					: (error as Error)?.message ?? String(error);
+
+			console.warn(
+				`[enkanetwork] request to ${base + url} failed (${reason})${
+					nextBase ? `; falling back to ${nextBase}` : ""
+				}`,
+			);
 		}
 	}
 
@@ -113,6 +137,7 @@ export class AssetsUpdater {
 			languages = ["EN"],
 			checkInterval = 30 * 60 * 1000, // 0.5 hour
 			instant = false,
+			force = false,
 		}: IAssetsUpdaterParams,
 		dataManager: DataManager,
 		localizationManager: LocalizationManager,
@@ -134,7 +159,7 @@ export class AssetsUpdater {
 		this.languages = [...new Set(languages)];
 		this.isFetching = false;
 
-		if (instant) this.fetchAssets();
+		if (instant) this.fetchAssets(force);
 
 		if (checkInterval)
 			setInterval(
@@ -147,25 +172,39 @@ export class AssetsUpdater {
 	}
 
 	// function that checks the relevance of assets data and localization
-	async fetchAssets() {
+	async fetchAssets(force = false) {
 		if (this.isFetching) throw new Error("Content is already fetching!");
 		this.isFetching = true;
 
-		// Best-effort update check: if the commits API is unreachable, treat it as
-		// "no new commits" and fall back to the language diff below.
-		let data: unknown[] = [];
+		// (3) Track the source's newest commit id instead of a wall-clock stamp: a
+		// stored "now" can run ahead of the latest commit (or a switched data
+		// source), silently wedging the guard forever. Commit ids can't drift.
+		// Best-effort: if the commits API is unreachable, we simply can't detect a
+		// change and fall through to the other signals below.
+		let latestCommitId: string | undefined;
 		try {
-			const res = await fetch(
-				`${PROJECT_GITLAB_URL}?since=${config.lastUpdate}`,
-			);
-			data = await res.json();
+			const res = await fetch(`${PROJECT_GITLAB_URL}?per_page=1`);
+			const commits = (await res.json()) as { id?: string }[];
+			latestCommitId = commits[0]?.id;
 		} catch {}
 
+		const missingLanguages = this.languages.some(
+			(language) => !(config.languages as TLanguage[]).includes(language),
+		);
+		// (1) Cold start or wiped assets: nothing is generated yet, so always
+		// rebuild regardless of the commit guard.
+		const assetsMissing = this.dataManager.characters.length === 0;
+		// Only trust a change when the API actually answered; an unreachable host
+		// stays best-effort ("assume unchanged"), as before.
+		const commitChanged =
+			latestCommitId !== undefined && latestCommitId !== config.lastCommitId;
+
+		// (2) `force` overrides every up-to-date signal.
 		if (
-			!data.length &&
-			!this.languages.filter(
-				(language) => !(config.languages as TLanguage[]).includes(language),
-			).length &&
+			!force &&
+			!assetsMissing &&
+			!missingLanguages &&
+			!commitChanged &&
 			config.languages.length
 		) {
 			this.isFetching = false;
@@ -388,6 +427,8 @@ export class AssetsUpdater {
 
 		this.isFetching = false;
 		config.lastUpdate = new Date().toISOString();
+		// Keep the previous id if the commits API was unreachable this run.
+		config.lastCommitId = latestCommitId ?? config.lastCommitId;
 		config.languages = this.languages as never[];
 		await fs.writeFile(
 			path.resolve(ASSETS_PATH, "config.json"),

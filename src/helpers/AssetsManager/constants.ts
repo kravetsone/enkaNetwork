@@ -1,11 +1,14 @@
 import path from "node:path";
 import type { TElement, TLanguage } from "../../types";
 
+// AnimeGameData was deprecated (repo size limit) and frozen at 6.6.0; live data
+// now lives in animegamedata2 (project 83871005, default branch `main`).
 export const PROJECT_GITLAB_URL =
-	"https://gitlab.com/api/v4/projects/53216109/repository/commits";
+	"https://gitlab.com/api/v4/projects/83871005/repository/commits";
 export const BASE_URL =
-	"https://gitlab.com/Dimbreath/AnimeGameData/-/raw/master";
-// GitHub mirror used when the primary GitLab host is unreachable.
+	"https://gitlab.com/Dimbreath/animegamedata2/-/raw/main";
+// GitHub mirror used when the primary GitLab host is unreachable. Still published
+// under the original name and kept current with the latest dump.
 export const BASE_URL_FALLBACK =
 	"https://raw.githubusercontent.com/DimbreathBot/AnimeGameData/master";
 

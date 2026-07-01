@@ -38,6 +38,7 @@ async function run() {
 			JSON.stringify(
 				{
 					lastUpdate: "1990-12-20T04:40:14.000+00:00",
+					lastCommitId: null,
 					languages: [],
 				},
 				null,
