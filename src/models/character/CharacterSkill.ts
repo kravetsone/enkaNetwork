@@ -17,7 +17,9 @@ export class CharacterSkill {
 	) {
 		const skill = assets.skills.getById(skillId);
 
-		const boost = proudSkillExtraLevelMap[skill.proudSkillGroupId];
+		const boost = skill.proudSkillGroupId
+			? proudSkillExtraLevelMap[skill.proudSkillGroupId]
+			: undefined;
 
 		this.id = skillId;
 		this.icon = assets.getAssetPath(skill.skillIcon);

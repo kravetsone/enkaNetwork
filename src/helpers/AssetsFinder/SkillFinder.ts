@@ -1,9 +1,6 @@
-import {
-	NoDataAssetsFound,
-	NoLanguageFound,
-	NoLocalizationAssetsFound,
-} from "../../errors";
+import { NoDataAssetsFound, NoLocalizationAssetsFound } from "../../errors";
 import type { ISkillData, TLanguage, TLocalizationData } from "../../types";
+import { pickName } from "./pickName";
 
 export class SkillFinder {
 	private readonly data: ISkillData[];
@@ -32,13 +29,6 @@ export class SkillFinder {
 				`There is no localization for skill with id = ${skill.id}! (check the actuality of assets)`,
 			);
 
-		const name = nameLocalizations[language];
-
-		if (!name)
-			throw new NoLanguageFound(
-				"This language is not downloaded! Check the AssetsUpdater settings",
-			);
-
-		return name;
+		return pickName(nameLocalizations, language, `skill with id = ${skill.id}`);
 	}
 }

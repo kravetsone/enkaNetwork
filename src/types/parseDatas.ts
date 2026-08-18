@@ -82,7 +82,7 @@ export interface ISkillExcelData {
 	lockWeightParams: number[];
 	isAttackCameraLock: boolean;
 	buffIcon: string;
-	proudSkillGroupId: number;
+	proudSkillGroupId?: number;
 	globalValueKey: string;
 }
 

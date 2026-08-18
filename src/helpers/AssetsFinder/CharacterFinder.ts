@@ -1,9 +1,6 @@
-import {
-	NoDataAssetsFound,
-	NoLanguageFound,
-	NoLocalizationAssetsFound,
-} from "../../errors";
+import { NoDataAssetsFound, NoLocalizationAssetsFound } from "../../errors";
 import type { ICharacterData, TLanguage, TLocalizationData } from "../../types";
+import { pickName } from "./pickName";
 
 export class CharacterFinder {
 	private readonly data: ICharacterData[];
@@ -45,12 +42,10 @@ export class CharacterFinder {
 				`There is no localization for character with id = ${character.id}! (check the actuality of assets)`,
 			);
 
-		const name = nameLocalization[language];
-		if (!name)
-			throw new NoLanguageFound(
-				"This language is not downloaded! Check the AssetsUpdater settings",
-			);
-
-		return name;
+		return pickName(
+			nameLocalization,
+			language,
+			`character with id = ${character.id}`,
+		);
 	}
 }

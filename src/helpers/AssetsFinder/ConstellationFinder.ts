@@ -1,13 +1,10 @@
-import {
-	NoDataAssetsFound,
-	NoLanguageFound,
-	NoLocalizationAssetsFound,
-} from "../../errors";
+import { NoDataAssetsFound, NoLocalizationAssetsFound } from "../../errors";
 import type {
 	IConstellationData,
 	TLanguage,
 	TLocalizationData,
 } from "../../types";
+import { pickName } from "./pickName";
 
 export class ConstellationFinder {
 	private readonly data: IConstellationData[];
@@ -38,13 +35,10 @@ export class ConstellationFinder {
 				`There is no localization for constellation with id = ${constellation.id}! (check the actuality of assets)`,
 			);
 
-		const name = nameLocalizations[language];
-
-		if (!name)
-			throw new NoLanguageFound(
-				"This language is not downloaded! Check the AssetsUpdater settings",
-			);
-
-		return name;
+		return pickName(
+			nameLocalizations,
+			language,
+			`constellation with id = ${constellation.id}`,
+		);
 	}
 }

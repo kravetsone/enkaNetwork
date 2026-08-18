@@ -176,6 +176,18 @@ export class AssetsUpdater {
 		if (this.isFetching) throw new Error("Content is already fetching!");
 		this.isFetching = true;
 
+		// The flag is the only concurrency guard, so it MUST be released on every
+		// exit path: a run that threw (network blip, upstream schema drift) used to
+		// leak `isFetching = true` and wedge every later attempt — including the
+		// interval — with "Content is already fetching!" for the life of the process.
+		try {
+			await this.update(force);
+		} finally {
+			this.isFetching = false;
+		}
+	}
+
+	private async update(force: boolean) {
 		// (3) Track the source's newest commit id instead of a wall-clock stamp: a
 		// stored "now" can run ahead of the latest commit (or a switched data
 		// source), silently wedging the guard forever. Commit ids can't drift.
@@ -207,7 +219,6 @@ export class AssetsUpdater {
 			!commitChanged &&
 			config.languages.length
 		) {
-			this.isFetching = false;
 			return;
 		}
 
@@ -321,14 +332,20 @@ export class AssetsUpdater {
 			icon: constellation.icon,
 		})) as IConstellationData[];
 
-		const costumes = costumesData.map((costume) => ({
-			// id: Object.values(costume).at(0),
-			id: costume.skinId,
-			iconName: costume.sideIconName.replace("_Side", ""),
-			sideIconName: costume.sideIconName,
-			gachaIcon: `UI_Costume_${costume.sideIconName.split("_").at(-1)}`,
-			nameTextMapHash: costume.nameTextMapHash,
-		})) as ICostumeData[];
+		const costumes = costumesData
+			// Upstream also ships one row per *default* outfit (`isDefault: true`), and
+			// those carry no icon columns at all — only skinId/characterId/nameTextMapHash.
+			// They aren't selectable costumes (the character's base art is used), and
+			// reading `sideIconName` off them threw a TypeError that killed every update.
+			.filter((costume) => costume.sideIconName)
+			.map((costume) => ({
+				// id: Object.values(costume).at(0),
+				id: costume.skinId,
+				iconName: costume.sideIconName.replace("_Side", ""),
+				sideIconName: costume.sideIconName,
+				gachaIcon: `UI_Costume_${costume.sideIconName.split("_").at(-1)}`,
+				nameTextMapHash: costume.nameTextMapHash,
+			})) as ICostumeData[];
 
 		const namecards = namecardsData
 			.filter((namecard) => namecard.materialType === "MATERIAL_NAMECARD")
@@ -358,10 +375,7 @@ export class AssetsUpdater {
 			...validateAssets("namecards", namecards),
 			...validateAssets("profilePictures", profilePictures),
 		];
-		if (problems.length) {
-			this.isFetching = false;
-			throw new AssetsValidationError(problems);
-		}
+		if (problems.length) throw new AssetsValidationError(problems);
 
 		await Promise.all([
 			this.dataManager.writeCharacters(characters),
@@ -425,11 +439,16 @@ export class AssetsUpdater {
 			await this.localizationManager.write(assetType, localization);
 		}
 
-		this.isFetching = false;
 		config.lastUpdate = new Date().toISOString();
 		// Keep the previous id if the commits API was unreachable this run.
 		config.lastCommitId = latestCommitId ?? config.lastCommitId;
-		config.languages = this.languages as never[];
+		// Union, not replacement: `write()` merges languages into the existing files,
+		// so a run configured with fewer languages must not un-advertise the ones a
+		// previous run downloaded (that's what made the EN-only postinstall look like
+		// it had deleted RU).
+		config.languages = [
+			...new Set([...(config.languages ?? []), ...this.languages]),
+		] as never[];
 		await fs.writeFile(
 			path.resolve(ASSETS_PATH, "config.json"),
 			JSON.stringify(config, null, 4),

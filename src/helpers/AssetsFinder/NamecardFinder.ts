@@ -1,9 +1,6 @@
-import {
-	NoDataAssetsFound,
-	NoLanguageFound,
-	NoLocalizationAssetsFound,
-} from "../../errors";
+import { NoDataAssetsFound, NoLocalizationAssetsFound } from "../../errors";
 import type { INamecardData, TLanguage, TLocalizationData } from "../../types";
+import { pickName } from "./pickName";
 
 export class NamecardFinder {
 	private readonly data: INamecardData[];
@@ -32,13 +29,10 @@ export class NamecardFinder {
 				`There is no localization for namecard with id = ${namecard.id}! (check the actuality of assets)`,
 			);
 
-		const name = nameLocalizations[language];
-
-		if (!name)
-			throw new NoLanguageFound(
-				"This language is not downloaded! Check the AssetsUpdater settings",
-			);
-
-		return name;
+		return pickName(
+			nameLocalizations,
+			language,
+			`namecard with id = ${namecard.id}`,
+		);
 	}
 }

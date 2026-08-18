@@ -56,7 +56,8 @@ export interface ISkillData {
 	id: number;
 	nameTextMapHash: number;
 	skillIcon: string;
-	proudSkillGroupId: number;
+	/** Absent for skills that can't be levelled (alternate sprints, some passives). */
+	proudSkillGroupId?: number;
 }
 
 export interface IProfilePictureData {

@@ -44,12 +44,25 @@ export class LocalizationManager {
 		this.profilePictures = profilePictures as TLocalizationData;
 	}
 
+	/**
+	 * Merges a freshly fetched localization into the store — per hash, per language —
+	 * and persists the merged result.
+	 *
+	 * A run only fetches the languages its updater was configured with, so writing
+	 * `localization` verbatim used to drop every other language already on disk (the
+	 * postinstall defaults to EN, which silently wiped an app's RU store and left every
+	 * RU lookup throwing `NoLanguageFound`). Memory and file now stay in sync too — the
+	 * old code merged in memory but wrote the unmerged object.
+	 */
 	async write(assetType: TAssetsList, localization: TLocalizationData) {
-		this[assetType] = Object.assign(this[assetType], localization);
+		const store = this[assetType];
+
+		for (const hash in localization)
+			store[hash] = { ...store[hash], ...localization[hash] };
 
 		await fs.writeFile(
 			path.resolve(ASSETS_PATH, "localization", `${assetType}.json`),
-			JSON.stringify(localization, null, 4),
+			JSON.stringify(store, null, 4),
 		);
 	}
 }

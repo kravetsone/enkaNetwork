@@ -1,5 +1,6 @@
-import { NoLanguageFound, NoLocalizationAssetsFound } from "../../errors";
+import { NoLocalizationAssetsFound } from "../../errors";
 import type { TLanguage, TLocalizationData } from "../../types";
+import { pickName } from "./pickName";
 
 export class WeaponFinder {
 	private readonly localization: TLocalizationData;
@@ -15,13 +16,10 @@ export class WeaponFinder {
 				`There is no localization for weapon with nameTextMapHash = ${nameTextMapHash}! (check the actuality of assets)`,
 			);
 
-		const name = nameLocalizations[language];
-
-		if (!name)
-			throw new NoLanguageFound(
-				"This language is not downloaded! Check the AssetsUpdater settings",
-			);
-
-		return name;
+		return pickName(
+			nameLocalizations,
+			language,
+			`weapon with nameTextMapHash = ${nameTextMapHash}`,
+		);
 	}
 }

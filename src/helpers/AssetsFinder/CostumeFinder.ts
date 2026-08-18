@@ -1,9 +1,6 @@
-import {
-	NoDataAssetsFound,
-	NoLanguageFound,
-	NoLocalizationAssetsFound,
-} from "../../errors";
+import { NoLocalizationAssetsFound } from "../../errors";
 import type { ICostumeData, TLanguage, TLocalizationData } from "../../types";
+import { pickName } from "./pickName";
 
 export class CostumeFinder {
 	private readonly data: ICostumeData[];
@@ -14,15 +11,16 @@ export class CostumeFinder {
 		this.localization = localization;
 	}
 
-	// Searching for a **costume** by his ID
+	/**
+	 * Searching for a **costume** by his ID. Returns `undefined` when it isn't known.
+	 *
+	 * A miss is not fatal: the generated data holds only real (icon-bearing) costumes,
+	 * so an unknown skinId means "this character wears their default outfit" — exactly
+	 * the `costume ? costume.iconName : character.iconName` fallback every caller
+	 * already has. Throwing here took the whole `fetchUser` down with it.
+	 */
 	getById(id: number) {
-		const costume = this.data.find((costume) => costume.id === id);
-		if (!costume)
-			throw new NoDataAssetsFound(
-				`There is no costume with id = ${id}! (check the actuality of assets)`,
-			);
-
-		return costume;
+		return this.data.find((costume) => costume.id === id);
 	}
 
 	getName(costume: ICostumeData, language: TLanguage) {
@@ -32,13 +30,10 @@ export class CostumeFinder {
 				`There is no localization for costume with id = ${costume.id}! (check the actuality of assets)`,
 			);
 
-		const name = nameLocalizations[language];
-
-		if (!name)
-			throw new NoLanguageFound(
-				"This language is not downloaded! Check the AssetsUpdater settings",
-			);
-
-		return name;
+		return pickName(
+			nameLocalizations,
+			language,
+			`costume with id = ${costume.id}`,
+		);
 	}
 }

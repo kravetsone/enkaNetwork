@@ -1,5 +1,6 @@
-import { NoLanguageFound, NoLocalizationAssetsFound } from "../../errors";
+import { NoLocalizationAssetsFound } from "../../errors";
 import type { TLanguage, TLocalizationData } from "../../types";
+import { pickName } from "./pickName";
 
 export class ReliquaryFinder {
 	private readonly localization: TLocalizationData;
@@ -15,13 +16,10 @@ export class ReliquaryFinder {
 				`There is no localization for reliquary with nameTextMapHash = ${nameTextMapHash}! (check the actuality of assets)`,
 			);
 
-		const name = nameLocalizations[language];
-
-		if (!name)
-			throw new NoLanguageFound(
-				"This language is not downloaded! Check the AssetsUpdater settings",
-			);
-
-		return name;
+		return pickName(
+			nameLocalizations,
+			language,
+			`reliquary with nameTextMapHash = ${nameTextMapHash}`,
+		);
 	}
 }

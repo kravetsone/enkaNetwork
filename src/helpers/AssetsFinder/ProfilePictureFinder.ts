@@ -1,13 +1,10 @@
-import {
-	NoDataAssetsFound,
-	NoLanguageFound,
-	NoLocalizationAssetsFound,
-} from "../../errors";
+import { NoDataAssetsFound, NoLocalizationAssetsFound } from "../../errors";
 import type {
 	IProfilePictureData,
 	TLanguage,
 	TLocalizationData,
 } from "../../types";
+import { pickName } from "./pickName";
 
 export class ProfilePictureFinder {
 	private readonly data: IProfilePictureData[];
@@ -38,12 +35,10 @@ export class ProfilePictureFinder {
 				`There is no localization for profile picture with id = ${profilePicture.id}! (check the actuality of assets)`,
 			);
 
-		const name = nameLocalization[language];
-		if (!name)
-			throw new NoLanguageFound(
-				"This language is not downloaded! Check the AssetsUpdater settings",
-			);
-
-		return name;
+		return pickName(
+			nameLocalization,
+			language,
+			`profile picture with id = ${profilePicture.id}`,
+		);
 	}
 }

@@ -55,7 +55,9 @@ const schemas: Record<keyof IDataShapes, IFieldSpec[]> = {
 		{ key: "id", type: "number" },
 		{ key: "nameTextMapHash", type: "number" },
 		{ key: "skillIcon", type: "string" },
-		{ key: "proudSkillGroupId", type: "number" },
+		// Alternate-sprint skills (Citlali, Olorun, …) carry no proud-skill group —
+		// they aren't levellable, so the column is simply absent upstream.
+		{ key: "proudSkillGroupId", type: "number", optional: true },
 	],
 	profilePictures: [
 		{ key: "id", type: "number" },
